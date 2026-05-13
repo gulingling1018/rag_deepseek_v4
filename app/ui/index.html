@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DeepSeek RAG Workspace</title>
+  <style>
+    :root {
+      --bg: #efe8dc;
+      --paper: rgba(255, 252, 247, 0.82);
+      --paper-strong: rgba(255, 255, 255, 0.94);
+      --ink: #1c2526;
+      --muted: rgba(28, 37, 38, 0.68);
+      --line: rgba(28, 37, 38, 0.1);
+      --accent: #c65f43;
+      --accent-2: #1e6b73;
+      --accent-soft: rgba(198, 95, 67, 0.12);
+      --ok: #2d7d58;
+      --shadow: 0 18px 45px rgba(46, 35, 29, 0.12);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(198, 95, 67, 0.24), transparent 26%),
+        radial-gradient(circle at top right, rgba(30, 107, 115, 0.16), transparent 20%),
+        linear-gradient(135deg, #f5f1e9 0%, #ece4d6 50%, #e9dfd0 100%);
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: 290px minmax(0, 1fr);
+      gap: 20px;
+      width: min(1440px, calc(100% - 24px));
+      margin: 12px auto;
+      min-height: calc(100vh - 24px);
+    }
+
+    .sidebar, .workspace {
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: var(--paper);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+    }
+
+    .sidebar {
+      padding: 20px;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 18px;
+    }
+
+    .brand {
+      display: grid;
+      gap: 8px;
+    }
+
+    .brand-badge {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), #e0a36c);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .brand p, .helper, .status, .meta, .session-snippet, .doc-meta, .citation-meta {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .stack {
+      display: grid;
+      gap: 12px;
+    }
+
+    .workspace {
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      overflow: hidden;
+    }
+
+    .topbar {
+      padding: 24px 28px 12px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar h2 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+
+    .topbar p {
+      margin: 8px 0 0;
+      max-width: 640px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .chip-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .chip {
+      border: 1px solid rgba(30, 107, 115, 0.2);
+      background: rgba(30, 107, 115, 0.08);
+      color: var(--accent-2);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .control-grid {
+      padding: 18px 28px;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--paper-strong);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 16px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .doc-list, .session-list, .citations {
+      display: grid;
+      gap: 10px;
+      overflow: auto;
+      padding-right: 4px;
+    }
+
+    .session-list {
+      max-height: 100%;
+    }
+
+    .session-item, .doc-item, .citation {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 20px;
+      padding: 14px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .session-item.active {
+      border-color: rgba(198, 95, 67, 0.35);
+      background: linear-gradient(135deg, rgba(198, 95, 67, 0.12), rgba(255, 255, 255, 0.92));
+    }
+
+    .session-title, .doc-title {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .chat-scroll {
+      overflow: auto;
+      padding: 24px 28px;
+      display: grid;
+      gap: 16px;
+      align-content: start;
+    }
+
+    .empty-state {
+      min-height: 100%;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: var(--muted);
+      padding: 32px;
+    }
+
+    .bubble {
+      max-width: min(880px, 100%);
+      padding: 18px 20px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 10px 26px rgba(36, 32, 29, 0.05);
+      animation: reveal 220ms ease;
+    }
+
+    .bubble.user {
+      margin-left: auto;
+      background: linear-gradient(135deg, rgba(198, 95, 67, 0.14), rgba(255, 255, 255, 0.92));
+      border-color: rgba(198, 95, 67, 0.28);
+    }
+
+    .bubble.assistant {
+      margin-right: auto;
+    }
+
+    .bubble-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .bubble-content {
+      white-space: pre-wrap;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+
+    .composer {
+      padding: 18px 28px 28px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      gap: 12px;
+      background: linear-gradient(180deg, rgba(239, 232, 220, 0.1), rgba(255, 252, 247, 0.55));
+    }
+
+    textarea, input[type="file"], input[type="url"], button {
+      font: inherit;
+      border-radius: 18px;
+    }
+
+    textarea, input[type="file"], input[type="url"] {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.94);
+      padding: 14px 16px;
+      color: var(--ink);
+    }
+
+    .compact-input {
+      min-height: 54px;
+      resize: vertical;
+    }
+
+    .composer textarea {
+      min-height: 104px;
+      resize: vertical;
+      border-radius: 24px;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+      padding: 12px 16px;
+      background: var(--ink);
+      color: #fff;
+      transition: transform 140ms ease, opacity 140ms ease, background 140ms ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      opacity: 0.97;
+    }
+
+    button.secondary {
+      background: rgba(28, 37, 38, 0.08);
+      color: var(--ink);
+    }
+
+    button.accent {
+      background: linear-gradient(135deg, var(--accent), #dd8b52);
+    }
+
+    .button-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-note {
+      padding-top: 6px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    a {
+      color: var(--accent-2);
+      text-decoration: none;
+    }
+
+    .status {
+      min-height: 18px;
+    }
+
+    .session-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .danger {
+      background: rgba(198, 95, 67, 0.1);
+      color: #8a412e;
+    }
+
+    @keyframes reveal {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1180px) {
+      .shell {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        grid-template-rows: auto auto auto auto;
+      }
+      .control-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-badge">R</div>
+        <div>
+          <h1>RAG Workspace</h1>
+          <p>支持多会话、上下文连续对话，以及中英混合文档检索。</p>
+        </div>
+      </div>
+
+      <div class="stack">
+        <div class="button-row">
+          <button class="accent" onclick="createSession()">新建会话</button>
+          <button class="secondary" onclick="refreshAll()">刷新数据</button>
+        </div>
+        <p class="helper">左侧管理会话，右侧继续对话。检索会自动结合最近上下文，并对蓝牙等中英术语做扩展。</p>
+      </div>
+
+      <div class="stack" style="min-height: 260px;">
+        <div class="session-meta">
+          <h3 style="margin:0;">会话列表</h3>
+          <span class="meta" id="sessionCount">0 个</span>
+        </div>
+        <div id="sessionList" class="session-list"></div>
+      </div>
+
+      <div class="stack">
+        <div class="button-row">
+          <button class="secondary danger" onclick="deleteCurrentSession()">删除当前会话</button>
+        </div>
+        <div id="sessionStatus" class="status"></div>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      <section class="topbar">
+        <div>
+          <h2>DeepSeek RAG Console</h2>
+          <p>适合做技术资料问答、官方文档知识库和跨语言资料检索。当前界面支持会话持久化，刷新页面也不会丢聊天历史。</p>
+        </div>
+        <div class="chip-row">
+          <div class="chip">Model: deepseek-v4-flash</div>
+          <div class="chip">Retrieval: Context + BM25 + Bilingual Terms</div>
+          <div class="chip">Sessions: Persistent</div>
+        </div>
+      </section>
+
+      <section class="control-grid">
+        <div class="card">
+          <h3>上传本地文档</h3>
+          <input id="fileInput" type="file" accept=".txt,.md,.markdown,.pdf,.docx,.c,.h,.cpp,.hpp,.py,.js,.ts,.java,.go,.rs,.json,.yaml,.yml,.toml,.sh,.sql,.html,.css,.xml" />
+          <div class="button-row">
+            <button onclick="uploadFile()">上传并索引</button>
+          </div>
+          <div id="uploadStatus" class="status"></div>
+        </div>
+
+        <div class="card">
+          <h3>导入网页资料</h3>
+          <input id="urlInput" type="url" placeholder="https://docs.espressif.com/..." />
+          <div class="button-row">
+            <button class="secondary" onclick="importUrl()">抓取网页并索引</button>
+          </div>
+          <div id="urlStatus" class="status"></div>
+        </div>
+
+        <div class="card" style="min-height: 180px;">
+          <div class="session-meta">
+            <h3 style="margin:0;">资料库</h3>
+            <span id="docCount" class="meta">0 份</span>
+          </div>
+          <div id="documents" class="doc-list"></div>
+        </div>
+      </section>
+
+      <section id="chatScroll" class="chat-scroll">
+        <div id="emptyState" class="empty-state">
+          <div>
+            <h3 style="margin:0 0 10px; font-size:20px;">从一个问题开始</h3>
+            <p style="margin:0;">可以直接用中文问英文资料，也可以在同一会话里连续追问“那 BLE 呢”“它和经典蓝牙怎么选”这种带上下文的问题。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="composer">
+        <textarea id="question" placeholder="例如：请结合当前知识库，给我一个 ESP32 蓝牙开发学习路线，并比较 Bluedroid 与 NimBLE。"></textarea>
+        <div class="button-row">
+          <button class="accent" onclick="askQuestion()">发送问题</button>
+          <button class="secondary" onclick="loadCurrentSession()">重新加载当前会话</button>
+        </div>
+        <div id="chatStatus" class="status"></div>
+        <div id="citationBox" class="citations"></div>
+        <div class="footer-note">当前会话会自动保存。若同一轮里使用“它”“这个方案”等指代，检索会参考最近上下文。</div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    let currentSessionId = null;
+    let currentSession = null;
+    let sessions = [];
+
+    function formatTime(iso) {
+      if (!iso) return '';
+      return new Date(iso).toLocaleString('zh-CN', { hour12: false });
+    }
+
+    function setStatus(id, text) {
+      document.getElementById(id).textContent = text || '';
+    }
+
+    function escapeHtml(text) {
+      return text
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;');
+    }
+
+    function renderMessages(messages) {
+      const chatScroll = document.getElementById('chatScroll');
+      if (!messages.length) {
+        chatScroll.innerHTML = `
+          <div class="empty-state">
+            <div>
+              <h3 style="margin:0 0 10px; font-size:20px;">从一个问题开始</h3>
+              <p style="margin:0;">可以直接用中文问英文资料，也可以在同一会话里连续追问“那 BLE 呢”“它和经典蓝牙怎么选”这种带上下文的问题。</p>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      chatScroll.innerHTML = messages.map((item, index) => `
+        <article class="bubble ${item.role}">
+          <div class="bubble-header">
+            <span>${item.role === 'user' ? '你' : '助手'}</span>
+            <span>消息 ${index + 1}</span>
+          </div>
+          <div class="bubble-content">${escapeHtml(item.content)}</div>
+        </article>
+      `).join('');
+      chatScroll.scrollTop = chatScroll.scrollHeight;
+    }
+
+    function renderCitations(citations) {
+      const box = document.getElementById('citationBox');
+      if (!citations.length) {
+        box.innerHTML = '';
+        return;
+      }
+      box.innerHTML = citations.map(item => `
+        <div class="citation">
+          <div class="citation-meta"><strong>${item.document_title}${item.location_label ? ` · ${item.location_label}` : (item.page_label ? ` · ${item.page_label}` : ` #${item.chunk_index}`)}</strong> · ${item.block_type || 'text'} · score ${item.score}</div>
+          ${item.section_path && item.section_path.length ? `<div class="meta">章节：${escapeHtml(item.section_path.join(' > '))}</div>` : ''}
+          ${item.source_uri ? `<div class="meta"><a href="${item.source_uri}" target="_blank" rel="noreferrer">${escapeHtml(item.source_uri)}</a></div>` : ''}
+          <div class="meta">${escapeHtml(item.snippet)}</div>
+        </div>
+      `).join('');
+    }
+
+    function renderSessions() {
+      const list = document.getElementById('sessionList');
+      document.getElementById('sessionCount').textContent = `${sessions.length} 个`;
+      if (!sessions.length) {
+        list.innerHTML = '<div class="helper">还没有会话，先新建一个。</div>';
+        return;
+      }
+
+      list.innerHTML = sessions.map(session => `
+        <div class="session-item ${session.id === currentSessionId ? 'active' : ''}">
+          <div class="session-title">${escapeHtml(session.title)}</div>
+          <div class="session-snippet">${escapeHtml(session.last_message || '还没有消息')}</div>
+          <div class="session-meta">
+            <span class="meta">${session.turn_count} turns</span>
+            <span class="meta">${formatTime(session.updated_at)}</span>
+          </div>
+          <div class="button-row">
+            <button class="secondary" onclick="selectSession('${session.id}')">打开</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderDocuments(documents) {
+      const box = document.getElementById('documents');
+      document.getElementById('docCount').textContent = `${documents.length} 份`;
+      if (!documents.length) {
+        box.innerHTML = '<div class="helper">还没有导入资料。</div>';
+        return;
+      }
+      box.innerHTML = documents.map(doc => `
+        <div class="doc-item">
+          <div class="doc-title">${escapeHtml(doc.title)}</div>
+          <div class="doc-meta">来源：${escapeHtml(doc.source_type)} ${doc.source_url ? `· <a href="${doc.source_url}" target="_blank" rel="noreferrer">打开原文</a>` : ''}</div>
+          <div class="doc-meta">格式：${escapeHtml(doc.source_format || 'unknown')}${doc.encoding ? ` · 编码：${escapeHtml(doc.encoding)}` : ''}</div>
+          <div class="doc-meta">分块：${doc.chunk_count}${doc.page_count ? ` · 页数：${doc.page_count}` : ''} · 文件：${escapeHtml(doc.filename)}</div>
+          <div class="button-row">
+            <button class="secondary" onclick="deleteDocument('${doc.id}')">删除资料</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    async function refreshSessions(preserveSelection = true) {
+      const response = await fetch('/api/sessions');
+      sessions = await response.json();
+      renderSessions();
+      if (!preserveSelection || !currentSessionId) {
+        return;
+      }
+      const found = sessions.find(item => item.id === currentSessionId);
+      if (!found && sessions.length) {
+        await selectSession(sessions[0].id);
+      }
+    }
+
+    async function refreshDocuments() {
+      const response = await fetch('/api/documents');
+      const documents = await response.json();
+      renderDocuments(documents);
+    }
+
+    async function refreshAll() {
+      await refreshSessions();
+      await refreshDocuments();
+      setStatus('sessionStatus', '数据已刷新。');
+    }
+
+    async function createSession() {
+      const response = await fetch('/api/sessions', { method: 'POST' });
+      const session = await response.json();
+      currentSessionId = session.id;
+      await refreshSessions();
+      await loadCurrentSession();
+      setStatus('sessionStatus', '已创建新会话。');
+    }
+
+    async function selectSession(sessionId) {
+      currentSessionId = sessionId;
+      await refreshSessions();
+      await loadCurrentSession();
+    }
+
+    async function loadCurrentSession() {
+      if (!currentSessionId) {
+        currentSession = null;
+        renderMessages([]);
+        return;
+      }
+      const response = await fetch(`/api/sessions/${currentSessionId}`);
+      if (!response.ok) {
+        setStatus('sessionStatus', '会话加载失败。');
+        return;
+      }
+      currentSession = await response.json();
+      renderMessages(currentSession.messages || []);
+      renderCitations([]);
+      setStatus('sessionStatus', `当前会话：${currentSession.title}`);
+    }
+
+    async function deleteCurrentSession() {
+      if (!currentSessionId) {
+        setStatus('sessionStatus', '当前没有可删除的会话。');
+        return;
+      }
+      await fetch(`/api/sessions/${currentSessionId}`, { method: 'DELETE' });
+      currentSessionId = null;
+      currentSession = null;
+      renderMessages([]);
+      await refreshSessions(false);
+      if (sessions.length) {
+        currentSessionId = sessions[0].id;
+        await loadCurrentSession();
+      }
+      setStatus('sessionStatus', '会话已删除。');
+    }
+
+    async function uploadFile() {
+      const input = document.getElementById('fileInput');
+      if (!input.files.length) {
+        setStatus('uploadStatus', '请先选择一个文件。');
+        return;
+      }
+      setStatus('uploadStatus', '正在上传并建立索引...');
+      const form = new FormData();
+      form.append('file', input.files[0]);
+      const response = await fetch('/api/documents/upload', { method: 'POST', body: form });
+      const data = await response.json();
+      if (!response.ok) {
+        setStatus('uploadStatus', data.detail || '上传失败。');
+        return;
+      }
+      input.value = '';
+      setStatus('uploadStatus', `导入完成：${data.document.title}`);
+      await refreshDocuments();
+    }
+
+    async function importUrl() {
+      const input = document.getElementById('urlInput');
+      const url = input.value.trim();
+      if (!url) {
+        setStatus('urlStatus', '请先输入网页地址。');
+        return;
+      }
+      setStatus('urlStatus', '正在抓取网页并建立索引...');
+      const response = await fetch('/api/documents/import-url', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url })
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        setStatus('urlStatus', data.detail || '网页导入失败。');
+        return;
+      }
+      input.value = '';
+      setStatus('urlStatus', `${data.message} ${data.document.title}`);
+      await refreshDocuments();
+    }
+
+    async function deleteDocument(documentId) {
+      await fetch(`/api/documents/${documentId}`, { method: 'DELETE' });
+      await refreshDocuments();
+    }
+
+    async function askQuestion() {
+      const textarea = document.getElementById('question');
+      const question = textarea.value.trim();
+      if (!question) {
+        setStatus('chatStatus', '请输入问题。');
+        return;
+      }
+
+      if (!currentSessionId) {
+        await createSession();
+      }
+
+      setStatus('chatStatus', '正在检索资料并调用 DeepSeek...');
+
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          session_id: currentSessionId,
+          question
+        })
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        setStatus('chatStatus', data.detail || '问答失败。');
+        return;
+      }
+
+      currentSessionId = data.session_id || currentSessionId;
+      textarea.value = '';
+      setStatus('chatStatus', `已完成，命中 ${data.retrieved_chunks} 个片段。`);
+      renderCitations(data.citations || []);
+      await refreshSessions();
+      await loadCurrentSession();
+    }
+
+    (async function boot() {
+      await refreshDocuments();
+      await refreshSessions(false);
+      if (sessions.length) {
+        currentSessionId = sessions[0].id;
+        await loadCurrentSession();
+      }
+    })();
+  </script>
+</body>
+</html>
