@@ -48,6 +48,9 @@ class ChunkRecord(BaseModel):
     paragraph_end: int | None = None
     source_uri: str | None = None
     location_label: str | None = None
+    context_before: str | None = None
+    context_after: str | None = None
+    table_parse_confidence: str | None = None
 
 
 class VectorRecord(BaseModel):
@@ -95,6 +98,9 @@ class Citation(BaseModel):
     paragraph_end: int | None = None
     source_uri: str | None = None
     location_label: str | None = None
+    context_before: str | None = None
+    context_after: str | None = None
+    table_parse_confidence: str | None = None
     snippet: str
     content: str = Field(default="", exclude=True)
     score: float

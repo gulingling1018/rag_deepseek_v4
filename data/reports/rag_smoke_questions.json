@@ -1,0 +1,109 @@
+[
+  {
+    "id": "esp32_wireless_capabilities",
+    "question": "ESP32 集成了哪些无线能力？",
+    "expected_documents": [
+      "ESP32 Product Documentation",
+      "ESP-IDF Get Started ESP32"
+    ],
+    "expected_terms": [
+      "Wi-Fi",
+      "Bluetooth"
+    ],
+    "intent": "product_overview"
+  },
+  {
+    "id": "esp_idf_prerequisites",
+    "question": "ESP-IDF 开发环境需要哪些软件组件？",
+    "expected_documents": [
+      "ESP-IDF Get Started ESP32"
+    ],
+    "expected_terms": [
+      "ESP-IDF",
+      "tools",
+      "Python",
+      "Git"
+    ],
+    "intent": "guide_prerequisites"
+  },
+  {
+    "id": "idf_py_build_equivalent",
+    "question": "idf.py build 等价于哪些 CMake 或 Ninja 命令？",
+    "expected_documents": [
+      "ESP-IDF Build System ESP32"
+    ],
+    "expected_terms": [
+      "cmake",
+      "ninja",
+      "build"
+    ],
+    "intent": "code_command_mapping"
+  },
+  {
+    "id": "idf_component_definition",
+    "question": "ESP-IDF 项目中的 component 是什么？",
+    "expected_documents": [
+      "ESP-IDF Build System ESP32"
+    ],
+    "expected_terms": [
+      "component",
+      "CMakeLists.txt"
+    ],
+    "intent": "concept_definition"
+  },
+  {
+    "id": "esp32_product_resources",
+    "question": "ESP32 产品页提到哪些资源入口？",
+    "expected_documents": [
+      "ESP32 Product Documentation"
+    ],
+    "expected_terms": [
+      "Resources",
+      "Documents",
+      "SDK",
+      "Hardware Design Guidelines"
+    ],
+    "intent": "product_resources"
+  },
+  {
+    "id": "vehicle_power_performance_indexes",
+    "question": "汽车动力性能用哪些指标衡量？",
+    "expected_documents": [
+      "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)"
+    ],
+    "expected_terms": [
+      "最高车速",
+      "加速",
+      "爬坡"
+    ],
+    "intent": "pdf_domain_qa"
+  },
+  {
+    "id": "tire_coordinate_axes",
+    "question": "轮胎坐标系的 x/y/z 轴如何定义？",
+    "expected_documents": [
+      "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)"
+    ],
+    "expected_terms": [
+      "坐标系",
+      "x",
+      "y",
+      "z"
+    ],
+    "intent": "pdf_figure_text"
+  },
+  {
+    "id": "rolling_resistance_factors",
+    "question": "滚动阻力系数与哪些因素有关？",
+    "expected_documents": [
+      "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)"
+    ],
+    "expected_terms": [
+      "滚动阻力系数",
+      "路面",
+      "轮胎",
+      "车速"
+    ],
+    "intent": "pdf_table_text"
+  }
+]

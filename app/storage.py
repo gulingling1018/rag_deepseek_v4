@@ -1,4 +1,5 @@
 import json
+import re
 from datetime import datetime, UTC
 from pathlib import Path
 from threading import Lock
@@ -7,6 +8,7 @@ from typing import Any
 
 from app.chunking import chunk_text
 from app.config import get_settings
+from app.content_quality import clean_section_path, is_bad_table, table_parse_confidence
 from app.document_metadata import derive_document_metadata
 from app.embeddings import build_vector_records
 from app.schemas import ChunkRecord, DocumentRecord, VectorRecord
@@ -203,13 +205,19 @@ class JSONStorage:
         chunk_payloads: list[dict[str, Any]] = []
         if blocks:
             for block in blocks:
-                content = self._normalize_chunk_content(block.get("content", block.get("text", "")))
+                block_type = self._normalize_optional_text(block.get("block_type")) or "text"
+                content = self._normalize_chunk_content(
+                    block.get("content", block.get("text", "")),
+                    preserve_blank_lines=block_type == "code",
+                )
                 if not content:
+                    continue
+                if block_type == "table" and is_bad_table(content):
                     continue
                 chunk_payloads.append(
                     {
                         "content": content,
-                        "block_type": block.get("block_type", "text"),
+                        "block_type": block_type,
                         "symbol_name": self._normalize_optional_text(block.get("symbol_name")),
                         "section_path": self._normalize_section_path(block.get("section_path", [])),
                         "page_number": block.get("page_number"),
@@ -220,6 +228,8 @@ class JSONStorage:
                         "paragraph_end": block.get("paragraph_end"),
                         "source_uri": self._normalize_optional_text(block.get("source_uri")),
                         "location_label": self._normalize_optional_text(block.get("location_label")),
+                        "context_before": self._normalize_optional_text(block.get("context_before")),
+                        "context_after": self._normalize_optional_text(block.get("context_after")),
                     }
                 )
         elif page_texts:
@@ -240,6 +250,8 @@ class JSONStorage:
                             "paragraph_end": None,
                             "source_uri": None,
                             "location_label": f"第 {page['page_number']} 页",
+                            "context_before": None,
+                            "context_after": None,
                         }
                     )
         elif text is not None:
@@ -258,6 +270,8 @@ class JSONStorage:
                         "paragraph_end": None,
                         "source_uri": None,
                         "location_label": None,
+                        "context_before": None,
+                        "context_after": None,
                     }
                 )
 
@@ -265,6 +279,8 @@ class JSONStorage:
             raise ValueError("文档内容为空，无法建立索引。")
 
         chunk_payloads = [self._finalize_chunk_payload(item) for item in chunk_payloads]
+        chunk_payloads = self._attach_code_context_and_filter_connectors(chunk_payloads)
+        chunk_payloads = self._merge_short_text_payloads(chunk_payloads)
 
         doc_id = document_id or uuid4().hex
         doc_title = title or Path(filename).stem
@@ -321,6 +337,9 @@ class JSONStorage:
                 paragraph_end=item.get("paragraph_end"),
                 source_uri=item.get("source_uri"),
                 location_label=item.get("location_label"),
+                context_before=item.get("context_before"),
+                context_after=item.get("context_after"),
+                table_parse_confidence=item.get("table_parse_confidence"),
             )
             for index, item in enumerate(chunk_payloads)
         ]
@@ -330,24 +349,19 @@ class JSONStorage:
         return build_vector_records(chunks, self.settings)
 
     @staticmethod
-    def _normalize_chunk_content(content: Any) -> str:
+    def _normalize_chunk_content(content: Any, preserve_blank_lines: bool = False) -> str:
         if content is None:
             return ""
         text = str(content).replace("\r\n", "\n").replace("\r", "\n")
         text = "\n".join(line.rstrip() for line in text.splitlines())
+        if preserve_blank_lines:
+            return text.strip("\n")
         text = "\n".join(line for line in text.splitlines() if line.strip())
         return text.strip()
 
     @staticmethod
     def _normalize_section_path(section_path: Any) -> list[str]:
-        if not isinstance(section_path, list):
-            return []
-        normalized: list[str] = []
-        for item in section_path:
-            cleaned = JSONStorage._normalize_optional_text(item)
-            if cleaned and cleaned not in normalized:
-                normalized.append(cleaned)
-        return normalized
+        return clean_section_path(section_path)
 
     @staticmethod
     def _normalize_optional_text(value: Any) -> str | None:
@@ -387,7 +401,115 @@ class JSONStorage:
             elif page_number is not None:
                 payload["location_label"] = f"第 {page_number} 页"
 
+        if payload.get("block_type") == "table":
+            payload["table_parse_confidence"] = table_parse_confidence(payload.get("content", ""))
+
         return payload
+
+    @staticmethod
+    def _same_scope(left: dict[str, Any], right: dict[str, Any]) -> bool:
+        return (
+            left.get("section_path") == right.get("section_path")
+            and left.get("page_number") == right.get("page_number")
+            and left.get("source_uri") == right.get("source_uri")
+        )
+
+    @staticmethod
+    def _is_short_code_payload(payload: dict[str, Any]) -> bool:
+        if payload.get("block_type") != "code":
+            return False
+        content = payload.get("content", "")
+        nonempty_lines = [line for line in content.splitlines() if line.strip()]
+        return len(content) < 120 or len(nonempty_lines) == 1
+
+    @staticmethod
+    def _is_code_connector_text(text: str) -> bool:
+        compact = re.sub(r"\s+", " ", text).strip()
+        if not compact or len(compact) > 100:
+            return False
+        lowered = compact.lower()
+        exact = {
+            "or:",
+            "for example:",
+            "cmakelists.txt:",
+            "minimal project:",
+            "example:",
+        }
+        if lowered in exact:
+            return True
+        return bool(
+            re.search(
+                r"(?:is in|implementation is in|content of|file is|following|below)\s*[\w./+-]*:?\s*$",
+                lowered,
+            )
+        )
+
+    @staticmethod
+    def _append_context(existing: str | None, text: str) -> str:
+        text = re.sub(r"\s+", " ", text).strip()
+        if not text:
+            return existing or ""
+        if existing:
+            return f"{existing}\n{text}".strip()
+        return text
+
+    def _attach_code_context_and_filter_connectors(self, payloads: list[dict[str, Any]]) -> list[dict[str, Any]]:
+        keep = [True] * len(payloads)
+        for index, payload in enumerate(payloads):
+            if not self._is_short_code_payload(payload):
+                continue
+
+            for direction, context_key in ((-1, "context_before"), (1, "context_after")):
+                neighbor_index = index + direction
+                if neighbor_index < 0 or neighbor_index >= len(payloads):
+                    continue
+                neighbor = payloads[neighbor_index]
+                if neighbor.get("block_type") != "text":
+                    continue
+                if not self._same_scope(payload, neighbor):
+                    continue
+                neighbor_text = neighbor.get("content", "")
+                if len(neighbor_text) > 500:
+                    neighbor_text = neighbor_text[:500]
+                payload[context_key] = self._append_context(payload.get(context_key), neighbor_text)
+                if self._is_code_connector_text(neighbor.get("content", "")):
+                    keep[neighbor_index] = False
+
+        return [payload for payload, should_keep in zip(payloads, keep, strict=False) if should_keep]
+
+    def _merge_short_text_payloads(self, payloads: list[dict[str, Any]]) -> list[dict[str, Any]]:
+        merged: list[dict[str, Any]] = []
+        index = 0
+        while index < len(payloads):
+            payload = payloads[index]
+            content = payload.get("content", "")
+            if payload.get("block_type") == "text" and len(content) < 50:
+                if (
+                    merged
+                    and merged[-1].get("block_type") == "text"
+                    and self._same_scope(merged[-1], payload)
+                    and len(merged[-1].get("content", "")) + len(content) <= 1800
+                ):
+                    merged[-1]["content"] = f"{merged[-1]['content']}\n\n{content}".strip()
+                    merged[-1]["line_end"] = payload.get("line_end") or merged[-1].get("line_end")
+                    merged[-1]["paragraph_end"] = payload.get("paragraph_end") or merged[-1].get("paragraph_end")
+                    index += 1
+                    continue
+                if index + 1 < len(payloads):
+                    next_payload = payloads[index + 1]
+                    if (
+                        next_payload.get("block_type") == "text"
+                        and self._same_scope(payload, next_payload)
+                        and len(next_payload.get("content", "")) + len(content) <= 1800
+                    ):
+                        next_payload["content"] = f"{content}\n\n{next_payload['content']}".strip()
+                        next_payload["line_start"] = payload.get("line_start") or next_payload.get("line_start")
+                        next_payload["paragraph_start"] = payload.get("paragraph_start") or next_payload.get("paragraph_start")
+                        index += 1
+                        continue
+            merged.append(payload)
+            index += 1
+        return merged
 
     @staticmethod
     def _read_json(path: Path, default: list[dict]) -> list[dict]:

@@ -210,8 +210,25 @@ def heuristic_relevance_adjustment(question: str, chunk: ChunkRecord, intent: Qu
         else:
             adjustment -= 0.16
 
+    if any(term in question or term in normalized_question for term in ("软件组件", "开发环境", "需要哪些软件", "what you need", "prerequisites")):
+        if any(term in title_text or term in lookup_text for term in ("get started", "what you need", "toolchain", "python", "git")):
+            adjustment += 0.70
+        if "build system" in title_text or "component requirements" in lookup_text:
+            adjustment -= 0.55
+        if chunk.block_type == "code":
+            adjustment -= 0.25
+
     if chunk.is_entrypoint and not intent.allow_entrypoints:
         adjustment -= 0.16
+    if chunk.block_type == "formula":
+        formula_terms = ("公式", "方程", "计算", "推导", "equation", "formula", "calculate", "derive")
+        if any(term in question.lower() or term in normalized_question for term in formula_terms):
+            adjustment += 0.08
+        else:
+            adjustment -= 0.24
+    if chunk.block_type == "table" and chunk.table_parse_confidence == "low":
+        exact_table_terms = ("数值", "系数", "效率", "对应", "table", "coefficient", "value", "efficiency")
+        adjustment -= 0.10 if any(term in question.lower() or term in normalized_question for term in exact_table_terms) else 0.04
     adjustment += chunk.retrieval_priority * 0.03
 
     return adjustment

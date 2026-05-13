@@ -15,6 +15,7 @@ from docx import Document as DocxDocument
 from pypdf import PdfReader
 
 from app.config import get_settings
+from app.content_quality import is_bad_table, valid_section_title
 
 TEXT_SUFFIXES = {".txt", ".text"}
 MARKDOWN_SUFFIXES = {".md", ".markdown", ".mdx"}
@@ -175,6 +176,8 @@ def strip_pdf_noise_from_text(text: str) -> str:
         line = clean_pdf_markdown_line(raw_line)
         if not line or is_pdf_markdown_noise_line(line):
             continue
+        line = re.sub(r"^\s*\d+\s*[\u6c7d\u8f66\u7406\u8bba]{2,12}\s+", "", line)
+        line = re.sub(r"^\s*[\u7eea\u8bba]\s+[\u8bba]?\s+\d+\s+", "", line)
         line = re.sub(
             r"\s*乐鑫信息科技\s+\d+\s+ESP32(?:-[A-Z0-9]+)?(?:\s*系列芯片)?(?:技术规格书|技术参考手册|硬件设计指南)?\s*v?[\d.]*\s*",
             " ",
@@ -305,16 +308,138 @@ def is_probable_markdown_toc_page(page_number: int, lines: list[str]) -> bool:
     return toc_like >= 6
 
 
+def looks_like_pdf_caption_heading(text: str) -> bool:
+    stripped = clean_heading_text(re.sub(r"[*_`#]+", "", text))
+    return bool(re.match(r"^(?:[\u56fe\u8868]|figure|fig\.|table)\s*\d+(?:[-.]\d+)*\b", stripped, flags=re.IGNORECASE))
+
+
+def looks_like_pdf_running_header(text: str) -> bool:
+    stripped = clean_heading_text(re.sub(r"[*_`#]+", "", text))
+    if re.fullmatch(r"\d+\s*[\u6c7d\u8f66\u7406\u8bba]{2,12}", stripped):
+        return True
+    return bool(
+        re.fullmatch(r"\d+\s+[\u4e00-\u9fffA-Za-z][\u4e00-\u9fffA-Za-z\s-]{1,20}", stripped)
+        and not re.search(r"[\u7ae0\u8282\u7bc7\u90e8]|chapter|section", stripped, flags=re.IGNORECASE)
+    )
+
+
+def looks_like_pdf_publishing_heading(text: str) -> bool:
+    stripped = clean_heading_text(re.sub(r"[*_`#]+", "", text))
+    return bool(
+        re.search(r"[\u4e3b]\s*[\u7f16\u5ba1]|[\u53c2]\s*[\u7f16]|[\u51fa]\s*[\u7248]\s*[\u793e]|ISBN|CIP", stripped, flags=re.IGNORECASE)
+        or re.search(r"[\u7b2c]\s*\d+\s*[\u7248].*[\u5370]\s*[\u5237]", stripped)
+    )
+
+
+def normalize_pdf_heading_title(text: str) -> str:
+    title = clean_heading_text(re.sub(r"[*_`#]+", "", text))
+    title = re.sub(r"^[\u2014\u2013\-]+\s*", "", title)
+    title = re.sub(
+        r"^(第[一二三四五六七八九十百零0-9]+[章节部分篇]\s+\S.*?)\s+\d{1,4}$",
+        r"\1",
+        title,
+    )
+    title = re.sub(r"^(\d+(?:\.\d+)*\s+\S.*?)\s+\d{1,4}$", r"\1", title)
+    return title.strip()
+
+
+def pdf_formula_score(text: str) -> float:
+    stripped = clean_heading_text(text)
+    if not stripped:
+        return 0.0
+    if re.search(r"https?://|www\.", stripped):
+        return 0.0
+    tokens = re.findall(r"[A-Za-z\u0370-\u03ff\u4e00-\u9fff]+|\d+(?:\.\d+)?|[=+\-*/^_√∑∫≈≤≥<>()[\]{}〓φΦαβγδεηθλμρστω∆Δ]", stripped)
+    if not tokens:
+        return 0.0
+    core_symbols = re.findall(r"[=√∑∫≈≤≥<>〓\[\]{}]|[φΦαβγδεηθλμρστω∆Δ]", stripped)
+    equation_number = bool(re.search(r"\(\s*\d+(?:[-.]\d+)+\s*\)", stripped))
+    if not core_symbols and not equation_number:
+        return 0.0
+    math_tokens = [
+        token
+        for token in tokens
+        if re.fullmatch(r"[=√∑∫≈≤≥<>()[\]{}〓φΦαβγδεηθλμρστω∆Δ]", token)
+        or re.fullmatch(r"[A-Za-z\u0370-\u03ff]{1,3}", token)
+        or re.fullmatch(r"\d+(?:\.\d+)?", token)
+    ]
+    math_ratio = len(math_tokens) / len(tokens)
+    return math_ratio + min(len(core_symbols) / 12, 0.5) + (0.2 if equation_number else 0.0)
+
+
+def is_probable_pdf_formula(text: str) -> bool:
+    stripped = clean_heading_text(text)
+    if len(stripped) < 8:
+        return False
+    if re.search(r"https?://|www\.", stripped):
+        return False
+    core_symbols = re.findall(r"[=√∑∫≈≤≥<>〓\[\]{}]|[φΦαβγδεηθλμρστω∆Δ]", stripped)
+    operator_symbols = re.findall(r"[=√∑∫≈≤≥<>〓]", stripped)
+    cjk_chars = re.findall(r"[\u4e00-\u9fff]", stripped)
+    cjk_ratio = len(cjk_chars) / max(len(re.sub(r"\s+", "", stripped)), 1)
+    if len(stripped) > 180 and cjk_ratio > 0.2:
+        return False
+    if cjk_ratio < 0.2 and "=" in stripped and pdf_formula_score(stripped) >= 0.7:
+        return True
+    if len(core_symbols) < 4 or not operator_symbols:
+        return False
+    if cjk_ratio > 0.45 and len(core_symbols) < 8:
+        return False
+    return pdf_formula_score(stripped) >= 1.0
+
+
+def pdf_heading_score(text: str) -> float:
+    stripped = normalize_pdf_heading_title(text)
+    if not stripped:
+        return 0.0
+
+    score = 0.0
+    if re.match(r"^\d+(?:\.\d+)+\s*\S+", stripped):
+        score += 0.55
+    if re.match(r"^第[一二三四五六七八九十百零0-9]+[章节部分篇]\s*\S*", stripped):
+        score += 0.65
+    if re.match(r"^(chapter|section)\s+\d+[:.\s-]+\S+", stripped, flags=re.IGNORECASE):
+        score += 0.55
+    if len(stripped) <= 35:
+        score += 0.18
+    elif len(stripped) <= 60:
+        score += 0.08
+    if re.search(r"[章节篇]|chapter|section", stripped, flags=re.IGNORECASE):
+        score += 0.16
+    if stripped in {"序", "绪论", "前言"} or stripped.endswith(("前言", "绪论")):
+        score += 0.15
+
+    if looks_like_pdf_caption_heading(stripped):
+        score -= 0.9
+    if looks_like_pdf_running_header(stripped) or looks_like_pdf_publishing_heading(stripped):
+        score -= 0.9
+    if pdf_formula_score(stripped) >= 0.55:
+        score -= 0.75
+    if re.search(r"https?://|www\.|@|ISBN|CIP", stripped, flags=re.IGNORECASE):
+        score -= 0.5
+    if len(stripped) > 80:
+        score -= 0.45
+    if len(re.findall(r"[，,。.;；]", stripped)) >= 2:
+        score -= 0.35
+    return max(score, 0.0)
+
+
 def sanitize_pdf_section_path(section_path: list[str]) -> list[str]:
     cleaned_path: list[str] = []
     for item in section_path:
         cleaned = strip_pdf_noise_from_text(item)
-        cleaned = re.sub(r"[*_`#]+", "", cleaned).strip()
+        cleaned = normalize_pdf_heading_title(cleaned)
         if not cleaned or cleaned in {"目录", "表格", "插图", "Table", "Contents", "List of Tables", "List of Figures"}:
             continue
         if re.fullmatch(r"\d+\s+\d+", cleaned) or re.match(r"^\d+\s*:", cleaned):
             continue
         if len(cleaned) > 100 and not extract_numeric_heading_key(cleaned):
+            continue
+        if looks_like_pdf_caption_heading(cleaned) or looks_like_pdf_running_header(cleaned) or looks_like_pdf_publishing_heading(cleaned):
+            continue
+        if pdf_heading_score(cleaned) < 0.5 and cleaned not in {"汽车理论", "序", "绪论", "前言"}:
+            continue
+        if not valid_section_title(cleaned):
             continue
         if cleaned not in cleaned_path:
             cleaned_path.append(cleaned)
@@ -327,7 +452,7 @@ def postprocess_pdf_blocks(blocks: list[ExtractedBlock]) -> list[ExtractedBlock]
 
     def append_block(block: ExtractedBlock) -> None:
         nonlocal pending_short
-        if block.block_type == "table":
+        if block.block_type in {"table", "formula"}:
             if pending_short:
                 processed.append(pending_short)
                 pending_short = None
@@ -365,8 +490,13 @@ def postprocess_pdf_blocks(blocks: list[ExtractedBlock]) -> list[ExtractedBlock]
         text = clean_pdf_table_text(block.text) if block.block_type == "table" else strip_pdf_noise_from_text(block.text)
         if block.block_type != "table":
             text = reduce_figure_ocr_text(text)
+            if is_probable_pdf_formula(text):
+                block.block_type = "formula"
         if block.block_type == "table":
-            if not text or "|" not in text:
+            if not text or "|" not in text or is_bad_table(text):
+                continue
+        elif block.block_type == "formula":
+            if not text:
                 continue
         elif is_low_value_pdf_text(text):
             continue
@@ -679,7 +809,10 @@ def build_line_blocks(
         match = re.match(r"^(#{1,6})\s+(.+)$", line.strip())
         if not match:
             return None
-        return len(match.group(1)), clean_heading_text(match.group(2))
+        title = clean_heading_text(match.group(2))
+        if not valid_section_title(title):
+            return None
+        return len(match.group(1)), title
 
     def detect_code_symbol(line: str) -> str | None:
         patterns = [
@@ -799,10 +932,14 @@ def build_line_blocks(
 
 
 def detect_pdf_heading(line: str) -> str | None:
-    stripped = clean_heading_text(line.strip())
+    stripped = normalize_pdf_heading_title(line.strip())
     if not stripped:
         return None
     if is_pdf_footer_or_header_line(stripped):
+        return None
+    if looks_like_pdf_caption_heading(stripped) or looks_like_pdf_running_header(stripped) or looks_like_pdf_publishing_heading(stripped):
+        return None
+    if pdf_heading_score(stripped) < 0.55:
         return None
     if re.fullmatch(r"\d+\s+\d+", stripped) or re.match(r"^\d+\s*:", stripped):
         return None
@@ -814,15 +951,13 @@ def detect_pdf_heading(line: str) -> str | None:
         return None
     patterns = [
         r"^\d+(?:\.\d+)+\s*\S+",
-        r"^\d+\s+\S+",
         r"^\d+[\u4e00-\u9fff]\S*",
         r"^第[一二三四五六七八九十百零0-9]+[章节部分篇]\s*\S*",
-        r"^(表|图)\s*\d+[-.]\d+\s*\S+",
         r"^(chapter|section)\s+\d+[:.\s-]+\S+",
     ]
     for pattern in patterns:
         if re.match(pattern, stripped, flags=re.IGNORECASE):
-            return stripped
+            return stripped if valid_section_title(stripped) else None
     return None
 
 
@@ -840,7 +975,9 @@ def heading_level(heading: str) -> int:
 
 
 def update_section_path(current: list[str], heading: str) -> list[str]:
-    title = clean_heading_text(heading)
+    title = normalize_pdf_heading_title(heading)
+    if not valid_section_title(title):
+        return list(current)
     level = heading_level(title)
     base = current[: max(level - 1, 0)]
     base.append(title)
@@ -1210,12 +1347,12 @@ def derive_pdf_table_section(
         if candidate:
             candidate_path, candidate_page = candidate
             if page_number is None or candidate_page in {page_number, page_number - 1}:
-                return list(candidate_path) + [table_title]
+                return list(candidate_path)
 
     parent = list(section_path)
     if parent and parent[-1].startswith("表"):
         parent = parent[:-1]
-    return parent + [table_title]
+    return parent
 
 
 def split_pdf_table_rows(rows: list[str]) -> tuple[str | None, list[str], list[str]]:
@@ -1418,7 +1555,10 @@ def parse_pdf_content_page(
 def markdown_heading(line: str) -> tuple[int, str] | None:
     match = re.match(r"^(#{1,6})\s+(.+)$", line)
     if match:
-        return len(match.group(1)), clean_heading_text(match.group(2))
+        title = clean_heading_text(match.group(2))
+        if valid_section_title(title):
+            return len(match.group(1)), title
+        return None
 
     heading = detect_pdf_heading(line)
     if heading and not is_pdf_table_title(heading):
@@ -1428,6 +1568,8 @@ def markdown_heading(line: str) -> tuple[int, str] | None:
 
 def update_markdown_section_path(current: list[str], level: int, title: str) -> list[str]:
     cleaned = clean_heading_text(title)
+    if not valid_section_title(cleaned):
+        return list(current)
     key = extract_numeric_heading_key(cleaned)
     if key:
         key_parts = key.split(".")
@@ -1537,14 +1679,11 @@ def parse_pdf_markdown_pages(page_chunks: list[dict]) -> tuple[list[ExtractedBlo
                 return
             title = table_title or "Table"
             text = "\n".join([title] + table_lines).strip()
-            table_section = list(current_section)
-            if title and (not table_section or table_section[-1] != title):
-                table_section = table_section + [title]
             blocks.append(
                 ExtractedBlock(
                     text=text,
                     block_type="table",
-                    section_path=table_section,
+                    section_path=list(current_section),
                     page_number=page_number,
                     page_label=page_label,
                     location_label=page_label,
@@ -1722,8 +1861,9 @@ def extract_docx_document(path: Path) -> ExtractedDocument:
         heading_match = re.search(r"heading\s*([1-6])|标题\s*([1-6])", style_name)
         if heading_match:
             level = int(heading_match.group(1) or heading_match.group(2))
-            section_path = section_path[: level - 1]
-            section_path.append(text)
+            if valid_section_title(text):
+                section_path = section_path[: level - 1]
+                section_path.append(text)
             continue
 
         all_texts.append(text)

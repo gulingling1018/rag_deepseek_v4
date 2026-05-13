@@ -1,0 +1,2543 @@
+{
+  "summary_by_mode": {
+    "bm25": {
+      "generated_at": "2026-05-13 13:28:07Z",
+      "mode": "bm25",
+      "questions": 8,
+      "chunks": 677,
+      "vectors": 677,
+      "top_k": 5,
+      "hit_at_1": 0.875,
+      "hit_at_3": 0.875,
+      "hit_at_5": 0.875,
+      "mrr": 0.875,
+      "term_coverage_at_5": 0.8333333333333334
+    },
+    "vector": {
+      "generated_at": "2026-05-13 13:28:09Z",
+      "mode": "vector",
+      "questions": 8,
+      "chunks": 677,
+      "vectors": 677,
+      "top_k": 5,
+      "hit_at_1": 0.875,
+      "hit_at_3": 1.0,
+      "hit_at_5": 1.0,
+      "mrr": 0.9166666666666666,
+      "term_coverage_at_5": 0.9375
+    },
+    "hybrid": {
+      "generated_at": "2026-05-13 13:28:11Z",
+      "mode": "hybrid",
+      "questions": 8,
+      "chunks": 677,
+      "vectors": 677,
+      "top_k": 5,
+      "hit_at_1": 1.0,
+      "hit_at_3": 1.0,
+      "hit_at_5": 1.0,
+      "mrr": 1.0,
+      "term_coverage_at_5": 0.9375
+    }
+  },
+  "results_by_mode": {
+    "bm25": {
+      "summary": {
+        "generated_at": "2026-05-13 13:28:07Z",
+        "mode": "bm25",
+        "questions": 8,
+        "chunks": 677,
+        "vectors": 677,
+        "top_k": 5,
+        "hit_at_1": 0.875,
+        "hit_at_3": 0.875,
+        "hit_at_5": 0.875,
+        "mrr": 0.875,
+        "term_coverage_at_5": 0.8333333333333334
+      },
+      "questions": [
+        {
+          "id": "esp32_wireless_capabilities",
+          "question": "ESP32 集成了哪些无线能力？",
+          "expected_documents": [
+            "ESP32 Product Documentation",
+            "ESP-IDF Get Started ESP32"
+          ],
+          "expected_terms": [
+            "Wi-Fi",
+            "Bluetooth"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "reciprocal_rank": 1.0,
+          "term_coverage_at_5": {
+            "matched": [
+              "Wi-Fi",
+              "Bluetooth"
+            ],
+            "missing": [],
+            "ratio": 1.0
+          },
+          "top_results": [
+            {
+              "score": 132.629815,
+              "document_title": "ESP32 Product Documentation",
+              "chunk_index": 7,
+              "block_type": "text",
+              "section_path": [
+                "ESP32"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "ESP32",
+              "content": "A Feature-Rich MCU with Integrated Wi-Fi and\nBluetooth®Connectivity for Wide-Range Applications",
+              "snippet": "A Feature-Rich MCU with Integrated Wi-Fi and Bluetooth®Connectivity for Wide-Range Applications"
+            },
+            {
+              "score": 126.341637,
+              "document_title": "ESP32 Product Documentation",
+              "chunk_index": 5,
+              "block_type": "text",
+              "section_path": [],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "ESP32 Wi-Fi & Bluetooth SoC | Espressif Systems:301-331",
+              "content": "Investor Relations\nReports\nInvestor Inquiries\nCorporate Responsibility\nReports\nWildlife Protection\nJoin Us\nEspressif Careers\nFind Your Job\nContact\nContact Espressif Sales\nContact Distributors\nTechnical Inquiries\nSchematic & PCB Design Review\nGet Samples\nBecome Our Supplier\nComments & Suggestions",
+              "snippet": "Investor Relations Reports Investor Inquiries Corporate Responsibility Reports Wildlife Protection Join Us Espressif Careers Find Your Job Contact Contact Espressif Sales Contact Distributors Technical Inquiries Schematic & PCB Design Revie..."
+            },
+            {
+              "score": 120.731585,
+              "document_title": "ESP32 Product Documentation",
+              "chunk_index": 0,
+              "block_type": "text",
+              "section_path": [],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "ESP32 Wi-Fi & Bluetooth SoC | Espressif Systems:1-60",
+              "content": "Home\nHardware\nProduct Overview\nSoCs\nModules\nDevKits\nEspressif\nM5Stack\nEquipment\nProduct Selector\nESP32-Wrap\nESP32-P\nESP32-P4\nESP32-E\nESP32-E22\nESP32-S\nESP32-S31\nESP32-S3\nESP32-S2\nESP32-C\nESP32-C6\nESP32-C61\nESP32-C5\nESP32-C3\nESP32-C2\nESP32-H\nESP32-H4\nESP32-H21\nESP32-H2\nESP32\nESP32\nESP8266\nESP8266\nSDKs\nGeneral Frameworks\nESP-IDF\nIDF Component Manager",
+              "snippet": "Home Hardware Product Overview SoCs Modules DevKits Espressif M5Stack Equipment Product Selector ESP32-Wrap ESP32-P ESP32-P4 ESP32-E ESP32-E22 ESP32-S ESP32-S31 ESP32-S3 ESP32-S2 ESP32-C ESP32-C6 ESP32-C61 ESP32-C5 ESP32-C3 ESP32-C2 ESP32-H..."
+            },
+            {
+              "score": 118.861857,
+              "document_title": "ESP32 Product Documentation",
+              "chunk_index": 3,
+              "block_type": "text",
+              "section_path": [],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "ESP32 Wi-Fi & Bluetooth SoC | Espressif Systems:181-240",
+              "content": "ESP AWS IoT ExpressLink Solution\nPeripherals\nDevice Drivers\nUSB Solutions\nSmart Sensing\nWi-Fi CSI Sensing\nWi-Fi FTM Ranging\nSupport\nTechnical Documents\nAll Types\nSoCs\nModules\nDevKits\nEquipment\nServices\nSelf-Service Resources\nSoftware\nHardware & RF\nCloud\nCertification\nManufacturing\nOn-Site Assistance\nDownload\nTechnical Document\nSDKs & Demos\nAPPs\nTools\nESP-AT\nQuality & Reliability\nCertifications & Compliance\nPCNs\nAdvisories\nLongevity Commitment",
+              "snippet": "ESP AWS IoT ExpressLink Solution Peripherals Device Drivers USB Solutions Smart Sensing Wi-Fi CSI Sensing Wi-Fi FTM Ranging Support Technical Documents All Types SoCs Modules DevKits Equipment Services Self-Service Resources Software Hardwa..."
+            },
+            {
+              "score": 118.016562,
+              "document_title": "ESP32 Product Documentation",
+              "chunk_index": 4,
+              "block_type": "text",
+              "section_path": [],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "ESP32 Wi-Fi & Bluetooth SoC | Espressif Systems:241-300",
+              "content": "Export Compliance\nISO Certification\nFAQ\nESP-FAQ\nCommercial FAQ\nEcosystem\nPartnership and Resource\nAWS Technology Partner\nThird-Party Collaborations\nThird-Party SDKs\nEducation\nESP Education\nDeveloper Zone\nESP Developer Portal\nEspressif DevCon\nM5Stack\nTech Blogs\nESP32 Forum\nCommunity\nCourses\nRust\nBooks\nVideos\nProjects\nCompany\nAbout Us\nAbout Espressif\nMilestones\nCEO Messages\nLogo Guidelines\nNewsroom\nNews\nNewsletter\nTech Blogs\nEvents",
+              "snippet": "Export Compliance ISO Certification FAQ ESP-FAQ Commercial FAQ Ecosystem Partnership and Resource AWS Technology Partner Third-Party Collaborations Third-Party SDKs Education ESP Education Developer Zone ESP Developer Portal Espressif DevCo..."
+            }
+          ]
+        },
+        {
+          "id": "esp_idf_prerequisites",
+          "question": "ESP-IDF 开发环境需要哪些软件组件？",
+          "expected_documents": [
+            "ESP-IDF Get Started ESP32"
+          ],
+          "expected_terms": [
+            "ESP-IDF",
+            "tools",
+            "Python",
+            "Git"
+          ],
+          "hit_at_1": false,
+          "hit_at_3": false,
+          "hit_at_5": false,
+          "reciprocal_rank": 0.0,
+          "term_coverage_at_5": {
+            "matched": [],
+            "missing": [
+              "ESP-IDF",
+              "tools",
+              "Python",
+              "Git"
+            ],
+            "ratio": 0.0
+          },
+          "top_results": [
+            {
+              "score": 77.162793,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 101,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "Example Component CMakeLists",
+                "Adding Conditional Configuration"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Adding Conditional Configuration",
+              "content": "CMakeLists.txt:",
+              "snippet": "CMakeLists.txt:"
+            },
+            {
+              "score": 77.162793,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 105,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "Example Component CMakeLists",
+                "Adding Conditional Configuration"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Adding Conditional Configuration",
+              "content": "CMakeLists.txt:",
+              "snippet": "CMakeLists.txt:"
+            },
+            {
+              "score": 76.861198,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 69,
+              "block_type": "code",
+              "section_path": [
+                "Build System",
+                "Component Requirements",
+                "Source File Include Directories"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Source File Include Directories",
+              "content": "idf_component_register(..\n                       INCLUDE_DIRS \"include\"\n                       PRIV_INCLUDE_DIRS \"other\")",
+              "snippet": "idf_component_register(.. INCLUDE_DIRS \"include\" PRIV_INCLUDE_DIRS \"other\")"
+            },
+            {
+              "score": 76.741292,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 36,
+              "block_type": "code",
+              "section_path": [
+                "Build System",
+                "Component CMakeLists Files",
+                "Minimal Component CMakeLists"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Minimal Component CMakeLists",
+              "content": "idf_component_register(SRCS \"foo.c\" \"bar.c\"\n                       INCLUDE_DIRS \"include\"\n                       REQUIRES mbedtls)",
+              "snippet": "idf_component_register(SRCS \"foo.c\" \"bar.c\" INCLUDE_DIRS \"include\" REQUIRES mbedtls)"
+            },
+            {
+              "score": 76.681494,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 55,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "Component Requirements",
+                "Example of Component Requirements",
+                "Car Component"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Car Component",
+              "content": "And car.c includescar.has well:",
+              "snippet": "And car.c includescar.has well:"
+            }
+          ]
+        },
+        {
+          "id": "idf_py_build_equivalent",
+          "question": "idf.py build 等价于哪些 CMake 或 Ninja 命令？",
+          "expected_documents": [
+            "ESP-IDF Build System ESP32"
+          ],
+          "expected_terms": [
+            "cmake",
+            "ninja",
+            "build"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "reciprocal_rank": 1.0,
+          "term_coverage_at_5": {
+            "matched": [
+              "cmake",
+              "ninja",
+              "build"
+            ],
+            "missing": [],
+            "ratio": 1.0
+          },
+          "top_results": [
+            {
+              "score": 37.614315,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 4,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "Using the Build System",
+                "idf.py"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "idf.py",
+              "content": "Theidf.pycommand-line tool provides a front-end for easily managing your project builds. It manages the following tools:\nCMake, which configures the project to be built\nNinjawhich builds the project\nesptoolfor flashing the target.\nFor more details about configuring the build system usingidf.py, please refer toIDF Frontend.",
+              "snippet": "Theidf.pycommand-line tool provides a front-end for easily managing your project builds. It manages the following tools: CMake, which configures the project to be built Ninjawhich builds the project esptoolfor flashing the target. For more ..."
+            },
+            {
+              "score": 30.629058,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 9,
+              "block_type": "code",
+              "section_path": [
+                "Build System",
+                "Using the Build System",
+                "Using CMake Directly",
+                "Flashing with Ninja or Make"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Flashing with Ninja or Make",
+              "content": "ninja flash",
+              "snippet": "ninja flash"
+            },
+            {
+              "score": 30.179569,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 8,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "Using the Build System",
+                "Using CMake Directly",
+                "Flashing with Ninja or Make"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Flashing with Ninja or Make",
+              "content": "It's possible to build and flash directly from ninja or make by running a target like:",
+              "snippet": "It's possible to build and flash directly from ninja or make by running a target like:"
+            },
+            {
+              "score": 29.581805,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 6,
+              "block_type": "code",
+              "section_path": [
+                "Build System",
+                "Using the Build System",
+                "Using CMake Directly"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Using CMake Directly",
+              "content": "mkdir -p build\ncd build\ncmake .. -G Ninja   # or 'Unix Makefiles'\nninja",
+              "snippet": "mkdir -p build cd build cmake .. -G Ninja # or 'Unix Makefiles' ninja"
+            },
+            {
+              "score": 29.172085,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 15,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "Using the Build System",
+                "Using CMake Directly",
+                "Flashing with Ninja or Make"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Flashing with Ninja or Make",
+              "content": "Note\nProviding variables at the end of the command line ismakesyntax, and works formakeon all platforms.",
+              "snippet": "Note Providing variables at the end of the command line ismakesyntax, and works formakeon all platforms."
+            }
+          ]
+        },
+        {
+          "id": "idf_component_definition",
+          "question": "ESP-IDF 项目中的 component 是什么？",
+          "expected_documents": [
+            "ESP-IDF Build System ESP32"
+          ],
+          "expected_terms": [
+            "component",
+            "CMakeLists.txt"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "reciprocal_rank": 1.0,
+          "term_coverage_at_5": {
+            "matched": [
+              "component",
+              "CMakeLists.txt"
+            ],
+            "missing": [],
+            "ratio": 1.0
+          },
+          "top_results": [
+            {
+              "score": 42.6873,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 48,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "Component Requirements"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Component Requirements",
+              "content": "When compiling each component, the ESP-IDF build system recursively evaluates its dependencies. This means each component needs to declare the components that it depends on (\"requires\").",
+              "snippet": "When compiling each component, the ESP-IDF build system recursively evaluates its dependencies. This means each component needs to declare the components that it depends on (\"requires\")."
+            },
+            {
+              "score": 42.474,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 55,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "Component Requirements",
+                "Example of Component Requirements",
+                "Car Component"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Car Component",
+              "content": "And car.c includescar.has well:",
+              "snippet": "And car.c includescar.has well:"
+            },
+            {
+              "score": 42.335024,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 32,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "Component CMakeLists Files"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Component CMakeLists Files",
+              "content": "Each project contains one or more components. Components can be part of ESP-IDF, part of the project's own components directory, or added from custom component directories (see above).\nA component is any directory in theCOMPONENT_DIRSlist which contains aCMakeLists.txtfile.",
+              "snippet": "Each project contains one or more components. Components can be part of ESP-IDF, part of the project's own components directory, or added from custom component directories (see above). A component is any directory in theCOMPONENT_DIRSlist w..."
+            },
+            {
+              "score": 42.320826,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 142,
+              "block_type": "code",
+              "section_path": [
+                "Build System",
+                "Using Third-Party CMake Projects with Components",
+                "Using ESP-IDF Components from External Libraries"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Using ESP-IDF Components from External Libraries",
+              "content": "add_library(foo bar.c fizz.cpp buzz.cpp)\n\nif(ESP_PLATFORM)\n  # On ESP-IDF, bar.c needs to include esp_flash.h from the spi_flash component\n  target_link_libraries(foo PRIVATE idf::spi_flash)\nendif()",
+              "snippet": "add_library(foo bar.c fizz.cpp buzz.cpp) if(ESP_PLATFORM) # On ESP-IDF, bar.c needs to include esp_flash.h from the spi_flash component target_link_libraries(foo PRIVATE idf::spi_flash) endif()"
+            },
+            {
+              "score": 42.314325,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 57,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "Component Requirements",
+                "Example of Component Requirements",
+                "Car Component"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Car Component",
+              "content": "This means thecar/CMakeLists.txtfile needs to declare thatcarrequiresengine:",
+              "snippet": "This means thecar/CMakeLists.txtfile needs to declare thatcarrequiresengine:"
+            }
+          ]
+        },
+        {
+          "id": "esp32_product_resources",
+          "question": "ESP32 产品页提到哪些资源入口？",
+          "expected_documents": [
+            "ESP32 Product Documentation"
+          ],
+          "expected_terms": [
+            "Resources",
+            "Documents",
+            "SDK",
+            "Hardware Design Guidelines"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "reciprocal_rank": 1.0,
+          "term_coverage_at_5": {
+            "matched": [
+              "Resources",
+              "Documents",
+              "SDK",
+              "Hardware Design Guidelines"
+            ],
+            "missing": [],
+            "ratio": 1.0
+          },
+          "top_results": [
+            {
+              "score": 167.435248,
+              "document_title": "ESP32 Product Documentation",
+              "chunk_index": 10,
+              "block_type": "text",
+              "section_path": [
+                "ESP32",
+                "Resources"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Resources",
+              "content": "ESP32 Modules\nESP32 DevKits\nDocuments\nCertificates\nGet SDK\nTechnical Support\nGetting Started\nHardware Design Guidelines\nCourses\nBooks\nVideos\nESP32 Forum\nTechnical Reference Manual›\nFlash Download Tools›\nCertification and Test Demonstration›\nProduction Testing Guide›\nProduction Testing Equipments›\nEspressif Services›\nMore Resources›",
+              "snippet": "ESP32 Modules ESP32 DevKits Documents Certificates Get SDK Technical Support Getting Started Hardware Design Guidelines Courses Books Videos ESP32 Forum Technical Reference Manual› Flash Download Tools› Certification and Test Demonstration›..."
+            },
+            {
+              "score": 156.115159,
+              "document_title": "ESP32 Product Documentation",
+              "chunk_index": 3,
+              "block_type": "text",
+              "section_path": [],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "ESP32 Wi-Fi & Bluetooth SoC | Espressif Systems:181-240",
+              "content": "ESP AWS IoT ExpressLink Solution\nPeripherals\nDevice Drivers\nUSB Solutions\nSmart Sensing\nWi-Fi CSI Sensing\nWi-Fi FTM Ranging\nSupport\nTechnical Documents\nAll Types\nSoCs\nModules\nDevKits\nEquipment\nServices\nSelf-Service Resources\nSoftware\nHardware & RF\nCloud\nCertification\nManufacturing\nOn-Site Assistance\nDownload\nTechnical Document\nSDKs & Demos\nAPPs\nTools\nESP-AT\nQuality & Reliability\nCertifications & Compliance\nPCNs\nAdvisories\nLongevity Commitment",
+              "snippet": "ESP AWS IoT ExpressLink Solution Peripherals Device Drivers USB Solutions Smart Sensing Wi-Fi CSI Sensing Wi-Fi FTM Ranging Support Technical Documents All Types SoCs Modules DevKits Equipment Services Self-Service Resources Software Hardwa..."
+            },
+            {
+              "score": 155.337749,
+              "document_title": "ESP-IDF Get Started ESP32",
+              "chunk_index": 14,
+              "block_type": "text",
+              "section_path": [
+                "Get Started",
+                "Related Documents"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Related Documents",
+              "content": "ESP-IDF Installation Manager (EIM) documentation\nEspressif-IDE (ESP-IDF Eclipse Plugin) GitHub repository\nESP-IDF Extension for VS Code GitHub repository",
+              "snippet": "ESP-IDF Installation Manager (EIM) documentation Espressif-IDE (ESP-IDF Eclipse Plugin) GitHub repository ESP-IDF Extension for VS Code GitHub repository"
+            },
+            {
+              "score": 154.764154,
+              "document_title": "ESP32 Product Documentation",
+              "chunk_index": 13,
+              "block_type": "text",
+              "section_path": [
+                "ESP32",
+                "Buy Now",
+                "Stay Informed with Us"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Stay Informed with Us",
+              "content": "Get the latest on innovations, product launches, upcoming events, documentation updates, PCN notifications, advisories, and more.\nSubscribe\nPRODUCTS\nSoCs\nModules\nDevKits\nProduct Selector\nDEVELOPERS\nDeveloper Portal\nESP DevCon\nTech Blogs\nNews\nCOMPANY\nAbout Espressif\nLogo Guidelines\nSales Questions\nCareers\nRESOURCES\nTech Documents\nGitHub\nESP-FAQ\nGet Samples\nlinkdin\nyoutube\ntwitter\nfacebook\nins\nReddit\ngithub\nM5Stack",
+              "snippet": "Get the latest on innovations, product launches, upcoming events, documentation updates, PCN notifications, advisories, and more. Subscribe PRODUCTS SoCs Modules DevKits Product Selector DEVELOPERS Developer Portal ESP DevCon Tech Blogs New..."
+            },
+            {
+              "score": 154.700564,
+              "document_title": "ESP32 Product Documentation",
+              "chunk_index": 0,
+              "block_type": "text",
+              "section_path": [],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "ESP32 Wi-Fi & Bluetooth SoC | Espressif Systems:1-60",
+              "content": "Home\nHardware\nProduct Overview\nSoCs\nModules\nDevKits\nEspressif\nM5Stack\nEquipment\nProduct Selector\nESP32-Wrap\nESP32-P\nESP32-P4\nESP32-E\nESP32-E22\nESP32-S\nESP32-S31\nESP32-S3\nESP32-S2\nESP32-C\nESP32-C6\nESP32-C61\nESP32-C5\nESP32-C3\nESP32-C2\nESP32-H\nESP32-H4\nESP32-H21\nESP32-H2\nESP32\nESP32\nESP8266\nESP8266\nSDKs\nGeneral Frameworks\nESP-IDF\nIDF Component Manager",
+              "snippet": "Home Hardware Product Overview SoCs Modules DevKits Espressif M5Stack Equipment Product Selector ESP32-Wrap ESP32-P ESP32-P4 ESP32-E ESP32-E22 ESP32-S ESP32-S31 ESP32-S3 ESP32-S2 ESP32-C ESP32-C6 ESP32-C61 ESP32-C5 ESP32-C3 ESP32-C2 ESP32-H..."
+            }
+          ]
+        },
+        {
+          "id": "vehicle_power_performance_indexes",
+          "question": "汽车动力性能用哪些指标衡量？",
+          "expected_documents": [
+            "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)"
+          ],
+          "expected_terms": [
+            "最高车速",
+            "加速",
+            "爬坡"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "reciprocal_rank": 1.0,
+          "term_coverage_at_5": {
+            "matched": [
+              "最高车速",
+              "加速"
+            ],
+            "missing": [
+              "爬坡"
+            ],
+            "ratio": 0.6666666666666666
+          },
+          "top_results": [
+            {
+              "score": 30.873824,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 199,
+              "block_type": "text",
+              "section_path": [],
+              "table_parse_confidence": null,
+              "page_label": "第 115 页",
+              "location_label": "第 115 页",
+              "content": "飞轮转动惯量 I f = 0. 218kg·m [2] 二前轮转动惯量 I W1 = 1. 798kg·m [2] 四后轮转动惯量 I W2 = 3. 598kg·m [2] 轴距 L = 3. 2m 质心至前轴距离( 满载) a = 1. 947m 质心高( 满载) h g = 0. 9m 4-5 如何考虑汽车变速器I档传动比? 4-6 汽车变速器档位数取决于哪些因素? 4-7 汽车变速器各档传动比是如何分配的? 4-8 什么是燃油经济性-加速时间曲线? 如何用来确定动力装置参数?",
+              "snippet": "飞轮转动惯量 I f = 0. 218kg·m [2] 二前轮转动惯量 I W1 = 1. 798kg·m [2] 四后轮转动惯量 I W2 = 3. 598kg·m [2] 轴距 L = 3. 2m 质心至前轴距离( 满载) a = 1. 947m 质心高( 满载) h g = 0. 9m 4-5 如何考虑汽车变速器I档传动比? 4-6 汽车变速器档位数取决于哪些因素? 4-7 汽车变速器各档传动比是如何分配的? 4-8 什么是燃油经济性-加速时间曲线? 如何用来确定动力装..."
+            },
+            {
+              "score": 30.184049,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 37,
+              "block_type": "text",
+              "section_path": [
+                "第二章 汽车动力性"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 31 页",
+              "location_label": "第 31 页",
+              "content": "汽车的动力性是指汽车在良好路面上直线行驶时由汽车受到的纵向外力决定的、 所 能达到的平均行驶速度。 汽车作为一种高效率的运输工具, 其运输效率之高低在很大程 度上取决于汽车的动力性。 汽车的动力性是汽车各种性能中最基本、 最重要的性能。 本章将进一步研究汽车行驶时的受力情况, 建立汽车行驶方程式, 并以图表的形式 按汽车动力性评价指标的要求确定汽车的动力性, 然后深入研究影响汽车动力性的主要 因素, 为提高汽车的动力性提供理论基础。",
+              "snippet": "汽车的动力性是指汽车在良好路面上直线行驶时由汽车受到的纵向外力决定的、 所 能达到的平均行驶速度。 汽车作为一种高效率的运输工具, 其运输效率之高低在很大程 度上取决于汽车的动力性。 汽车的动力性是汽车各种性能中最基本、 最重要的性能。 本章将进一步研究汽车行驶时的受力情况, 建立汽车行驶方程式, 并以图表的形式 按汽车动力性评价指标的要求确定汽车的动力性, 然后深入研究影响汽车动力性的主要 因素, 为提高汽车的动力性提供理论基础。"
+            },
+            {
+              "score": 30.101242,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 196,
+              "block_type": "text",
+              "section_path": [
+                "第四章 汽车发动机功率和传动系统传动比的选择"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 115 页",
+              "location_label": "第 115 页",
+              "content": "思考题与习题 4-1 已知一汽车总质量为 1200kg, 滚动阻力系数 f = 0. 013, 传动系统机械效率 η T = 0. 85, 空气阻 力系数×迎风面积 C D A = 0. 70m [2] , 现要求最高车速 u amax = 140km/ h。 试求应有功率数值。 4-2 什么叫汽车比功率? 如何利用比功率来确定发动机应有功率? 4-3 选择主减速器传动比 i 0 时, 应考虑哪些问题? 4-4 某中型货车, 有关数据如下, 作出 i 0 为 5. 17、5. 43、5. 83、6. 17、6. 33 时的燃油经济性-加 速时间曲线, 讨论不同 i 0 值对汽车性能的影响和采用不同变速器对汽车性能的影响。 中型货车的有关数据: 汽油发动机使用外特性的 T tq —n 曲线的拟合公式为 n +40. 874",
+              "snippet": "思考题与习题 4-1 已知一汽车总质量为 1200kg, 滚动阻力系数 f = 0. 013, 传动系统机械效率 η T = 0. 85, 空气阻 力系数×迎风面积 C D A = 0. 70m [2] , 现要求最高车速 u amax = 140km/ h。 试求应有功率数值。 4-2 什么叫汽车比功率? 如何利用比功率来确定发动机应有功率? 4-3 选择主减速器传动比 i 0 时, 应考虑哪些问题? 4-4 某中型货车, 有关数据如下, 作出 i 0 为 5. 17、5...."
+            },
+            {
+              "score": 29.14532,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 36,
+              "block_type": "text",
+              "section_path": [
+                "第一章 地面—轮胎力学"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 29 页",
+              "location_label": "第 29 页 - 第 30 页",
+              "content": "近于一个椭圆, 称为附着椭圆。 曲线表明, 在一定的驱动力下, 驱动力增加时, 侧偏力 逐渐减小。 当驱动力非常大时, 侧偏力就非常小。 因为此时接近附着极限, 切向力已经 消耗了绝大部分的附着力, 因而侧向能利用的附着力就很小。 同理, 当作用有制动力 时, 侧偏力也有相似的变化。 因此利用附着椭圆可以很明显地确定在一定的附着条件下 轮胎侧偏特性的关系 的极限切向力和侧偏力的关系, 为进一步在汽车操纵稳定性的控制中, 进行纵向力和侧 向力之间的调节提供理论基础。 思考题与习题 1- 1 轮胎的具体功能主要有哪些? 1- 2 试分析前束阻力的产生机理。 1- 3 作用在轮胎上的力和力矩有哪些? 并解释具体的含义。 1- 4 分别推导作用在汽车从动轮和驱动轮上的滚动阻力。 1- 5 影响滚动阻力系数的主要因素有哪些? 1- 6 试解释轮胎的侧偏现象。 1-7 影响轮胎侧偏特性的主要因素有哪些? 1- 8 简述回正力矩的意义。",
+              "snippet": "近于一个椭圆, 称为附着椭圆。 曲线表明, 在一定的驱动力下, 驱动力增加时, 侧偏力 逐渐减小。 当驱动力非常大时, 侧偏力就非常小。 因为此时接近附着极限, 切向力已经 消耗了绝大部分的附着力, 因而侧向能利用的附着力就很小。 同理, 当作用有制动力 时, 侧偏力也有相似的变化。 因此利用附着椭圆可以很明显地确定在一定的附着条件下 轮胎侧偏特性的关系 的极限切向力和侧偏力的关系, 为进一步在汽车操纵稳定性的控制中, 进行纵向力和侧 向力之间的调节提供理论基础。 思考题与习..."
+            },
+            {
+              "score": 28.996541,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 69,
+              "block_type": "text",
+              "section_path": [
+                "第二章 汽车动力性"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 47 页",
+              "location_label": "第 47 页 - 第 48 页",
+              "content": "遇到稍大的阻力时经常换档, 这样就影响了行驶的平均车速。 二、 动力特性图 — 利用汽车的驱动力 行驶阻力平衡图, 可以确定一辆汽车的最高车速、 加速能力和 上坡能力, 可以评价同一类型汽车的动力性。 但它不便于评价不同类型汽车的动力性。 因为车的道路阻力和加速阻力均与汽车重力成正比, 空气阻力则与汽车外形等因素有 关, 所以不能单纯根据汽车驱动力的大小, 简单地判定汽车的动力性。 因此, 需要有一个既考虑驱动力又包括汽车重力和空气阻力的综合性参数。 这个参 数为动力因数。 将汽车行驶方程 F t = F f +F w +F i +F j 两边除以汽车重力并整理如下 F t -F w -F w = ψ+ [δ][d][u] G dt gdt 令 F t -GF w 为汽车的动力因数并以符号 D 表示, 则 D = ψ+ [δ][d][u] (2-16) gdt 由式(2 16) 可知, 无论汽车的重量等参数 有什么不同, 只要有相等的动力因数, 便能克 服同样的道路阻力和坡度阻力, 同时拥有同样 的加速能力, 因此把动力因数作为表征汽车动 力特性的指标比较合理。 同时利用动力因数及 其特性图来分析汽车的动力性能不仅有其全面 性, 而且也较简便。 因此在评定汽车动力性能 时得到广泛使用。 汽车的动力特性图是指在各档下的动力因 数与车速的关系曲线( 见图 2-18)。 将汽车滚动 阻力系数 f 随车速 u a 变化关系曲线, 以同样比 例尺画在动力特性图上, 就可以方便地求解汽 车动力性评价指标。 1. 汽车最高车速的确定",
+              "snippet": "遇到稍大的阻力时经常换档, 这样就影响了行驶的平均车速。 二、 动力特性图 — 利用汽车的驱动力 行驶阻力平衡图, 可以确定一辆汽车的最高车速、 加速能力和 上坡能力, 可以评价同一类型汽车的动力性。 但它不便于评价不同类型汽车的动力性。 因为车的道路阻力和加速阻力均与汽车重力成正比, 空气阻力则与汽车外形等因素有 关, 所以不能单纯根据汽车驱动力的大小, 简单地判定汽车的动力性。 因此, 需要有一个既考虑驱动力又包括汽车重力和空气阻力的综合性参数。 这个参 数为动力因数。 ..."
+            }
+          ]
+        },
+        {
+          "id": "tire_coordinate_axes",
+          "question": "轮胎坐标系的 x/y/z 轴如何定义？",
+          "expected_documents": [
+            "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)"
+          ],
+          "expected_terms": [
+            "坐标系",
+            "x",
+            "y",
+            "z"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "reciprocal_rank": 1.0,
+          "term_coverage_at_5": {
+            "matched": [
+              "坐标系",
+              "x",
+              "y",
+              "z"
+            ],
+            "missing": [],
+            "ratio": 1.0
+          },
+          "top_results": [
+            {
+              "score": 93.445667,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 13,
+              "block_type": "text",
+              "section_path": [
+                "汽车理论",
+                "第一章 地面 轮胎力学",
+                "第一节 作用在轮胎上的力和力矩"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 16 页",
+              "location_label": "第 16 页",
+              "content": "一 、 轮胎坐标系 作用在轮胎上的力和力矩非常的复杂, 为了分析作用在轮胎上的各种力和力矩, 建 立图 1-1 所示的在平直路面上行驶的汽车轮胎坐标系。 轮胎胎面与路面的接触区域称为 接地印迹。 轮胎的中心面为垂直于轮胎的旋转轴线的平面。 轮胎的中心面与路面的交线 为 x 轴, 规定向前为正。 轮胎的旋转轴在路面上的投影线为 y 轴, 规定当面向轮胎的前 进方向时指向左方为正。 其中 x 轴和 y 轴的交点为轮胎节点印迹中心, 并以此作为原 点, 因此通过原点与路面垂直的轴为 z 轴, 规定向上为正。 图 1- 1 轮胎坐标系 二、 轮胎六分力 车辆通过轮胎与路面发生力的作用。 地面通过接地印迹作用在轮胎上的应力既有垂",
+              "snippet": "一 、 轮胎坐标系 作用在轮胎上的力和力矩非常的复杂, 为了分析作用在轮胎上的各种力和力矩, 建 立图 1-1 所示的在平直路面上行驶的汽车轮胎坐标系。 轮胎胎面与路面的接触区域称为 接地印迹。 轮胎的中心面为垂直于轮胎的旋转轴线的平面。 轮胎的中心面与路面的交线 为 x 轴, 规定向前为正。 轮胎的旋转轴在路面上的投影线为 y 轴, 规定当面向轮胎的前 进方向时指向左方为正。 其中 x 轴和 y 轴的交点为轮胎节点印迹中心, 并以此作为原 点, 因此通过原点与路面垂直的轴为..."
+            },
+            {
+              "score": 83.865182,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 333,
+              "block_type": "text",
+              "section_path": [
+                "第六章 汽车的操纵稳定性",
+                "第四节 前轮角阶跃输入下汽车的瞬态响应"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 179 页",
+              "location_label": "第 179 页",
+              "content": "图 6- 21 在车辆坐标系中汽车运动的描述 F Y = kα (6-31) 式中, F Y 为车轮上的侧偏力; k 为轮胎侧偏刚度; α 为轮胎侧偏角, 它为车轮的旋转平 面与车轮行驶方向之间的夹角。 根据轮胎坐标系中符号的关系, 负的侧偏力产生正的侧 偏角, 故侧偏刚度为负值( 在本书内有些地方给出的轮胎侧偏刚度为正值,则为其绝对 值)。 一般小型轿车的侧偏刚度在-28000~80000N/ rad 范围之内。 另外, 前轮转角 δ 较小, 因此可将上式改写为 ∑F Y = k 1 α 1 +k 2 α 2 (6- 32)",
+              "snippet": "图 6- 21 在车辆坐标系中汽车运动的描述 F Y = kα (6-31) 式中, F Y 为车轮上的侧偏力; k 为轮胎侧偏刚度; α 为轮胎侧偏角, 它为车轮的旋转平 面与车轮行驶方向之间的夹角。 根据轮胎坐标系中符号的关系, 负的侧偏力产生正的侧 偏角, 故侧偏刚度为负值( 在本书内有些地方给出的轮胎侧偏刚度为正值,则为其绝对 值)。 一般小型轿车的侧偏刚度在-28000~80000N/ rad 范围之内。 另外, 前轮转角 δ 较小, 因此可将上式改写为 ∑F Y ..."
+            },
+            {
+              "score": 82.667743,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 35,
+              "block_type": "formula",
+              "section_path": [
+                "第一章 地面—轮胎力学"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 29 页",
+              "location_label": "第 29 页",
+              "content": "= 1 (1-12) 〓 〓 〓 q Cx 〓 〓 〓φ x q z 〓 q Cx φ x q z 〓 〓 2 〓 〓 2 + 〓 q Cy 〓φ y q z 由轮胎的特性可知, 轮胎在滚动过程中, 地面对轮胎的切向反作用力可以按照车辆 坐标系分解为侧向力和纵向力, 即在轮胎上同时作用有侧向力和纵向力。",
+              "snippet": "= 1 (1-12) 〓 〓 〓 q Cx 〓 〓 〓φ x q z 〓 q Cx φ x q z 〓 〓 2 〓 〓 2 + 〓 q Cy 〓φ y q z 由轮胎的特性可知, 轮胎在滚动过程中, 地面对轮胎的切向反作用力可以按照车辆 坐标系分解为侧向力和纵向力, 即在轮胎上同时作用有侧向力和纵向力。"
+            },
+            {
+              "score": 80.499531,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 14,
+              "block_type": "text",
+              "section_path": [
+                "汽车理论",
+                "第一章 地面 轮胎力学",
+                "第一节 作用在轮胎上的力和力矩"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 17 页",
+              "location_label": "第 17 页",
+              "content": "直于路面的正应力, 也有沿着地面的切向应力( 切应力), 而切向应力又可分为沿 x 方 向的纵向应力和沿 y 方向的侧向应力。 如果将印迹上各点的应力向印迹中心( 轮胎坐标 系原点) 简化, 可得到沿轮胎坐标系的作用在轮胎上的力和力矩。 在轮胎坐标系中, 地面作用在轮胎上的主要力和力矩包括: 地面切向反作用力 沿 x 轴的分量———纵向力 F X ; 地面切向反作用力沿 y 轴的分量———侧向力 F Y ; 地 面法向反作用力 F Z ; 地面反作用力绕 x 轴的力矩———翻转力矩 T X ; 地面反作用力 绕 y 轴的力矩———滚动阻力矩 T Y 以及地面反作用力绕 z 轴的力矩———回正力矩 T Z 。 正负符号均按照坐标系的规定。 纵向力 F X 按照作用方向的不同或作用形式的不同可称为驱动力或制动力。 驱动 力来源于汽车发动机。 发动机产生的有效转矩经过传动系统传到驱动轮上, 因此地 ——— 面作用有反作用力 驱动力在车轮上。 驱动力是维持汽车行驶的外力, 它与汽车的 行驶方向相一致。 而制动力为阻碍汽车行驶的作用在车轮上的纵向力, 制动力的方 向与汽车的行驶方向相反。 侧向力 F Y 是地面作用在车轮上的切向力沿 y 轴的分量。 汽车做曲线行驶时会受 到离心力的作用, 为了维持汽车的曲线运动, 路面作用在车轮上有与离心力相平衡 的力, 即侧向力, 也称为侧偏力。 地面的法向反作用力 F Z 具体地反映了各个车轮所承受的轴荷大小。 一般来说, 作 用在各个车轮上的地面法向反作用力的大小与汽车的纵向加速度、 侧向加速度以及汽车 的总体布置有关, 同时地面的法向反作用力的大小也将影响汽车的纵向力和侧向力的 大小。 翻转力矩 T X 也称为侧倾力矩, 它的大小说明了汽车将发生翻转趋势的大小。 特别 是汽车在做曲线行驶时, 由于离心力的存在而形成翻转力矩使得汽车发生侧倾现象。 滚动阻力矩 T Y 描述了阻碍轮胎滚动的力矩的大小。 滚动阻力矩与路面的状态、 轮 胎的结构以及行驶的车速等有关。 回正力矩 T Z 是在汽车做曲线行驶时使车轮恢复到直线行驶位置的力矩。 汽车在曲 线行驶状态下, 轮胎将发生侧偏现象, 因此将产生作用于轮胎上绕 z 轴的力矩。 随着现代车辆速度的不断提高 , 车辆的主动安全性 、 行驶动力性和乘坐舒适 性在车辆性能中占有越来越重要的位置 , 而轮胎力学特性是影响车辆动力学特性 的重要特性之一 , 因此 , 改善汽车性能的重点取决于更好的调节和控制各个分力 的大小 。",
+              "snippet": "直于路面的正应力, 也有沿着地面的切向应力( 切应力), 而切向应力又可分为沿 x 方 向的纵向应力和沿 y 方向的侧向应力。 如果将印迹上各点的应力向印迹中心( 轮胎坐标 系原点) 简化, 可得到沿轮胎坐标系的作用在轮胎上的力和力矩。 在轮胎坐标系中, 地面作用在轮胎上的主要力和力矩包括: 地面切向反作用力 沿 x 轴的分量———纵向力 F X ; 地面切向反作用力沿 y 轴的分量———侧向力 F Y ; 地 面法向反作用力 F Z ; 地面反作用力绕 x 轴的力矩———翻..."
+            },
+            {
+              "score": 75.61047,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 22,
+              "block_type": "text",
+              "section_path": [
+                "第一章 地面—轮胎力学"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 20 页",
+              "location_label": "第 20 页",
+              "content": "系数的关系曲线 为了更直观地反映充气压力对轮胎滚动阻力的影响, 图 1-8 给出了充气压力以及行 驶速度与滚动阻力系数的关系曲线。 随着充气压力的增大, 轮胎的径向刚度增大, 弹性 损失将减小, 从而滚动阻力系数降低。 而随着行驶速度的增加, 滚动阻力系数增大。 因 此在汽车的使用中为了提高经济性需要考虑轮胎的正常气压范围。 若是在松软路面上, 轮胎充气压力与滚动阻力的关系如图 1-9 所示。 与在硬路面上轮胎的滚动阻力系数相 比, 松软路面上轮胎的滚动阻力表现出了不一致性。",
+              "snippet": "系数的关系曲线 为了更直观地反映充气压力对轮胎滚动阻力的影响, 图 1-8 给出了充气压力以及行 驶速度与滚动阻力系数的关系曲线。 随着充气压力的增大, 轮胎的径向刚度增大, 弹性 损失将减小, 从而滚动阻力系数降低。 而随着行驶速度的增加, 滚动阻力系数增大。 因 此在汽车的使用中为了提高经济性需要考虑轮胎的正常气压范围。 若是在松软路面上, 轮胎充气压力与滚动阻力的关系如图 1-9 所示。 与在硬路面上轮胎的滚动阻力系数相 比, 松软路面上轮胎的滚动阻力表现出了不一致性。"
+            }
+          ]
+        },
+        {
+          "id": "rolling_resistance_factors",
+          "question": "滚动阻力系数与哪些因素有关？",
+          "expected_documents": [
+            "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)"
+          ],
+          "expected_terms": [
+            "滚动阻力系数",
+            "路面",
+            "轮胎",
+            "车速"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "reciprocal_rank": 1.0,
+          "term_coverage_at_5": {
+            "matched": [
+              "滚动阻力系数",
+              "路面",
+              "轮胎",
+              "车速"
+            ],
+            "missing": [],
+            "ratio": 1.0
+          },
+          "top_results": [
+            {
+              "score": 107.584378,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 36,
+              "block_type": "text",
+              "section_path": [
+                "第一章 地面—轮胎力学"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 29 页",
+              "location_label": "第 29 页 - 第 30 页",
+              "content": "近于一个椭圆, 称为附着椭圆。 曲线表明, 在一定的驱动力下, 驱动力增加时, 侧偏力 逐渐减小。 当驱动力非常大时, 侧偏力就非常小。 因为此时接近附着极限, 切向力已经 消耗了绝大部分的附着力, 因而侧向能利用的附着力就很小。 同理, 当作用有制动力 时, 侧偏力也有相似的变化。 因此利用附着椭圆可以很明显地确定在一定的附着条件下 轮胎侧偏特性的关系 的极限切向力和侧偏力的关系, 为进一步在汽车操纵稳定性的控制中, 进行纵向力和侧 向力之间的调节提供理论基础。 思考题与习题 1- 1 轮胎的具体功能主要有哪些? 1- 2 试分析前束阻力的产生机理。 1- 3 作用在轮胎上的力和力矩有哪些? 并解释具体的含义。 1- 4 分别推导作用在汽车从动轮和驱动轮上的滚动阻力。 1- 5 影响滚动阻力系数的主要因素有哪些? 1- 6 试解释轮胎的侧偏现象。 1-7 影响轮胎侧偏特性的主要因素有哪些? 1- 8 简述回正力矩的意义。",
+              "snippet": "近于一个椭圆, 称为附着椭圆。 曲线表明, 在一定的驱动力下, 驱动力增加时, 侧偏力 逐渐减小。 当驱动力非常大时, 侧偏力就非常小。 因为此时接近附着极限, 切向力已经 消耗了绝大部分的附着力, 因而侧向能利用的附着力就很小。 同理, 当作用有制动力 时, 侧偏力也有相似的变化。 因此利用附着椭圆可以很明显地确定在一定的附着条件下 轮胎侧偏特性的关系 的极限切向力和侧偏力的关系, 为进一步在汽车操纵稳定性的控制中, 进行纵向力和侧 向力之间的调节提供理论基础。 思考题与习..."
+            },
+            {
+              "score": 99.04578,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 18,
+              "block_type": "text",
+              "section_path": [
+                "第一章 地面—轮胎力学"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 18 页",
+              "location_label": "第 18 页 - 第 19 页",
+              "content": "滚动时的受力分析 即单位汽车重力所需要的推力。 因此, 可以认为滚动阻力 F f 等于该推力, 即滚动阻力等于滚动阻力系数与车轮垂直载荷的乘积, 即在分析汽车车轮滚 动时的阻力时, 不再考虑车轮滚动时的滚动阻力偶矩, 而只需根据滚动阻力系数以及车轮 的垂直载荷进行计算。 滚动阻力 F f 可表示为 F f = Wf (1-4) 真正的滚动阻力是不存在的, 它只是一种将作用在车轮上的滚动阻力偶矩等价简化 而来的力, 因此仅仅是一种表现形式。 驱动轮在硬路面上滚动时的受力分析如图 1- 4 所示。 T t 为作用在驱动轮上的驱动力 矩; F X2 为路面作用于车轮上的地面切向力; F p2 为驱动轴作用于车轮上的水平力; W 为 车轮上的负荷大小; F Z 为地面作用在车轮上的法向反作用力的合力。 由于迟滞现象, 它与法线有一个距离 a, 即有滚动阻力偶矩 T f 存在。 根据力矩平衡有 F X2 r = T t -T f (1-5) T f (1-6) r [=] [F] [t] [-][F] [f] F X2 = T t r [-] 式中, F t 为作用在驱动轮上的驱动力。 与滚动阻力 F f 一样, 驱动力也只是一种表现形 式, 不是具体存在的。 为了计算汽车行驶过程中车轮上滚动阻力的大小, 必须知道滚动阻力系数。 滚动阻 力系数一般用试验来确定。 滚动阻力系数与路面的种类、 行驶车速、 轮胎的构造以及轮 胎的充气压力等因素有关。",
+              "snippet": "滚动时的受力分析 即单位汽车重力所需要的推力。 因此, 可以认为滚动阻力 F f 等于该推力, 即滚动阻力等于滚动阻力系数与车轮垂直载荷的乘积, 即在分析汽车车轮滚 动时的阻力时, 不再考虑车轮滚动时的滚动阻力偶矩, 而只需根据滚动阻力系数以及车轮 的垂直载荷进行计算。 滚动阻力 F f 可表示为 F f = Wf (1-4) 真正的滚动阻力是不存在的, 它只是一种将作用在车轮上的滚动阻力偶矩等价简化 而来的力, 因此仅仅是一种表现形式。 驱动轮在硬路面上滚动时的受力分析如图..."
+            },
+            {
+              "score": 94.820722,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 21,
+              "block_type": "text",
+              "section_path": [
+                "第一章 地面—轮胎力学"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 19 页",
+              "location_label": "第 19 页 - 第 20 页",
+              "content": "阻力的变化曲线。 在相同的外部条件下, 斜交轮胎的滚动阻力比子午线轮胎大。 这是由 于子午线轮胎的胎面变形比斜交轮胎小, 迟滞损失减小的缘故。 在不同的充气压力下的 滚动阻力系数如图 1-5b 所示。 随着充气压力的增加, 轮胎的刚度变大, 因此径向变形 减小, 弹性轮胎的迟滞损失较小, 因而滚动阻力系数降低。 货车轮胎的滚动阻力系数与 车速的关系接近于直线, 如图 1-6 所示。 在进行动力性分析时, 若无试验得到的准确滚 动阻力系数, 可利用图 1-6 中的公式大致估算。 与从动轮相比, 安装在驱动轮上的轮胎, 由于作用有驱动转矩, 胎面相对于地面有 一定程度的滑动, 因而增加了轮胎滚动时的能量损失。 图 1-7 所示为滚动阻力系数与驱 动力系数的关系曲线。 随着驱动力系数的增加, 其滚动阻力系数也在增大。",
+              "snippet": "阻力的变化曲线。 在相同的外部条件下, 斜交轮胎的滚动阻力比子午线轮胎大。 这是由 于子午线轮胎的胎面变形比斜交轮胎小, 迟滞损失减小的缘故。 在不同的充气压力下的 滚动阻力系数如图 1-5b 所示。 随着充气压力的增加, 轮胎的刚度变大, 因此径向变形 减小, 弹性轮胎的迟滞损失较小, 因而滚动阻力系数降低。 货车轮胎的滚动阻力系数与 车速的关系接近于直线, 如图 1-6 所示。 在进行动力性分析时, 若无试验得到的准确滚 动阻力系数, 可利用图 1-6 中的公式大致估算。..."
+            },
+            {
+              "score": 92.517953,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 213,
+              "block_type": "text",
+              "section_path": [
+                "第五章 汽车的制动性"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 120 页",
+              "location_label": "第 120 页",
+              "content": "素。 在制动过程中, 附着系数还与轮胎在路面上的运动状态有关, 即与滑动率有关。 若令地面制动力与垂直载荷之比为制动力系数( 纵向附着系数), 记作 φ b , 侧向力 与垂直载荷之比为侧向力系数( 侧向附着系数), 记作 φ L , 则在不同滑动率时 φ b 和 φ L 的数值不同。",
+              "snippet": "素。 在制动过程中, 附着系数还与轮胎在路面上的运动状态有关, 即与滑动率有关。 若令地面制动力与垂直载荷之比为制动力系数( 纵向附着系数), 记作 φ b , 侧向力 与垂直载荷之比为侧向力系数( 侧向附着系数), 记作 φ L , 则在不同滑动率时 φ b 和 φ L 的数值不同。"
+            },
+            {
+              "score": 91.539947,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 22,
+              "block_type": "text",
+              "section_path": [
+                "第一章 地面—轮胎力学"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 20 页",
+              "location_label": "第 20 页",
+              "content": "系数的关系曲线 为了更直观地反映充气压力对轮胎滚动阻力的影响, 图 1-8 给出了充气压力以及行 驶速度与滚动阻力系数的关系曲线。 随着充气压力的增大, 轮胎的径向刚度增大, 弹性 损失将减小, 从而滚动阻力系数降低。 而随着行驶速度的增加, 滚动阻力系数增大。 因 此在汽车的使用中为了提高经济性需要考虑轮胎的正常气压范围。 若是在松软路面上, 轮胎充气压力与滚动阻力的关系如图 1-9 所示。 与在硬路面上轮胎的滚动阻力系数相 比, 松软路面上轮胎的滚动阻力表现出了不一致性。",
+              "snippet": "系数的关系曲线 为了更直观地反映充气压力对轮胎滚动阻力的影响, 图 1-8 给出了充气压力以及行 驶速度与滚动阻力系数的关系曲线。 随着充气压力的增大, 轮胎的径向刚度增大, 弹性 损失将减小, 从而滚动阻力系数降低。 而随着行驶速度的增加, 滚动阻力系数增大。 因 此在汽车的使用中为了提高经济性需要考虑轮胎的正常气压范围。 若是在松软路面上, 轮胎充气压力与滚动阻力的关系如图 1-9 所示。 与在硬路面上轮胎的滚动阻力系数相 比, 松软路面上轮胎的滚动阻力表现出了不一致性。"
+            }
+          ]
+        }
+      ]
+    },
+    "vector": {
+      "summary": {
+        "generated_at": "2026-05-13 13:28:09Z",
+        "mode": "vector",
+        "questions": 8,
+        "chunks": 677,
+        "vectors": 677,
+        "top_k": 5,
+        "hit_at_1": 0.875,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "mrr": 0.9166666666666666,
+        "term_coverage_at_5": 0.9375
+      },
+      "questions": [
+        {
+          "id": "esp32_wireless_capabilities",
+          "question": "ESP32 集成了哪些无线能力？",
+          "expected_documents": [
+            "ESP32 Product Documentation",
+            "ESP-IDF Get Started ESP32"
+          ],
+          "expected_terms": [
+            "Wi-Fi",
+            "Bluetooth"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "reciprocal_rank": 1.0,
+          "term_coverage_at_5": {
+            "matched": [
+              "Wi-Fi",
+              "Bluetooth"
+            ],
+            "missing": [],
+            "ratio": 1.0
+          },
+          "top_results": [
+            {
+              "score": 0.68764,
+              "document_title": "ESP-IDF Get Started ESP32",
+              "chunk_index": 1,
+              "block_type": "text",
+              "section_path": [
+                "Get Started",
+                "Introduction"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Introduction",
+              "content": "ESP32 is a system on a chip that integrates the following features:\nWi-Fi (2.4 GHz band)\nBluetooth\nDual high performance Xtensa® 32-bit LX6 CPU cores\nUltra Low Power co-processor\nMultiple peripherals\nPowered by 40 nm technology, ESP32 offers excellent power efficiency, RF performance, security, and reliability, making it suitable for a wide range of application scenarios and power consumption requirements.\nEspressif provides basic hardware and software resources to help application developers realize their ideas using the ESP32 series hardware. The software development framework by Espressif is intended for development of Internet-of-Things (IoT) applications with Wi-Fi, Bluetooth, power management and several other system features.",
+              "snippet": "ESP32 is a system on a chip that integrates the following features: Wi-Fi (2.4 GHz band) Bluetooth Dual high performance Xtensa® 32-bit LX6 CPU cores Ultra Low Power co-processor Multiple peripherals Powered by 40 nm technology, ESP32 offer..."
+            },
+            {
+              "score": 0.677591,
+              "document_title": "ESP32 Product Documentation",
+              "chunk_index": 9,
+              "block_type": "text",
+              "section_path": [
+                "ESP32",
+                "ESP32 SoC"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "ESP32 SoC",
+              "content": "Overview\nResources\nOverview\nProducts & Resources\nBuy Now\nRobust Design\nESP32 is capable of functioning reliably in industrial environments, with an operating temperature ranging from –40°C to +125°C. Powered by advanced calibration circuitries, ESP32 can dynamically remove external circuit imperfections and adapt to changes in external conditions.\nUltra-Low Power Consumption\nEngineered for mobile devices, wearable electronics and IoT applications, ESP32 achieves ultra-low power consumption with a combination of several types of proprietary software. ESP32 also includes state-of-the-art features, such as fine-grained clock gating, various power modes and dynamic power scaling.\nHigh Level of Integration\nESP32 is highly-integrated with in-built antenna switches, RF balun, power amplifier, low-noise receive amplifier, filters, and power management modules. ESP32 adds priceless functionality and versatility to your applications with minimal Printed Circuit Board (PCB) requirements.\nHybrid Wi-Fi & Bluetooth Chip\nESP32 can perform as a complete standalone system or as a slave device to a host MCU, reducing communication stack overhead on the main application processor. ESP32 can interface with other systems to provide Wi-Fi and Bluetooth functionality through its SPI / SDIO or I2C / UART interfaces.",
+              "snippet": "Overview Resources Overview Products & Resources Buy Now Robust Design ESP32 is capable of functioning reliably in industrial environments, with an operating temperature ranging from –40°C to +125°C. Powered by advanced calibration circuitr..."
+            },
+            {
+              "score": 0.668241,
+              "document_title": "ESP32 Product Documentation",
+              "chunk_index": 7,
+              "block_type": "text",
+              "section_path": [
+                "ESP32"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "ESP32",
+              "content": "A Feature-Rich MCU with Integrated Wi-Fi and\nBluetooth®Connectivity for Wide-Range Applications",
+              "snippet": "A Feature-Rich MCU with Integrated Wi-Fi and Bluetooth®Connectivity for Wide-Range Applications"
+            },
+            {
+              "score": 0.654897,
+              "document_title": "ESP32 Product Documentation",
+              "chunk_index": 3,
+              "block_type": "text",
+              "section_path": [],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "ESP32 Wi-Fi & Bluetooth SoC | Espressif Systems:181-240",
+              "content": "ESP AWS IoT ExpressLink Solution\nPeripherals\nDevice Drivers\nUSB Solutions\nSmart Sensing\nWi-Fi CSI Sensing\nWi-Fi FTM Ranging\nSupport\nTechnical Documents\nAll Types\nSoCs\nModules\nDevKits\nEquipment\nServices\nSelf-Service Resources\nSoftware\nHardware & RF\nCloud\nCertification\nManufacturing\nOn-Site Assistance\nDownload\nTechnical Document\nSDKs & Demos\nAPPs\nTools\nESP-AT\nQuality & Reliability\nCertifications & Compliance\nPCNs\nAdvisories\nLongevity Commitment",
+              "snippet": "ESP AWS IoT ExpressLink Solution Peripherals Device Drivers USB Solutions Smart Sensing Wi-Fi CSI Sensing Wi-Fi FTM Ranging Support Technical Documents All Types SoCs Modules DevKits Equipment Services Self-Service Resources Software Hardwa..."
+            },
+            {
+              "score": 0.652274,
+              "document_title": "ESP32 Product Documentation",
+              "chunk_index": 2,
+              "block_type": "text",
+              "section_path": [],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "ESP32 Wi-Fi & Bluetooth SoC | Espressif Systems:121-180",
+              "content": "Get Started\nDashboard\nCloud Services\nMaintain & Iterate\nTools Support\nConsult & Customize\nDevelop Resources\nGet Started\nGitHub Repository\nClient APPs\nNova Home (Source Code Available)\nESP RainMaker (Fully Open Source)\nDashboard (Public)\nSolution Integration\nMatter Fabric\nESP-Mesh-Lite\nAWS IoT ExpressLink\nSolutions\nSpecial Menu\nESP Matter Offerings\nProduct Security\nSolutions Menu\nAI Solutions\nESP Private Agents Platform\nChat Coding AI Agent Framework\nAudio Solutions\nESP Audio Front-End Algorithms\nHMI\nSmart Displays\nLow-Power Solutions\nWireless Communication Protocol (ESP-NOW)\nESP Smart Switch Solution\nDevice Connectivity\nRemote Debugging Platform (ESP Insights)\nACK Solution (Alexa Connect Kit)\nACS Solution (Amazon Common Software)",
+              "snippet": "Get Started Dashboard Cloud Services Maintain & Iterate Tools Support Consult & Customize Develop Resources Get Started GitHub Repository Client APPs Nova Home (Source Code Available) ESP RainMaker (Fully Open Source) Dashboard (Public) Sol..."
+            }
+          ]
+        },
+        {
+          "id": "esp_idf_prerequisites",
+          "question": "ESP-IDF 开发环境需要哪些软件组件？",
+          "expected_documents": [
+            "ESP-IDF Get Started ESP32"
+          ],
+          "expected_terms": [
+            "ESP-IDF",
+            "tools",
+            "Python",
+            "Git"
+          ],
+          "hit_at_1": false,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "reciprocal_rank": 0.3333333333333333,
+          "term_coverage_at_5": {
+            "matched": [
+              "ESP-IDF",
+              "tools"
+            ],
+            "missing": [
+              "Python",
+              "Git"
+            ],
+            "ratio": 0.5
+          },
+          "top_results": [
+            {
+              "score": 0.691357,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 1,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "Overview"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Overview",
+              "content": "An ESP-IDF project can be seen as an amalgamation of a number of components. For example, for a web server that shows the current humidity, there could be:\nThe ESP-IDF base libraries (libc, ROM bindings, etc)\nThe Wi-Fi drivers\nA TCP/IP stack\nThe FreeRTOS operating system\nA web server\nA driver for the humidity sensor\nMain code tying it all together\nESP-IDF makes these components explicit and configurable. To do that, when a project is compiled, the build system will look up all the components in the ESP-IDF directories, the project directories and (optionally) in additional custom component directories. It then allows the user to configure the ESP-IDF project using a text-based menu system to customize each component. After the components in the project are configured, the build system will compile the project.",
+              "snippet": "An ESP-IDF project can be seen as an amalgamation of a number of components. For example, for a web server that shows the current humidity, there could be: The ESP-IDF base libraries (libc, ROM bindings, etc) The Wi-Fi drivers A TCP/IP stac..."
+            },
+            {
+              "score": 0.688633,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 73,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "Component Requirements",
+                "Including Components in the Build"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Including Components in the Build",
+              "content": "By default, every component is included in the build.\nIf you set theCOMPONENTSvariable to a minimal list of components used directly by your project, then the build will expand to also include required components. The full list of components will be:\nComponents mentioned explicitly inCOMPONENTS.\nThose components' requirements (evaluated recursively).\nThecommon componentsthat every component depends on.\nSettingCOMPONENTSto the minimal list of required components can significantly reduce compile times.\nTheMINIMAL_BUILDbuild propertycan be set toON, which acts as a shortcut to configure theCOMPONENTSvariable to include only themaincomponent. This means that the build will include only thecommon components, themaincomponent, and all dependencies associated with it, both direct and indirect. If theCOMPONENTSvariable is defined while theMINIMAL_BUILDproperty is enabled,COMPONENTSwill take precedence.\nNote\nCertain features and configurations, such as those provided by esp_psram or espcoredump components, may not be available to your project by default if the minimal list of components is used. When using theCOMPONENTSvariable, ensure that all necessary components are included. Similarly, when using theMINIMAL_BUILDbuild property, ensure that all required components are specified in theREQUIRESorPRIV_REQUIRESargument during component registration.",
+              "snippet": "By default, every component is included in the build. If you set theCOMPONENTSvariable to a minimal list of components used directly by your project, then the build will expand to also include required components. The full list of component..."
+            },
+            {
+              "score": 0.687044,
+              "document_title": "ESP-IDF Get Started ESP32",
+              "chunk_index": 3,
+              "block_type": "text",
+              "section_path": [
+                "Get Started",
+                "What You Need",
+                "Software"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Software",
+              "content": "To start using ESP-IDF onESP32, you need the following software:\nToolchainto compile code for ESP32\nBuild tools- CMake and Ninja to build a fullApplicationfor ESP32\nESP-IDFthat essentially contains API (software libraries and source code) for ESP32 and scripts to operate theToolchain",
+              "snippet": "To start using ESP-IDF onESP32, you need the following software: Toolchainto compile code for ESP32 Build tools- CMake and Ninja to build a fullApplicationfor ESP32 ESP-IDFthat essentially contains API (software libraries and source code) f..."
+            },
+            {
+              "score": 0.680063,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 72,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "Component Requirements",
+                "Common Component Requirements"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Common Component Requirements",
+              "content": "To avoid duplication, every component automatically requires some \"common\" IDF components even if they are not mentioned explicitly. Headers from these components can always be included.\nThe list of common components is: cxx, esp_libc, freertos, esp_hw_support, heap, log, soc, hal, esp_rom, esp_common, esp_system, xtensa/riscv.",
+              "snippet": "To avoid duplication, every component automatically requires some \"common\" IDF components even if they are not mentioned explicitly. Headers from these components can always be included. The list of common components is: cxx, esp_libc, free..."
+            },
+            {
+              "score": 0.670471,
+              "document_title": "ESP-IDF Get Started ESP32",
+              "chunk_index": 2,
+              "block_type": "text",
+              "section_path": [
+                "Get Started",
+                "What You Need",
+                "Hardware"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Hardware",
+              "content": "AnESP32board.\nUSB cable- USB A / micro USB B.\nComputerrunning Windows, Linux, or macOS.\nNote\nCurrently, some of the development boards are using USB Type C connectors. Be sure you have the correct cable to connect your board!\nIf you have one of ESP32 official development boards listed below, you can click on the link to learn more about the hardware.\nESP32-DevKitC\nESP32-DevKitM-1\nESP32-Ethernet-Kit\nESP32-PICO-KIT-1\nESP32-PICO-DevKitM-2\nESP32-LCDKit",
+              "snippet": "AnESP32board. USB cable- USB A / micro USB B. Computerrunning Windows, Linux, or macOS. Note Currently, some of the development boards are using USB Type C connectors. Be sure you have the correct cable to connect your board! If you have on..."
+            }
+          ]
+        },
+        {
+          "id": "idf_py_build_equivalent",
+          "question": "idf.py build 等价于哪些 CMake 或 Ninja 命令？",
+          "expected_documents": [
+            "ESP-IDF Build System ESP32"
+          ],
+          "expected_terms": [
+            "cmake",
+            "ninja",
+            "build"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "reciprocal_rank": 1.0,
+          "term_coverage_at_5": {
+            "matched": [
+              "cmake",
+              "ninja",
+              "build"
+            ],
+            "missing": [],
+            "ratio": 1.0
+          },
+          "top_results": [
+            {
+              "score": 0.674275,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 6,
+              "block_type": "code",
+              "section_path": [
+                "Build System",
+                "Using the Build System",
+                "Using CMake Directly"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Using CMake Directly",
+              "content": "mkdir -p build\ncd build\ncmake .. -G Ninja   # or 'Unix Makefiles'\nninja",
+              "snippet": "mkdir -p build cd build cmake .. -G Ninja # or 'Unix Makefiles' ninja"
+            },
+            {
+              "score": 0.630606,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 7,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "Using the Build System",
+                "Using CMake Directly"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Using CMake Directly",
+              "content": "In the above list, thecmakecommand configures the project and generates build files for use with the final build tool. In this case, the final build tool isNinja: runningninjaactually builds the project.\nIt's not necessary to runcmakemore than once. After the first build, you only need to runninjaeach time.ninjawill automatically re-invokecmakeif the project needs reconfiguration.\nIf using CMake withninjaormake, there are also targets for more of theidf.pysub-commands. For example, runningmakemenuconfigorninjamenuconfigin the build directory will work the same asidf.pymenuconfig.\nNote\nIf you're already familiar withCMake, you may find the ESP-IDF CMake-based build system unusual because it wraps a lot of CMake's functionality to reduce boilerplate. Seewriting pure CMake componentsfor some information about writing more \"CMake style\" components.",
+              "snippet": "In the above list, thecmakecommand configures the project and generates build files for use with the final build tool. In this case, the final build tool isNinja: runningninjaactually builds the project. It's not necessary to runcmakemore t..."
+            },
+            {
+              "score": 0.606126,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 5,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "Using the Build System",
+                "Using CMake Directly"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Using CMake Directly",
+              "content": "idf.pyis a wrapper aroundCMakefor convenience. However, you can also invoke CMake directly.\nWhenidf.pydoes something, it prints each command that it runs for easy reference. For example, theidf.pybuildcommand is the same as running these commands in a bash shell (or similar commands for Windows Command Prompt):",
+              "snippet": "idf.pyis a wrapper aroundCMakefor convenience. However, you can also invoke CMake directly. Whenidf.pydoes something, it prints each command that it runs for easy reference. For example, theidf.pybuildcommand is the same as running these co..."
+            },
+            {
+              "score": 0.605393,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 156,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "ESP-IDF CMake Build System API",
+                "Idf-build-commands"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Idf-build-commands",
+              "content": "Performs the bulk of the behind-the-scenes magic for including ESP-IDF components such as component configuration, libraries creation, dependency expansion and resolution. Among these functions, perhaps the most important from a user's perspective is the libraries creation by calling each component'sidf_component_register. This command creates the libraries for each component, which are accessible using aliases in the form idf::component_name. These aliases can be used to link the components to the user's own targets, either libraries or executables.\nThe call requires the target chip to be specified withtargetargument. Optional arguments for the call include:\nPROJECT_DIR - directory of the project; defaults to CMAKE_SOURCE_DIR\nPROJECT_NAME - name of the project; defaults to CMAKE_PROJECT_NAME\nPROJECT_VER - version/revision of the project; defaults to \"1\"\nSDKCONFIG - output path of generated sdkconfig file; defaults to PROJECT_DIR/sdkconfig or CMAKE_SOURCE_DIR/sdkconfig depending if PROJECT_DIR is set\nSDKCONFIG_DEFAULTS - list of files containing default config to use in the build (list must contain full paths); defaults to empty. For each valuefilenamein the list, the config from filefilename.target, if it exists, is also loaded.",
+              "snippet": "Performs the bulk of the behind-the-scenes magic for including ESP-IDF components such as component configuration, libraries creation, dependency expansion and resolution. Among these functions, perhaps the most important from a user's pers..."
+            },
+            {
+              "score": 0.592968,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 157,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "ESP-IDF CMake Build System API",
+                "Idf-build-commands"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Idf-build-commands",
+              "content": "BUILD_DIR - directory to place ESP-IDF build-related artifacts, such as generated binaries, text files, components; defaults to CMAKE_BINARY_DIR\nCOMPONENTS - select components to process among the components known by the build system (added viaidf_build_component). This argument is used to trim the build. Other components are automatically added if they are required in the dependency chain, i.e., the public and private requirements of the components in this list are automatically added, and in turn the public and private requirements of those requirements, so on and so forth. If not specified, all components known to the build system are processed.",
+              "snippet": "BUILD_DIR - directory to place ESP-IDF build-related artifacts, such as generated binaries, text files, components; defaults to CMAKE_BINARY_DIR COMPONENTS - select components to process among the components known by the build system (added..."
+            }
+          ]
+        },
+        {
+          "id": "idf_component_definition",
+          "question": "ESP-IDF 项目中的 component 是什么？",
+          "expected_documents": [
+            "ESP-IDF Build System ESP32"
+          ],
+          "expected_terms": [
+            "component",
+            "CMakeLists.txt"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "reciprocal_rank": 1.0,
+          "term_coverage_at_5": {
+            "matched": [
+              "component",
+              "CMakeLists.txt"
+            ],
+            "missing": [],
+            "ratio": 1.0
+          },
+          "top_results": [
+            {
+              "score": 0.71518,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 177,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "ESP-IDF CMake Build System API",
+                "Idf-component-commands"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Idf-component-commands",
+              "content": "Register a component to the build system. Much like theproject()CMake command, this should be called from the component's CMakeLists.txt directly (not through a function or macro) and is recommended to be called before any other command. Here are some guidelines on what commands cannotbe called beforeidf_component_register:\ncommands that are not valid in CMake script mode\ncustom commands defined in project_include.cmake\nbuild system API commands exceptidf_build_get_property; although consider whether the property may not have been set yet\nCommands that set and operate on variables are generally okay to call beforeidf_component_register.\nThe arguments foridf_component_registerinclude:\nSRCS - component source files used for creating a static library for the component; if not specified, component is a treated as a config-only component and an interface library is created instead.\nSRC_DIRS, EXCLUDE_SRCS - used to glob source files (.c, .cpp, .S) by specifying directories, instead of specifying source files manually via SRCS. Note that this is subject to thelimitations of globbing in CMake. Source files specified in EXCLUDE_SRCS are removed from the globbed files.\nINCLUDE_DIRS - paths, relative to the component directory, which will be added to the include search path for all other components which require the current component",
+              "snippet": "Register a component to the build system. Much like theproject()CMake command, this should be called from the component's CMakeLists.txt directly (not through a function or macro) and is recommended to be called before any other command. He..."
+            },
+            {
+              "score": 0.707165,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 32,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "Component CMakeLists Files"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Component CMakeLists Files",
+              "content": "Each project contains one or more components. Components can be part of ESP-IDF, part of the project's own components directory, or added from custom component directories (see above).\nA component is any directory in theCOMPONENT_DIRSlist which contains aCMakeLists.txtfile.",
+              "snippet": "Each project contains one or more components. Components can be part of ESP-IDF, part of the project's own components directory, or added from custom component directories (see above). A component is any directory in theCOMPONENT_DIRSlist w..."
+            },
+            {
+              "score": 0.706783,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 173,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "ESP-IDF CMake Build System API",
+                "Idf-component-commands"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Idf-component-commands",
+              "content": "Retrieve a specifiedcomponent'scomponent property,propertyand store it invaraccessible from the current scope. SpecifyingGENERATOR_EXPRESSIONwill retrieve the generator expression string for that property, instead of the actual value, which can be used with CMake commands that support generator expressions.",
+              "snippet": "Retrieve a specifiedcomponent'scomponent property,propertyand store it invaraccessible from the current scope. SpecifyingGENERATOR_EXPRESSIONwill retrieve the generator expression string for that property, instead of the actual value, which..."
+            },
+            {
+              "score": 0.70614,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 53,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "Component Requirements",
+                "Example of Component Requirements",
+                "Car Component"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Car Component",
+              "content": "Thecar.hheader file is the public interface for thecarcomponent. This header includesengine.hdirectly because it uses some declarations from this header:",
+              "snippet": "Thecar.hheader file is the public interface for thecarcomponent. This header includesengine.hdirectly because it uses some declarations from this header:"
+            },
+            {
+              "score": 0.702357,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 1,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "Overview"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Overview",
+              "content": "An ESP-IDF project can be seen as an amalgamation of a number of components. For example, for a web server that shows the current humidity, there could be:\nThe ESP-IDF base libraries (libc, ROM bindings, etc)\nThe Wi-Fi drivers\nA TCP/IP stack\nThe FreeRTOS operating system\nA web server\nA driver for the humidity sensor\nMain code tying it all together\nESP-IDF makes these components explicit and configurable. To do that, when a project is compiled, the build system will look up all the components in the ESP-IDF directories, the project directories and (optionally) in additional custom component directories. It then allows the user to configure the ESP-IDF project using a text-based menu system to customize each component. After the components in the project are configured, the build system will compile the project.",
+              "snippet": "An ESP-IDF project can be seen as an amalgamation of a number of components. For example, for a web server that shows the current humidity, there could be: The ESP-IDF base libraries (libc, ROM bindings, etc) The Wi-Fi drivers A TCP/IP stac..."
+            }
+          ]
+        },
+        {
+          "id": "esp32_product_resources",
+          "question": "ESP32 产品页提到哪些资源入口？",
+          "expected_documents": [
+            "ESP32 Product Documentation"
+          ],
+          "expected_terms": [
+            "Resources",
+            "Documents",
+            "SDK",
+            "Hardware Design Guidelines"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "reciprocal_rank": 1.0,
+          "term_coverage_at_5": {
+            "matched": [
+              "Resources",
+              "Documents",
+              "SDK",
+              "Hardware Design Guidelines"
+            ],
+            "missing": [],
+            "ratio": 1.0
+          },
+          "top_results": [
+            {
+              "score": 0.806416,
+              "document_title": "ESP32 Product Documentation",
+              "chunk_index": 10,
+              "block_type": "text",
+              "section_path": [
+                "ESP32",
+                "Resources"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Resources",
+              "content": "ESP32 Modules\nESP32 DevKits\nDocuments\nCertificates\nGet SDK\nTechnical Support\nGetting Started\nHardware Design Guidelines\nCourses\nBooks\nVideos\nESP32 Forum\nTechnical Reference Manual›\nFlash Download Tools›\nCertification and Test Demonstration›\nProduction Testing Guide›\nProduction Testing Equipments›\nEspressif Services›\nMore Resources›",
+              "snippet": "ESP32 Modules ESP32 DevKits Documents Certificates Get SDK Technical Support Getting Started Hardware Design Guidelines Courses Books Videos ESP32 Forum Technical Reference Manual› Flash Download Tools› Certification and Test Demonstration›..."
+            },
+            {
+              "score": 0.76171,
+              "document_title": "ESP32 Product Documentation",
+              "chunk_index": 13,
+              "block_type": "text",
+              "section_path": [
+                "ESP32",
+                "Buy Now",
+                "Stay Informed with Us"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Stay Informed with Us",
+              "content": "Get the latest on innovations, product launches, upcoming events, documentation updates, PCN notifications, advisories, and more.\nSubscribe\nPRODUCTS\nSoCs\nModules\nDevKits\nProduct Selector\nDEVELOPERS\nDeveloper Portal\nESP DevCon\nTech Blogs\nNews\nCOMPANY\nAbout Espressif\nLogo Guidelines\nSales Questions\nCareers\nRESOURCES\nTech Documents\nGitHub\nESP-FAQ\nGet Samples\nlinkdin\nyoutube\ntwitter\nfacebook\nins\nReddit\ngithub\nM5Stack",
+              "snippet": "Get the latest on innovations, product launches, upcoming events, documentation updates, PCN notifications, advisories, and more. Subscribe PRODUCTS SoCs Modules DevKits Product Selector DEVELOPERS Developer Portal ESP DevCon Tech Blogs New..."
+            },
+            {
+              "score": 0.752908,
+              "document_title": "ESP32 Product Documentation",
+              "chunk_index": 14,
+              "block_type": "text",
+              "section_path": [
+                "ESP32",
+                "Buy Now",
+                "Stay Informed with Us"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Stay Informed with Us",
+              "content": "Copyright © 2026 Espressif Systems. All rights reserved.\n沪公网安备 31011502019094 号\n沪ICP备2021026420号\nTerms of Service\nPrivacy Policy\n690 Bibo Road Block 2 Suite 204, Zhangjiang Shanghai, China",
+              "snippet": "Copyright © 2026 Espressif Systems. All rights reserved. 沪公网安备 31011502019094 号 沪ICP备2021026420号 Terms of Service Privacy Policy 690 Bibo Road Block 2 Suite 204, Zhangjiang Shanghai, China"
+            },
+            {
+              "score": 0.749277,
+              "document_title": "ESP32 Product Documentation",
+              "chunk_index": 12,
+              "block_type": "text",
+              "section_path": [
+                "ESP32",
+                "Buy Now"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Buy Now",
+              "content": "Ordering Information\nGet Samples\nContact Us",
+              "snippet": "Ordering Information Get Samples Contact Us"
+            },
+            {
+              "score": 0.742041,
+              "document_title": "ESP32 Product Documentation",
+              "chunk_index": 15,
+              "block_type": "text",
+              "section_path": [
+                "ESP32",
+                "Languages"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Languages",
+              "content": "English\n简体中文\n日本語\n/",
+              "snippet": "English 简体中文 日本語 /"
+            }
+          ]
+        },
+        {
+          "id": "vehicle_power_performance_indexes",
+          "question": "汽车动力性能用哪些指标衡量？",
+          "expected_documents": [
+            "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)"
+          ],
+          "expected_terms": [
+            "最高车速",
+            "加速",
+            "爬坡"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "reciprocal_rank": 1.0,
+          "term_coverage_at_5": {
+            "matched": [
+              "最高车速",
+              "加速",
+              "爬坡"
+            ],
+            "missing": [],
+            "ratio": 1.0
+          },
+          "top_results": [
+            {
+              "score": 0.779337,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 146,
+              "block_type": "text",
+              "section_path": [
+                "第四章 汽车发动机功率和传动系统传动比的选择",
+                "第一节 发动机的主要性能指标和功率的确定"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 89 页",
+              "location_label": "第 89 页",
+              "content": "一 、 发动机的主要性能指标 发动机的性能指标包括内容很广泛, 主要有动力性能指标( 功率、转矩、转速)、 经 济性能指标( 燃料及润滑油消耗率) 及运转性能指标( 冷起动性能、噪声和排气质量)。 衡量一台发动机的质量主要是对以上性能指标进行评定, 同时还要从可靠性、 耐久 性、 结构工艺性、 使用维修性、 排放噪声、 生产实际条件以及使用特点等多方面予以综 合评定, 并把各种性能有机地结合起来。 现对发动机的有效指标、 强化指标及运转性能指标进行简要说明。 1. 发动机的有效指标 发动机的经济性和动力性是以曲轴对外输出的功率为基础, 代表发动机的整机性",
+              "snippet": "一 、 发动机的主要性能指标 发动机的性能指标包括内容很广泛, 主要有动力性能指标( 功率、转矩、转速)、 经 济性能指标( 燃料及润滑油消耗率) 及运转性能指标( 冷起动性能、噪声和排气质量)。 衡量一台发动机的质量主要是对以上性能指标进行评定, 同时还要从可靠性、 耐久 性、 结构工艺性、 使用维修性、 排放噪声、 生产实际条件以及使用特点等多方面予以综 合评定, 并把各种性能有机地结合起来。 现对发动机的有效指标、 强化指标及运转性能指标进行简要说明。 1. 发动机的有..."
+            },
+            {
+              "score": 0.763935,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 69,
+              "block_type": "text",
+              "section_path": [
+                "第二章 汽车动力性"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 47 页",
+              "location_label": "第 47 页 - 第 48 页",
+              "content": "遇到稍大的阻力时经常换档, 这样就影响了行驶的平均车速。 二、 动力特性图 — 利用汽车的驱动力 行驶阻力平衡图, 可以确定一辆汽车的最高车速、 加速能力和 上坡能力, 可以评价同一类型汽车的动力性。 但它不便于评价不同类型汽车的动力性。 因为车的道路阻力和加速阻力均与汽车重力成正比, 空气阻力则与汽车外形等因素有 关, 所以不能单纯根据汽车驱动力的大小, 简单地判定汽车的动力性。 因此, 需要有一个既考虑驱动力又包括汽车重力和空气阻力的综合性参数。 这个参 数为动力因数。 将汽车行驶方程 F t = F f +F w +F i +F j 两边除以汽车重力并整理如下 F t -F w -F w = ψ+ [δ][d][u] G dt gdt 令 F t -GF w 为汽车的动力因数并以符号 D 表示, 则 D = ψ+ [δ][d][u] (2-16) gdt 由式(2 16) 可知, 无论汽车的重量等参数 有什么不同, 只要有相等的动力因数, 便能克 服同样的道路阻力和坡度阻力, 同时拥有同样 的加速能力, 因此把动力因数作为表征汽车动 力特性的指标比较合理。 同时利用动力因数及 其特性图来分析汽车的动力性能不仅有其全面 性, 而且也较简便。 因此在评定汽车动力性能 时得到广泛使用。 汽车的动力特性图是指在各档下的动力因 数与车速的关系曲线( 见图 2-18)。 将汽车滚动 阻力系数 f 随车速 u a 变化关系曲线, 以同样比 例尺画在动力特性图上, 就可以方便地求解汽 车动力性评价指标。 1. 汽车最高车速的确定",
+              "snippet": "遇到稍大的阻力时经常换档, 这样就影响了行驶的平均车速。 二、 动力特性图 — 利用汽车的驱动力 行驶阻力平衡图, 可以确定一辆汽车的最高车速、 加速能力和 上坡能力, 可以评价同一类型汽车的动力性。 但它不便于评价不同类型汽车的动力性。 因为车的道路阻力和加速阻力均与汽车重力成正比, 空气阻力则与汽车外形等因素有 关, 所以不能单纯根据汽车驱动力的大小, 简单地判定汽车的动力性。 因此, 需要有一个既考虑驱动力又包括汽车重力和空气阻力的综合性参数。 这个参 数为动力因数。 ..."
+            },
+            {
+              "score": 0.754394,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 7,
+              "block_type": "text",
+              "section_path": [
+                "汽车理论"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 12 页",
+              "location_label": "第 12 页",
+              "content": "汽车理论这门课程的主要目的是: 研究汽车及其机构以及汽车列车的运动学与动力 学, 研究汽车的使用性能, 为汽车设计、 评价、 试验、 研究和运用提供理论基础。 汽车的使用性能是评价汽车的基础。 下面分类介绍汽车的主要使用性能, 其中有些 使用性能在各章中还要评述, 此处只作扼要介绍。 和其他产品类似, 汽车的使用性能大致可分为三类: 对自然环境条件的适应性、 技 术经济性以及劳动保护性。 一 、 对自然环境条件的适应性 这类性能与是否能保证运输要求有关, 主要有动力性、 通过性、 操纵性、 机动性、 对道路结构的破坏程度等。 1. 动力性 动力性是指汽车在水平良好路面上直线行驶时由汽车受到的纵向外力决定的、 所能 达到的平均行驶速度。 汽车的动力性能用最高车速、 加速时间和最大爬坡度来衡量( 详 见第二章)。 2. 通过性 通过性是指汽车能以足够高的平均速度通过各种坏路和无路地带( 如松软地面、凹 凸不平地面等) 及各种障碍( 如陡坡、侧坡、壕沟、台阶、灌木丛、水障等) 的能力。 通过性 大致可从两方面来考虑: (1) 汽车支承通过性 在潮湿和松软地面上, 汽车易发生下陷、 车轮严重打滑等 现象, 影响汽车的正常作业。 在潮湿松软地面上附着性差、 滚动阻力大。 当汽车的附着 力小于其牵引载荷与滚动阻力之和时, 汽车列车就无法作业; 当附着力小于滚动阻力 时, 空车也无法通过。 汽车在潮湿松软地面上的通过性又称为支承通过性。 目前, 常采 用牵引系数、 牵引效率及燃油利用指数来评价。 (2) 汽车几何通过性 由于汽车与地面间隙不足被地面托住而无法通过的情况, 称为间隙失效; 当车辆中 间底部的零件碰到地面而 被顶住时, 称为顶起失 效; 当车辆前端或尾部触 及地面而不能通过时, 则 分别称为触头失效和托尾 失效。 与几何通过性有关 的汽车整车几何尺寸, 称 为汽车通过性几何参数。",
+              "snippet": "汽车理论这门课程的主要目的是: 研究汽车及其机构以及汽车列车的运动学与动力 学, 研究汽车的使用性能, 为汽车设计、 评价、 试验、 研究和运用提供理论基础。 汽车的使用性能是评价汽车的基础。 下面分类介绍汽车的主要使用性能, 其中有些 使用性能在各章中还要评述, 此处只作扼要介绍。 和其他产品类似, 汽车的使用性能大致可分为三类: 对自然环境条件的适应性、 技 术经济性以及劳动保护性。 一 、 对自然环境条件的适应性 这类性能与是否能保证运输要求有关, 主要有动力性、 通过..."
+            },
+            {
+              "score": 0.731618,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 149,
+              "block_type": "text",
+              "section_path": [
+                "第四章 汽车发动机功率和传动系统传动比的选择"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 90 页",
+              "location_label": "第 90 页",
+              "content": "发动机除了上述指示指标、 有效指标和强化指标等外, 还有排气质量、 噪声等环境 指标。 由于这些性能指标关系到人类生存的环境和健康问题, 各国都采取了许多对策, 对此制定了相应法规, 予以严格控制。 排气品质和噪声已经成为发动机的重要性能 指标。 二、 发动机功率的确定 设计中常常先从保证汽车预期的最高车速来初步选择发动机应有的功率。 最高车速 虽然仅是汽车动力性三个指标中的一个, 但它实质上也反映了汽车的另外两个动力性指 ——— 标 加速能力与爬坡能力。 这是因为最高车速越高, 要求的发动机功率越大, 汽车后 备功率大, 其加速与爬坡能力必然较好。 若给出了汽车期望的最高车速, 选择的发动机功率应大体等于, 但不小于以最高车 速行驶时的行驶阻力功率之和。 由汽车功率平衡方程式知, 发动机功率应为 〓 (4-1) 〓 C D Au [3] P e = η [1] T 式中, u amax 是汽车期望的最高车速。 〓 〓 〓Gfu3600 amax [+] C76140 D Au [3] amax 〓 〓 〓Gfu3600 amax [+] C76140 D Au [3] amax 〓 〓 〓 Gfu amax 3600 [+] 式(4-1) 中, 在给定 u amax 、 C D 、 A、 f、 η T 之值后, 便能求出应有功率的数值。 在实际工作中, 还常常利用现有汽车统计数据初步估计汽车比功率来确定发动机的应有 功率。 汽车的比功率是汽车发动机的额定功率 P e 与汽车总质量 m 的比值, 即比功率是指 车辆单位总质量所具有的发动机的额定功率。 类似地, 汽车列车的比功率是汽车列车发动机( 即牵引车发动机) 的额定功率 P e 与 汽车列车总质量 m 的比值。 比功率的常用单位为 kW/ t, 可由下式求得",
+              "snippet": "发动机除了上述指示指标、 有效指标和强化指标等外, 还有排气质量、 噪声等环境 指标。 由于这些性能指标关系到人类生存的环境和健康问题, 各国都采取了许多对策, 对此制定了相应法规, 予以严格控制。 排气品质和噪声已经成为发动机的重要性能 指标。 二、 发动机功率的确定 设计中常常先从保证汽车预期的最高车速来初步选择发动机应有的功率。 最高车速 虽然仅是汽车动力性三个指标中的一个, 但它实质上也反映了汽车的另外两个动力性指 ——— 标 加速能力与爬坡能力。 这是因为最高车速越..."
+            },
+            {
+              "score": 0.725136,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 38,
+              "block_type": "text",
+              "section_path": [
+                "第二章 汽车动力性",
+                "第一节 汽车动力性的评价指标"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 31 页",
+              "location_label": "第 31 页",
+              "content": "汽车平均行驶速度是评价汽车动力性的总指标, 从这一观点出发, 汽车的动力性主 要由汽车的最高车速 u amax 、 汽车的加速时间 t、 汽车的最大爬坡度 i max 三方面的指标来 评定。 1. 汽车的最高车速 汽车的最高车速是指汽车满载时在水平良好的路面( 混凝土或沥青路面) 上所能达 到的最高行驶车速。 2. 汽车的加速时间 汽车的加速时间表示汽车的加速能力, 它对平均行驶车速有着很大影响, 特别是轿 车, 对加速时间更为重视。 常用原地起步加速时间与超车加速时间来表明汽车的加速能 力。 原地起步加速时间是指汽车由I档或II档起步, 并以最大的加速强度( 包括选择恰 当的换档时机) 逐步换至最高档后到某一预定的距离或车速所需的时间。 轿车常用 0 ~ 100km/ h 所需的时间来表明加速能力。 超车加速时间是指汽车用最高档或次高档从某一 中间车速全力加速到某一高速所需要的时间。 因为超车时汽车与被超车辆并行, 容易发 生交通事故, 所以超车加速能力强, 并行时间短, 行驶就安全。 超车加速能力较多采用 最高档或次高档由 30km/ h 或 40km/ h 车速全力加速到某一高速所需要的时间来表明。 — 也有用加速过程曲线即车速 时间关系曲线全面反映加速能力的。 3. 汽车的最大爬坡度 汽车的上坡能力是用最大爬坡度 i max 表示的。 显然, 最大爬坡度是指汽车满载时用 变速器最低档位在良好路面上等速行驶所能克服的最大道路坡度。 轿车最高车速大, 加 速时间短, 经常在较好的道路上行驶, 一般不强调它的爬坡能力; 但为了保证其良好的 加速能力, 发动机功率应较大, 故其爬坡能力自然较强。 货车要在各种地区的各种道路 上行驶, 因而必须具有足够的爬坡能力, 一般其 i max 在 30%( 即 16. 7°) 左右。 越野汽车 要在坏路或无路条件下行驶, 因而爬坡能力是它一个很重要的指标, 它的最大爬坡度可 达 60%( 约为 31°)。",
+              "snippet": "汽车平均行驶速度是评价汽车动力性的总指标, 从这一观点出发, 汽车的动力性主 要由汽车的最高车速 u amax 、 汽车的加速时间 t、 汽车的最大爬坡度 i max 三方面的指标来 评定。 1. 汽车的最高车速 汽车的最高车速是指汽车满载时在水平良好的路面( 混凝土或沥青路面) 上所能达 到的最高行驶车速。 2. 汽车的加速时间 汽车的加速时间表示汽车的加速能力, 它对平均行驶车速有着很大影响, 特别是轿 车, 对加速时间更为重视。 常用原地起步加速时间与超车加速时间来表明..."
+            }
+          ]
+        },
+        {
+          "id": "tire_coordinate_axes",
+          "question": "轮胎坐标系的 x/y/z 轴如何定义？",
+          "expected_documents": [
+            "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)"
+          ],
+          "expected_terms": [
+            "坐标系",
+            "x",
+            "y",
+            "z"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "reciprocal_rank": 1.0,
+          "term_coverage_at_5": {
+            "matched": [
+              "坐标系",
+              "x",
+              "y",
+              "z"
+            ],
+            "missing": [],
+            "ratio": 1.0
+          },
+          "top_results": [
+            {
+              "score": 0.754423,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 298,
+              "block_type": "text",
+              "section_path": [
+                "第六章 汽车的操纵稳定性",
+                "第一节 概 述"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 162 页",
+              "location_label": "第 162 页",
+              "content": "坐标系或大地坐标系。 Oxyz 坐标系固定在车身上, 原点为汽车的质心位置。 x 轴为车身 纵向水平轴, 方向向前。 y 轴水平向左, z 轴垂直于由 x、 y 轴构成的平面, 方向向上。 x, y, z 轴构成一个右手直角坐标系, 称为 车辆坐标系。 如果将汽车作为一个整体来研究, 其 在三维空间中的运动主要包括: 沿 x 方向 ——— 的平动 纵向运动; 沿 y 方向的平 动———侧向运动; 沿 z 方向的平动———上下 运动; 绕 x 轴的转动———侧倾运动; 绕 y 轴的转动———俯仰运动; 绕 z 轴的转动———",
+              "snippet": "坐标系或大地坐标系。 Oxyz 坐标系固定在车身上, 原点为汽车的质心位置。 x 轴为车身 纵向水平轴, 方向向前。 y 轴水平向左, z 轴垂直于由 x、 y 轴构成的平面, 方向向上。 x, y, z 轴构成一个右手直角坐标系, 称为 车辆坐标系。 如果将汽车作为一个整体来研究, 其 在三维空间中的运动主要包括: 沿 x 方向 ——— 的平动 纵向运动; 沿 y 方向的平 动———侧向运动; 沿 z 方向的平动———上下 运动; 绕 x 轴的转动———侧倾运动; 绕 y ..."
+            },
+            {
+              "score": 0.737762,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 13,
+              "block_type": "text",
+              "section_path": [
+                "汽车理论",
+                "第一章 地面 轮胎力学",
+                "第一节 作用在轮胎上的力和力矩"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 16 页",
+              "location_label": "第 16 页",
+              "content": "一 、 轮胎坐标系 作用在轮胎上的力和力矩非常的复杂, 为了分析作用在轮胎上的各种力和力矩, 建 立图 1-1 所示的在平直路面上行驶的汽车轮胎坐标系。 轮胎胎面与路面的接触区域称为 接地印迹。 轮胎的中心面为垂直于轮胎的旋转轴线的平面。 轮胎的中心面与路面的交线 为 x 轴, 规定向前为正。 轮胎的旋转轴在路面上的投影线为 y 轴, 规定当面向轮胎的前 进方向时指向左方为正。 其中 x 轴和 y 轴的交点为轮胎节点印迹中心, 并以此作为原 点, 因此通过原点与路面垂直的轴为 z 轴, 规定向上为正。 图 1- 1 轮胎坐标系 二、 轮胎六分力 车辆通过轮胎与路面发生力的作用。 地面通过接地印迹作用在轮胎上的应力既有垂",
+              "snippet": "一 、 轮胎坐标系 作用在轮胎上的力和力矩非常的复杂, 为了分析作用在轮胎上的各种力和力矩, 建 立图 1-1 所示的在平直路面上行驶的汽车轮胎坐标系。 轮胎胎面与路面的接触区域称为 接地印迹。 轮胎的中心面为垂直于轮胎的旋转轴线的平面。 轮胎的中心面与路面的交线 为 x 轴, 规定向前为正。 轮胎的旋转轴在路面上的投影线为 y 轴, 规定当面向轮胎的前 进方向时指向左方为正。 其中 x 轴和 y 轴的交点为轮胎节点印迹中心, 并以此作为原 点, 因此通过原点与路面垂直的轴为..."
+            },
+            {
+              "score": 0.701988,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 35,
+              "block_type": "formula",
+              "section_path": [
+                "第一章 地面—轮胎力学"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 29 页",
+              "location_label": "第 29 页",
+              "content": "= 1 (1-12) 〓 〓 〓 q Cx 〓 〓 〓φ x q z 〓 q Cx φ x q z 〓 〓 2 〓 〓 2 + 〓 q Cy 〓φ y q z 由轮胎的特性可知, 轮胎在滚动过程中, 地面对轮胎的切向反作用力可以按照车辆 坐标系分解为侧向力和纵向力, 即在轮胎上同时作用有侧向力和纵向力。",
+              "snippet": "= 1 (1-12) 〓 〓 〓 q Cx 〓 〓 〓φ x q z 〓 q Cx φ x q z 〓 〓 2 〓 〓 2 + 〓 q Cy 〓φ y q z 由轮胎的特性可知, 轮胎在滚动过程中, 地面对轮胎的切向反作用力可以按照车辆 坐标系分解为侧向力和纵向力, 即在轮胎上同时作用有侧向力和纵向力。"
+            },
+            {
+              "score": 0.634183,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 34,
+              "block_type": "text",
+              "section_path": [
+                "第一章 地面—轮胎力学"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 29 页",
+              "location_label": "第 29 页",
+              "content": "偏特性没有影响。 6. 轮胎外倾角 轮胎的外倾角将使轮胎在旋转时产生外 倾侧向力。 随着外倾角的增大, 胎面与路面 的接触情况越来越差, 会影响最大地面侧向 反作用力( 侧向附着力)。 所以, 高速轿车特 别是采用超宽断面轮胎的赛车, 转弯行驶时 承受大部分前侧向力的前外轮应尽量垂直于 地面, 即外倾角等于零。 摩托车转弯时, 车 轮外倾角很大, 为了保证最大地面侧向反作 用力, 摩托车轮胎具有圆形断面。 最后应该指出, 按照轮胎坐标系的规定 可见, 正侧偏角对应于负的侧偏力与正的回 a—干沥青路面(16. 1km/ h) b—湿混凝土路面(32. 2km/ h) c—湿沥青路面(14. 5km/ h) 正力矩; 正外倾角对应于负的外倾侧向力与外倾回正力矩。 三、 纵向力和侧向力的关系 车辆在实际行驶过程中, 路面对轮胎既有侧向力的作用, 同时又有纵向力的作用, 轮胎的力学特性常常表现为纵滑 侧偏复合特性, 因此作用在轮胎上的侧向力以及纵向 力之间存在一定的关系, 即附着椭圆。 q 为轮胎接地印迹内的任一点, 该点上的 垂直应力为 q z 。 因此在纵向和侧向上该点 处的最大附着应力分别为 φ x q z 和 φ y q z , 其 中 φ x 和 φ y 分别为纵向附着系数和侧向附 着系数。 同时与纵向轴线呈角度 θ 的方向 上最大的附着应力为 φq z , φ 为该方向上的 附着系数。 根据力的分解原理, 将 φq z 沿 纵向和侧向分解为 q Cx 和 q Cy , 则有如下的 椭圆方程: 〓 〓 〓 q Cy 〓 〓 〓φ q z 〓",
+              "snippet": "偏特性没有影响。 6. 轮胎外倾角 轮胎的外倾角将使轮胎在旋转时产生外 倾侧向力。 随着外倾角的增大, 胎面与路面 的接触情况越来越差, 会影响最大地面侧向 反作用力( 侧向附着力)。 所以, 高速轿车特 别是采用超宽断面轮胎的赛车, 转弯行驶时 承受大部分前侧向力的前外轮应尽量垂直于 地面, 即外倾角等于零。 摩托车转弯时, 车 轮外倾角很大, 为了保证最大地面侧向反作 用力, 摩托车轮胎具有圆形断面。 最后应该指出, 按照轮胎坐标系的规定 可见, 正侧偏角对应于负的侧偏力..."
+            },
+            {
+              "score": 0.632208,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 29,
+              "block_type": "text",
+              "section_path": [
+                "第一章 地面—轮胎力学"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 26 页",
+              "location_label": "第 26 页",
+              "content": "中心线 aa 是均匀分布的。 而当车轮滚动时, 接地印迹中心线 aa 不仅与车轮平面 cc 错 开一定的距离 Δh, 而且转动了一个角度 α( 侧偏角), 因而接地印迹前端离轮胎平面 cc 近, 侧向变形小; 接地印迹后端离轮胎平面 cc 远, 侧向变形大。 假设地面微元侧向反 作用力的分布与变形成正比, 故地面微元侧向反作用力的分布情况将如图 1-19 所示。 其合力 F Y 的大小与侧向力 F′ Y 相等, 但其作用点必然在接地印迹几何中心的后面, 偏离 了一个距离 e。 该偏离的距离 e 称为轮胎拖距。 F Y e 就是回正力矩 T Z 。",
+              "snippet": "中心线 aa 是均匀分布的。 而当车轮滚动时, 接地印迹中心线 aa 不仅与车轮平面 cc 错 开一定的距离 Δh, 而且转动了一个角度 α( 侧偏角), 因而接地印迹前端离轮胎平面 cc 近, 侧向变形小; 接地印迹后端离轮胎平面 cc 远, 侧向变形大。 假设地面微元侧向反 作用力的分布与变形成正比, 故地面微元侧向反作用力的分布情况将如图 1-19 所示。 其合力 F Y 的大小与侧向力 F′ Y 相等, 但其作用点必然在接地印迹几何中心的后面, 偏离 了一个距离 e。..."
+            }
+          ]
+        },
+        {
+          "id": "rolling_resistance_factors",
+          "question": "滚动阻力系数与哪些因素有关？",
+          "expected_documents": [
+            "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)"
+          ],
+          "expected_terms": [
+            "滚动阻力系数",
+            "路面",
+            "轮胎",
+            "车速"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "reciprocal_rank": 1.0,
+          "term_coverage_at_5": {
+            "matched": [
+              "滚动阻力系数",
+              "路面",
+              "轮胎",
+              "车速"
+            ],
+            "missing": [],
+            "ratio": 1.0
+          },
+          "top_results": [
+            {
+              "score": 0.750861,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 19,
+              "block_type": "table",
+              "section_path": [
+                "第一章 地面—轮胎力学"
+              ],
+              "table_parse_confidence": "low",
+              "page_label": "第 19 页",
+              "location_label": "第 19 页",
+              "content": "表 1-1 在不同路面上滚动阻力系数 f 的数值\n|滚动阻力系数|路面类型|\n|---|---|\n|0. 010～0. 018<br>0. 018～0. 020<br>0. 020～0. 025<br>0. 025～0. 030<br>0. 035～0. 050<br>0. 025～0. 035<br>0. 050～0. 150|泥泞土路（雨季或解冻期）<br>干砂<br>湿砂<br>结冰路面<br>压紧的雪道|",
+              "snippet": "表 1-1 在不同路面上滚动阻力系数 f 的数值 |滚动阻力系数|路面类型| |---|---| |0. 010～0. 018<br>0. 018～0. 020<br>0. 020～0. 025<br>0. 025～0. 030<br>0. 035～0. 050<br>0. 025～0. 035<br>0. 050～0. 150|泥泞土路（雨季或解冻期）<br>干砂<br>湿砂<br>结冰路面<br>压紧的雪道|"
+            },
+            {
+              "score": 0.741044,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 22,
+              "block_type": "text",
+              "section_path": [
+                "第一章 地面—轮胎力学"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 20 页",
+              "location_label": "第 20 页",
+              "content": "系数的关系曲线 为了更直观地反映充气压力对轮胎滚动阻力的影响, 图 1-8 给出了充气压力以及行 驶速度与滚动阻力系数的关系曲线。 随着充气压力的增大, 轮胎的径向刚度增大, 弹性 损失将减小, 从而滚动阻力系数降低。 而随着行驶速度的增加, 滚动阻力系数增大。 因 此在汽车的使用中为了提高经济性需要考虑轮胎的正常气压范围。 若是在松软路面上, 轮胎充气压力与滚动阻力的关系如图 1-9 所示。 与在硬路面上轮胎的滚动阻力系数相 比, 松软路面上轮胎的滚动阻力表现出了不一致性。",
+              "snippet": "系数的关系曲线 为了更直观地反映充气压力对轮胎滚动阻力的影响, 图 1-8 给出了充气压力以及行 驶速度与滚动阻力系数的关系曲线。 随着充气压力的增大, 轮胎的径向刚度增大, 弹性 损失将减小, 从而滚动阻力系数降低。 而随着行驶速度的增加, 滚动阻力系数增大。 因 此在汽车的使用中为了提高经济性需要考虑轮胎的正常气压范围。 若是在松软路面上, 轮胎充气压力与滚动阻力的关系如图 1-9 所示。 与在硬路面上轮胎的滚动阻力系数相 比, 松软路面上轮胎的滚动阻力表现出了不一致性。"
+            },
+            {
+              "score": 0.738569,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 21,
+              "block_type": "text",
+              "section_path": [
+                "第一章 地面—轮胎力学"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 19 页",
+              "location_label": "第 19 页 - 第 20 页",
+              "content": "阻力的变化曲线。 在相同的外部条件下, 斜交轮胎的滚动阻力比子午线轮胎大。 这是由 于子午线轮胎的胎面变形比斜交轮胎小, 迟滞损失减小的缘故。 在不同的充气压力下的 滚动阻力系数如图 1-5b 所示。 随着充气压力的增加, 轮胎的刚度变大, 因此径向变形 减小, 弹性轮胎的迟滞损失较小, 因而滚动阻力系数降低。 货车轮胎的滚动阻力系数与 车速的关系接近于直线, 如图 1-6 所示。 在进行动力性分析时, 若无试验得到的准确滚 动阻力系数, 可利用图 1-6 中的公式大致估算。 与从动轮相比, 安装在驱动轮上的轮胎, 由于作用有驱动转矩, 胎面相对于地面有 一定程度的滑动, 因而增加了轮胎滚动时的能量损失。 图 1-7 所示为滚动阻力系数与驱 动力系数的关系曲线。 随着驱动力系数的增加, 其滚动阻力系数也在增大。",
+              "snippet": "阻力的变化曲线。 在相同的外部条件下, 斜交轮胎的滚动阻力比子午线轮胎大。 这是由 于子午线轮胎的胎面变形比斜交轮胎小, 迟滞损失减小的缘故。 在不同的充气压力下的 滚动阻力系数如图 1-5b 所示。 随着充气压力的增加, 轮胎的刚度变大, 因此径向变形 减小, 弹性轮胎的迟滞损失较小, 因而滚动阻力系数降低。 货车轮胎的滚动阻力系数与 车速的关系接近于直线, 如图 1-6 所示。 在进行动力性分析时, 若无试验得到的准确滚 动阻力系数, 可利用图 1-6 中的公式大致估算。..."
+            },
+            {
+              "score": 0.731647,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 18,
+              "block_type": "text",
+              "section_path": [
+                "第一章 地面—轮胎力学"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 18 页",
+              "location_label": "第 18 页 - 第 19 页",
+              "content": "滚动时的受力分析 即单位汽车重力所需要的推力。 因此, 可以认为滚动阻力 F f 等于该推力, 即滚动阻力等于滚动阻力系数与车轮垂直载荷的乘积, 即在分析汽车车轮滚 动时的阻力时, 不再考虑车轮滚动时的滚动阻力偶矩, 而只需根据滚动阻力系数以及车轮 的垂直载荷进行计算。 滚动阻力 F f 可表示为 F f = Wf (1-4) 真正的滚动阻力是不存在的, 它只是一种将作用在车轮上的滚动阻力偶矩等价简化 而来的力, 因此仅仅是一种表现形式。 驱动轮在硬路面上滚动时的受力分析如图 1- 4 所示。 T t 为作用在驱动轮上的驱动力 矩; F X2 为路面作用于车轮上的地面切向力; F p2 为驱动轴作用于车轮上的水平力; W 为 车轮上的负荷大小; F Z 为地面作用在车轮上的法向反作用力的合力。 由于迟滞现象, 它与法线有一个距离 a, 即有滚动阻力偶矩 T f 存在。 根据力矩平衡有 F X2 r = T t -T f (1-5) T f (1-6) r [=] [F] [t] [-][F] [f] F X2 = T t r [-] 式中, F t 为作用在驱动轮上的驱动力。 与滚动阻力 F f 一样, 驱动力也只是一种表现形 式, 不是具体存在的。 为了计算汽车行驶过程中车轮上滚动阻力的大小, 必须知道滚动阻力系数。 滚动阻 力系数一般用试验来确定。 滚动阻力系数与路面的种类、 行驶车速、 轮胎的构造以及轮 胎的充气压力等因素有关。",
+              "snippet": "滚动时的受力分析 即单位汽车重力所需要的推力。 因此, 可以认为滚动阻力 F f 等于该推力, 即滚动阻力等于滚动阻力系数与车轮垂直载荷的乘积, 即在分析汽车车轮滚 动时的阻力时, 不再考虑车轮滚动时的滚动阻力偶矩, 而只需根据滚动阻力系数以及车轮 的垂直载荷进行计算。 滚动阻力 F f 可表示为 F f = Wf (1-4) 真正的滚动阻力是不存在的, 它只是一种将作用在车轮上的滚动阻力偶矩等价简化 而来的力, 因此仅仅是一种表现形式。 驱动轮在硬路面上滚动时的受力分析如图..."
+            },
+            {
+              "score": 0.709739,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 20,
+              "block_type": "text",
+              "section_path": [
+                "第一章 地面—轮胎力学"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 19 页",
+              "location_label": "第 19 页",
+              "content": "行驶速度与滚动阻力系数的关系如图 1-5 所示。 图 1-5a 中为滚动阻力与行驶速度的 关系。 随着行驶速度的增加, 滚动阻力也逐渐增大。 但在行驶速度达到某一临界速度 后, 滚动阻力急剧增加, 此时轮胎发生驻波现象, 即轮胎的周缘不再是圆形而是波浪 形。 驻波的形成使能量损失显著增加, 从而引起大量发热, 并可导致轮胎破损、 爆胎等 事故, 这就限定了轮胎安全行驶速度。",
+              "snippet": "行驶速度与滚动阻力系数的关系如图 1-5 所示。 图 1-5a 中为滚动阻力与行驶速度的 关系。 随着行驶速度的增加, 滚动阻力也逐渐增大。 但在行驶速度达到某一临界速度 后, 滚动阻力急剧增加, 此时轮胎发生驻波现象, 即轮胎的周缘不再是圆形而是波浪 形。 驻波的形成使能量损失显著增加, 从而引起大量发热, 并可导致轮胎破损、 爆胎等 事故, 这就限定了轮胎安全行驶速度。"
+            }
+          ]
+        }
+      ]
+    },
+    "hybrid": {
+      "summary": {
+        "generated_at": "2026-05-13 13:28:11Z",
+        "mode": "hybrid",
+        "questions": 8,
+        "chunks": 677,
+        "vectors": 677,
+        "top_k": 5,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "mrr": 1.0,
+        "term_coverage_at_5": 0.9375
+      },
+      "questions": [
+        {
+          "id": "esp32_wireless_capabilities",
+          "question": "ESP32 集成了哪些无线能力？",
+          "expected_documents": [
+            "ESP32 Product Documentation",
+            "ESP-IDF Get Started ESP32"
+          ],
+          "expected_terms": [
+            "Wi-Fi",
+            "Bluetooth"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "reciprocal_rank": 1.0,
+          "term_coverage_at_5": {
+            "matched": [
+              "Wi-Fi",
+              "Bluetooth"
+            ],
+            "missing": [],
+            "ratio": 1.0
+          },
+          "top_results": [
+            {
+              "score": 1.183262,
+              "document_title": "ESP-IDF Get Started ESP32",
+              "chunk_index": 1,
+              "block_type": "text",
+              "section_path": [
+                "Get Started",
+                "Introduction"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Introduction",
+              "content": "ESP32 is a system on a chip that integrates the following features:\nWi-Fi (2.4 GHz band)\nBluetooth\nDual high performance Xtensa® 32-bit LX6 CPU cores\nUltra Low Power co-processor\nMultiple peripherals\nPowered by 40 nm technology, ESP32 offers excellent power efficiency, RF performance, security, and reliability, making it suitable for a wide range of application scenarios and power consumption requirements.\nEspressif provides basic hardware and software resources to help application developers realize their ideas using the ESP32 series hardware. The software development framework by Espressif is intended for development of Internet-of-Things (IoT) applications with Wi-Fi, Bluetooth, power management and several other system features.",
+              "snippet": "ESP32 is a system on a chip that integrates the following features: Wi-Fi (2.4 GHz band) Bluetooth Dual high performance Xtensa® 32-bit LX6 CPU cores Ultra Low Power co-processor Multiple peripherals Powered by 40 nm technology, ESP32 offer..."
+            },
+            {
+              "score": 1.08931,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 1,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "Overview"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Overview",
+              "content": "An ESP-IDF project can be seen as an amalgamation of a number of components. For example, for a web server that shows the current humidity, there could be:\nThe ESP-IDF base libraries (libc, ROM bindings, etc)\nThe Wi-Fi drivers\nA TCP/IP stack\nThe FreeRTOS operating system\nA web server\nA driver for the humidity sensor\nMain code tying it all together\nESP-IDF makes these components explicit and configurable. To do that, when a project is compiled, the build system will look up all the components in the ESP-IDF directories, the project directories and (optionally) in additional custom component directories. It then allows the user to configure the ESP-IDF project using a text-based menu system to customize each component. After the components in the project are configured, the build system will compile the project.",
+              "snippet": "An ESP-IDF project can be seen as an amalgamation of a number of components. For example, for a web server that shows the current humidity, there could be: The ESP-IDF base libraries (libc, ROM bindings, etc) The Wi-Fi drivers A TCP/IP stac..."
+            },
+            {
+              "score": 1.017306,
+              "document_title": "ESP32 Product Documentation",
+              "chunk_index": 7,
+              "block_type": "text",
+              "section_path": [
+                "ESP32"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "ESP32",
+              "content": "A Feature-Rich MCU with Integrated Wi-Fi and\nBluetooth®Connectivity for Wide-Range Applications",
+              "snippet": "A Feature-Rich MCU with Integrated Wi-Fi and Bluetooth®Connectivity for Wide-Range Applications"
+            },
+            {
+              "score": 0.964395,
+              "document_title": "ESP32 Product Documentation",
+              "chunk_index": 5,
+              "block_type": "text",
+              "section_path": [],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "ESP32 Wi-Fi & Bluetooth SoC | Espressif Systems:301-331",
+              "content": "Investor Relations\nReports\nInvestor Inquiries\nCorporate Responsibility\nReports\nWildlife Protection\nJoin Us\nEspressif Careers\nFind Your Job\nContact\nContact Espressif Sales\nContact Distributors\nTechnical Inquiries\nSchematic & PCB Design Review\nGet Samples\nBecome Our Supplier\nComments & Suggestions",
+              "snippet": "Investor Relations Reports Investor Inquiries Corporate Responsibility Reports Wildlife Protection Join Us Espressif Careers Find Your Job Contact Contact Espressif Sales Contact Distributors Technical Inquiries Schematic & PCB Design Revie..."
+            },
+            {
+              "score": 0.951478,
+              "document_title": "ESP32 Product Documentation",
+              "chunk_index": 3,
+              "block_type": "text",
+              "section_path": [],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "ESP32 Wi-Fi & Bluetooth SoC | Espressif Systems:181-240",
+              "content": "ESP AWS IoT ExpressLink Solution\nPeripherals\nDevice Drivers\nUSB Solutions\nSmart Sensing\nWi-Fi CSI Sensing\nWi-Fi FTM Ranging\nSupport\nTechnical Documents\nAll Types\nSoCs\nModules\nDevKits\nEquipment\nServices\nSelf-Service Resources\nSoftware\nHardware & RF\nCloud\nCertification\nManufacturing\nOn-Site Assistance\nDownload\nTechnical Document\nSDKs & Demos\nAPPs\nTools\nESP-AT\nQuality & Reliability\nCertifications & Compliance\nPCNs\nAdvisories\nLongevity Commitment",
+              "snippet": "ESP AWS IoT ExpressLink Solution Peripherals Device Drivers USB Solutions Smart Sensing Wi-Fi CSI Sensing Wi-Fi FTM Ranging Support Technical Documents All Types SoCs Modules DevKits Equipment Services Self-Service Resources Software Hardwa..."
+            }
+          ]
+        },
+        {
+          "id": "esp_idf_prerequisites",
+          "question": "ESP-IDF 开发环境需要哪些软件组件？",
+          "expected_documents": [
+            "ESP-IDF Get Started ESP32"
+          ],
+          "expected_terms": [
+            "ESP-IDF",
+            "tools",
+            "Python",
+            "Git"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "reciprocal_rank": 1.0,
+          "term_coverage_at_5": {
+            "matched": [
+              "ESP-IDF",
+              "tools"
+            ],
+            "missing": [
+              "Python",
+              "Git"
+            ],
+            "ratio": 0.5
+          },
+          "top_results": [
+            {
+              "score": 1.227193,
+              "document_title": "ESP-IDF Get Started ESP32",
+              "chunk_index": 3,
+              "block_type": "text",
+              "section_path": [
+                "Get Started",
+                "What You Need",
+                "Software"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Software",
+              "content": "To start using ESP-IDF onESP32, you need the following software:\nToolchainto compile code for ESP32\nBuild tools- CMake and Ninja to build a fullApplicationfor ESP32\nESP-IDFthat essentially contains API (software libraries and source code) for ESP32 and scripts to operate theToolchain",
+              "snippet": "To start using ESP-IDF onESP32, you need the following software: Toolchainto compile code for ESP32 Build tools- CMake and Ninja to build a fullApplicationfor ESP32 ESP-IDFthat essentially contains API (software libraries and source code) f..."
+            },
+            {
+              "score": 1.163741,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 3,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "Overview",
+                "Concepts"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Concepts",
+              "content": "The toolchain for compilation is not part of the project. The toolchain should be installed in the system command line PATH.",
+              "snippet": "The toolchain for compilation is not part of the project. The toolchain should be installed in the system command line PATH."
+            },
+            {
+              "score": 1.136406,
+              "document_title": "ESP-IDF Get Started ESP32",
+              "chunk_index": 2,
+              "block_type": "text",
+              "section_path": [
+                "Get Started",
+                "What You Need",
+                "Hardware"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Hardware",
+              "content": "AnESP32board.\nUSB cable- USB A / micro USB B.\nComputerrunning Windows, Linux, or macOS.\nNote\nCurrently, some of the development boards are using USB Type C connectors. Be sure you have the correct cable to connect your board!\nIf you have one of ESP32 official development boards listed below, you can click on the link to learn more about the hardware.\nESP32-DevKitC\nESP32-DevKitM-1\nESP32-Ethernet-Kit\nESP32-PICO-KIT-1\nESP32-PICO-DevKitM-2\nESP32-LCDKit",
+              "snippet": "AnESP32board. USB cable- USB A / micro USB B. Computerrunning Windows, Linux, or macOS. Note Currently, some of the development boards are using USB Type C connectors. Be sure you have the correct cable to connect your board! If you have on..."
+            },
+            {
+              "score": 1.128776,
+              "document_title": "ESP-IDF Get Started ESP32",
+              "chunk_index": 6,
+              "block_type": "text",
+              "section_path": [
+                "Get Started",
+                "Build Your First Project",
+                "Build in IDE"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Build in IDE",
+              "content": "The ESP-IDF versions installed through EIM can be used in the following IDEs, providing a graphical development experience:\nEspressif-IDEbased on Eclipse CDT\nIt includes IDF Eclipse plugins, essential Eclipse CDT plugins, and other third-party plugins from the Eclipse platform to support building ESP-IDF applications.\nVisual Studio Code integrated with theESP-IDF Extension for VS Code\nIt allows you to develop, build, flash, and monitor ESP-IDF applications directly within the Visual Studio Code.\nFor instructions on how to set up and use these IDEs with ESP-IDF, please refer to their respective documentation linked above.",
+              "snippet": "The ESP-IDF versions installed through EIM can be used in the following IDEs, providing a graphical development experience: Espressif-IDEbased on Eclipse CDT It includes IDF Eclipse plugins, essential Eclipse CDT plugins, and other third-pa..."
+            },
+            {
+              "score": 0.899363,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 48,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "Component Requirements"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Component Requirements",
+              "content": "When compiling each component, the ESP-IDF build system recursively evaluates its dependencies. This means each component needs to declare the components that it depends on (\"requires\").",
+              "snippet": "When compiling each component, the ESP-IDF build system recursively evaluates its dependencies. This means each component needs to declare the components that it depends on (\"requires\")."
+            }
+          ]
+        },
+        {
+          "id": "idf_py_build_equivalent",
+          "question": "idf.py build 等价于哪些 CMake 或 Ninja 命令？",
+          "expected_documents": [
+            "ESP-IDF Build System ESP32"
+          ],
+          "expected_terms": [
+            "cmake",
+            "ninja",
+            "build"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "reciprocal_rank": 1.0,
+          "term_coverage_at_5": {
+            "matched": [
+              "cmake",
+              "ninja",
+              "build"
+            ],
+            "missing": [],
+            "ratio": 1.0
+          },
+          "top_results": [
+            {
+              "score": 1.116562,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 4,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "Using the Build System",
+                "idf.py"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "idf.py",
+              "content": "Theidf.pycommand-line tool provides a front-end for easily managing your project builds. It manages the following tools:\nCMake, which configures the project to be built\nNinjawhich builds the project\nesptoolfor flashing the target.\nFor more details about configuring the build system usingidf.py, please refer toIDF Frontend.",
+              "snippet": "Theidf.pycommand-line tool provides a front-end for easily managing your project builds. It manages the following tools: CMake, which configures the project to be built Ninjawhich builds the project esptoolfor flashing the target. For more ..."
+            },
+            {
+              "score": 1.072548,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 6,
+              "block_type": "code",
+              "section_path": [
+                "Build System",
+                "Using the Build System",
+                "Using CMake Directly"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Using CMake Directly",
+              "content": "mkdir -p build\ncd build\ncmake .. -G Ninja   # or 'Unix Makefiles'\nninja",
+              "snippet": "mkdir -p build cd build cmake .. -G Ninja # or 'Unix Makefiles' ninja"
+            },
+            {
+              "score": 0.90288,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 128,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "Example Component CMakeLists",
+                "Fully Overriding the Component Build Process",
+                "ExternalProject Dependencies and Clean Builds"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "ExternalProject Dependencies and Clean Builds",
+              "content": "CMake has some unusual behavior around external project builds:\nADDITIONAL_CLEAN_FILESonly works when \"make\" or \"ninja\" is used as the build system. If an IDE build system is used, it won't delete these files when cleaning.\nHowever, theExternalProjectconfigure & build commands willalwaysbe re-run after a clean is run.\nTherefore, there are two alternative recommended ways to configure the external build command:\nHave the externalBUILD_COMMANDrun a full clean compile of all sources. The build command will be run if any of the dependencies passed toexternalproject_addwithDEPENDShave changed, or if this is a clean build (ie any ofidf.pyclean,ninjaclean, ormakecleanwas run.)\nHave the externalBUILD_COMMANDbe an incremental build command. Pass the parameterBUILD_ALWAYS1toexternalproject_add. This means the external project will be built each time a build is run, regardless of dependencies. This is only recommended if the external project has correct incremental build behavior, and doesn't take too long to run.\nThe best of these approaches for building an external project will depend on the project itself, its build system, and whether you anticipate needing to frequently recompile the project.",
+              "snippet": "CMake has some unusual behavior around external project builds: ADDITIONAL_CLEAN_FILESonly works when \"make\" or \"ninja\" is used as the build system. If an IDE build system is used, it won't delete these files when cleaning. However, theExte..."
+            },
+            {
+              "score": 0.821061,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 7,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "Using the Build System",
+                "Using CMake Directly"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Using CMake Directly",
+              "content": "In the above list, thecmakecommand configures the project and generates build files for use with the final build tool. In this case, the final build tool isNinja: runningninjaactually builds the project.\nIt's not necessary to runcmakemore than once. After the first build, you only need to runninjaeach time.ninjawill automatically re-invokecmakeif the project needs reconfiguration.\nIf using CMake withninjaormake, there are also targets for more of theidf.pysub-commands. For example, runningmakemenuconfigorninjamenuconfigin the build directory will work the same asidf.pymenuconfig.\nNote\nIf you're already familiar withCMake, you may find the ESP-IDF CMake-based build system unusual because it wraps a lot of CMake's functionality to reduce boilerplate. Seewriting pure CMake componentsfor some information about writing more \"CMake style\" components.",
+              "snippet": "In the above list, thecmakecommand configures the project and generates build files for use with the final build tool. In this case, the final build tool isNinja: runningninjaactually builds the project. It's not necessary to runcmakemore t..."
+            },
+            {
+              "score": 0.79589,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 5,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "Using the Build System",
+                "Using CMake Directly"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Using CMake Directly",
+              "content": "idf.pyis a wrapper aroundCMakefor convenience. However, you can also invoke CMake directly.\nWhenidf.pydoes something, it prints each command that it runs for easy reference. For example, theidf.pybuildcommand is the same as running these commands in a bash shell (or similar commands for Windows Command Prompt):",
+              "snippet": "idf.pyis a wrapper aroundCMakefor convenience. However, you can also invoke CMake directly. Whenidf.pydoes something, it prints each command that it runs for easy reference. For example, theidf.pybuildcommand is the same as running these co..."
+            }
+          ]
+        },
+        {
+          "id": "idf_component_definition",
+          "question": "ESP-IDF 项目中的 component 是什么？",
+          "expected_documents": [
+            "ESP-IDF Build System ESP32"
+          ],
+          "expected_terms": [
+            "component",
+            "CMakeLists.txt"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "reciprocal_rank": 1.0,
+          "term_coverage_at_5": {
+            "matched": [
+              "component",
+              "CMakeLists.txt"
+            ],
+            "missing": [],
+            "ratio": 1.0
+          },
+          "top_results": [
+            {
+              "score": 1.180418,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 32,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "Component CMakeLists Files"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Component CMakeLists Files",
+              "content": "Each project contains one or more components. Components can be part of ESP-IDF, part of the project's own components directory, or added from custom component directories (see above).\nA component is any directory in theCOMPONENT_DIRSlist which contains aCMakeLists.txtfile.",
+              "snippet": "Each project contains one or more components. Components can be part of ESP-IDF, part of the project's own components directory, or added from custom component directories (see above). A component is any directory in theCOMPONENT_DIRSlist w..."
+            },
+            {
+              "score": 1.171503,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 53,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "Component Requirements",
+                "Example of Component Requirements",
+                "Car Component"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Car Component",
+              "content": "Thecar.hheader file is the public interface for thecarcomponent. This header includesengine.hdirectly because it uses some declarations from this header:",
+              "snippet": "Thecar.hheader file is the public interface for thecarcomponent. This header includesengine.hdirectly because it uses some declarations from this header:"
+            },
+            {
+              "score": 1.171092,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 51,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "Component Requirements",
+                "Example of Component Requirements"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Example of Component Requirements",
+              "content": "Imagine there is acarcomponent, which uses theenginecomponent, which uses thespark_plugcomponent:",
+              "snippet": "Imagine there is acarcomponent, which uses theenginecomponent, which uses thespark_plugcomponent:"
+            },
+            {
+              "score": 1.164081,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 55,
+              "block_type": "text",
+              "section_path": [
+                "Build System",
+                "Component Requirements",
+                "Example of Component Requirements",
+                "Car Component"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Car Component",
+              "content": "And car.c includescar.has well:",
+              "snippet": "And car.c includescar.has well:"
+            },
+            {
+              "score": 1.159141,
+              "document_title": "ESP-IDF Build System ESP32",
+              "chunk_index": 56,
+              "block_type": "code",
+              "section_path": [
+                "Build System",
+                "Component Requirements",
+                "Example of Component Requirements",
+                "Car Component"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Car Component",
+              "content": "/* car.c */\n#include \"car.h\"",
+              "snippet": "/* car.c */ #include \"car.h\""
+            }
+          ]
+        },
+        {
+          "id": "esp32_product_resources",
+          "question": "ESP32 产品页提到哪些资源入口？",
+          "expected_documents": [
+            "ESP32 Product Documentation"
+          ],
+          "expected_terms": [
+            "Resources",
+            "Documents",
+            "SDK",
+            "Hardware Design Guidelines"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "reciprocal_rank": 1.0,
+          "term_coverage_at_5": {
+            "matched": [
+              "Resources",
+              "Documents",
+              "SDK",
+              "Hardware Design Guidelines"
+            ],
+            "missing": [],
+            "ratio": 1.0
+          },
+          "top_results": [
+            {
+              "score": 1.37,
+              "document_title": "ESP32 Product Documentation",
+              "chunk_index": 10,
+              "block_type": "text",
+              "section_path": [
+                "ESP32",
+                "Resources"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Resources",
+              "content": "ESP32 Modules\nESP32 DevKits\nDocuments\nCertificates\nGet SDK\nTechnical Support\nGetting Started\nHardware Design Guidelines\nCourses\nBooks\nVideos\nESP32 Forum\nTechnical Reference Manual›\nFlash Download Tools›\nCertification and Test Demonstration›\nProduction Testing Guide›\nProduction Testing Equipments›\nEspressif Services›\nMore Resources›",
+              "snippet": "ESP32 Modules ESP32 DevKits Documents Certificates Get SDK Technical Support Getting Started Hardware Design Guidelines Courses Books Videos ESP32 Forum Technical Reference Manual› Flash Download Tools› Certification and Test Demonstration›..."
+            },
+            {
+              "score": 1.303431,
+              "document_title": "ESP32 Product Documentation",
+              "chunk_index": 13,
+              "block_type": "text",
+              "section_path": [
+                "ESP32",
+                "Buy Now",
+                "Stay Informed with Us"
+              ],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "Stay Informed with Us",
+              "content": "Get the latest on innovations, product launches, upcoming events, documentation updates, PCN notifications, advisories, and more.\nSubscribe\nPRODUCTS\nSoCs\nModules\nDevKits\nProduct Selector\nDEVELOPERS\nDeveloper Portal\nESP DevCon\nTech Blogs\nNews\nCOMPANY\nAbout Espressif\nLogo Guidelines\nSales Questions\nCareers\nRESOURCES\nTech Documents\nGitHub\nESP-FAQ\nGet Samples\nlinkdin\nyoutube\ntwitter\nfacebook\nins\nReddit\ngithub\nM5Stack",
+              "snippet": "Get the latest on innovations, product launches, upcoming events, documentation updates, PCN notifications, advisories, and more. Subscribe PRODUCTS SoCs Modules DevKits Product Selector DEVELOPERS Developer Portal ESP DevCon Tech Blogs New..."
+            },
+            {
+              "score": 1.275401,
+              "document_title": "ESP32 Product Documentation",
+              "chunk_index": 4,
+              "block_type": "text",
+              "section_path": [],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "ESP32 Wi-Fi & Bluetooth SoC | Espressif Systems:241-300",
+              "content": "Export Compliance\nISO Certification\nFAQ\nESP-FAQ\nCommercial FAQ\nEcosystem\nPartnership and Resource\nAWS Technology Partner\nThird-Party Collaborations\nThird-Party SDKs\nEducation\nESP Education\nDeveloper Zone\nESP Developer Portal\nEspressif DevCon\nM5Stack\nTech Blogs\nESP32 Forum\nCommunity\nCourses\nRust\nBooks\nVideos\nProjects\nCompany\nAbout Us\nAbout Espressif\nMilestones\nCEO Messages\nLogo Guidelines\nNewsroom\nNews\nNewsletter\nTech Blogs\nEvents",
+              "snippet": "Export Compliance ISO Certification FAQ ESP-FAQ Commercial FAQ Ecosystem Partnership and Resource AWS Technology Partner Third-Party Collaborations Third-Party SDKs Education ESP Education Developer Zone ESP Developer Portal Espressif DevCo..."
+            },
+            {
+              "score": 1.274546,
+              "document_title": "ESP32 Product Documentation",
+              "chunk_index": 3,
+              "block_type": "text",
+              "section_path": [],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "ESP32 Wi-Fi & Bluetooth SoC | Espressif Systems:181-240",
+              "content": "ESP AWS IoT ExpressLink Solution\nPeripherals\nDevice Drivers\nUSB Solutions\nSmart Sensing\nWi-Fi CSI Sensing\nWi-Fi FTM Ranging\nSupport\nTechnical Documents\nAll Types\nSoCs\nModules\nDevKits\nEquipment\nServices\nSelf-Service Resources\nSoftware\nHardware & RF\nCloud\nCertification\nManufacturing\nOn-Site Assistance\nDownload\nTechnical Document\nSDKs & Demos\nAPPs\nTools\nESP-AT\nQuality & Reliability\nCertifications & Compliance\nPCNs\nAdvisories\nLongevity Commitment",
+              "snippet": "ESP AWS IoT ExpressLink Solution Peripherals Device Drivers USB Solutions Smart Sensing Wi-Fi CSI Sensing Wi-Fi FTM Ranging Support Technical Documents All Types SoCs Modules DevKits Equipment Services Self-Service Resources Software Hardwa..."
+            },
+            {
+              "score": 1.256969,
+              "document_title": "ESP32 Product Documentation",
+              "chunk_index": 0,
+              "block_type": "text",
+              "section_path": [],
+              "table_parse_confidence": null,
+              "page_label": null,
+              "location_label": "ESP32 Wi-Fi & Bluetooth SoC | Espressif Systems:1-60",
+              "content": "Home\nHardware\nProduct Overview\nSoCs\nModules\nDevKits\nEspressif\nM5Stack\nEquipment\nProduct Selector\nESP32-Wrap\nESP32-P\nESP32-P4\nESP32-E\nESP32-E22\nESP32-S\nESP32-S31\nESP32-S3\nESP32-S2\nESP32-C\nESP32-C6\nESP32-C61\nESP32-C5\nESP32-C3\nESP32-C2\nESP32-H\nESP32-H4\nESP32-H21\nESP32-H2\nESP32\nESP32\nESP8266\nESP8266\nSDKs\nGeneral Frameworks\nESP-IDF\nIDF Component Manager",
+              "snippet": "Home Hardware Product Overview SoCs Modules DevKits Espressif M5Stack Equipment Product Selector ESP32-Wrap ESP32-P ESP32-P4 ESP32-E ESP32-E22 ESP32-S ESP32-S31 ESP32-S3 ESP32-S2 ESP32-C ESP32-C6 ESP32-C61 ESP32-C5 ESP32-C3 ESP32-C2 ESP32-H..."
+            }
+          ]
+        },
+        {
+          "id": "vehicle_power_performance_indexes",
+          "question": "汽车动力性能用哪些指标衡量？",
+          "expected_documents": [
+            "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)"
+          ],
+          "expected_terms": [
+            "最高车速",
+            "加速",
+            "爬坡"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "reciprocal_rank": 1.0,
+          "term_coverage_at_5": {
+            "matched": [
+              "最高车速",
+              "加速",
+              "爬坡"
+            ],
+            "missing": [],
+            "ratio": 1.0
+          },
+          "top_results": [
+            {
+              "score": 0.957664,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 69,
+              "block_type": "text",
+              "section_path": [
+                "第二章 汽车动力性"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 47 页",
+              "location_label": "第 47 页 - 第 48 页",
+              "content": "遇到稍大的阻力时经常换档, 这样就影响了行驶的平均车速。 二、 动力特性图 — 利用汽车的驱动力 行驶阻力平衡图, 可以确定一辆汽车的最高车速、 加速能力和 上坡能力, 可以评价同一类型汽车的动力性。 但它不便于评价不同类型汽车的动力性。 因为车的道路阻力和加速阻力均与汽车重力成正比, 空气阻力则与汽车外形等因素有 关, 所以不能单纯根据汽车驱动力的大小, 简单地判定汽车的动力性。 因此, 需要有一个既考虑驱动力又包括汽车重力和空气阻力的综合性参数。 这个参 数为动力因数。 将汽车行驶方程 F t = F f +F w +F i +F j 两边除以汽车重力并整理如下 F t -F w -F w = ψ+ [δ][d][u] G dt gdt 令 F t -GF w 为汽车的动力因数并以符号 D 表示, 则 D = ψ+ [δ][d][u] (2-16) gdt 由式(2 16) 可知, 无论汽车的重量等参数 有什么不同, 只要有相等的动力因数, 便能克 服同样的道路阻力和坡度阻力, 同时拥有同样 的加速能力, 因此把动力因数作为表征汽车动 力特性的指标比较合理。 同时利用动力因数及 其特性图来分析汽车的动力性能不仅有其全面 性, 而且也较简便。 因此在评定汽车动力性能 时得到广泛使用。 汽车的动力特性图是指在各档下的动力因 数与车速的关系曲线( 见图 2-18)。 将汽车滚动 阻力系数 f 随车速 u a 变化关系曲线, 以同样比 例尺画在动力特性图上, 就可以方便地求解汽 车动力性评价指标。 1. 汽车最高车速的确定",
+              "snippet": "遇到稍大的阻力时经常换档, 这样就影响了行驶的平均车速。 二、 动力特性图 — 利用汽车的驱动力 行驶阻力平衡图, 可以确定一辆汽车的最高车速、 加速能力和 上坡能力, 可以评价同一类型汽车的动力性。 但它不便于评价不同类型汽车的动力性。 因为车的道路阻力和加速阻力均与汽车重力成正比, 空气阻力则与汽车外形等因素有 关, 所以不能单纯根据汽车驱动力的大小, 简单地判定汽车的动力性。 因此, 需要有一个既考虑驱动力又包括汽车重力和空气阻力的综合性参数。 这个参 数为动力因数。 ..."
+            },
+            {
+              "score": 0.951447,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 37,
+              "block_type": "text",
+              "section_path": [
+                "第二章 汽车动力性"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 31 页",
+              "location_label": "第 31 页",
+              "content": "汽车的动力性是指汽车在良好路面上直线行驶时由汽车受到的纵向外力决定的、 所 能达到的平均行驶速度。 汽车作为一种高效率的运输工具, 其运输效率之高低在很大程 度上取决于汽车的动力性。 汽车的动力性是汽车各种性能中最基本、 最重要的性能。 本章将进一步研究汽车行驶时的受力情况, 建立汽车行驶方程式, 并以图表的形式 按汽车动力性评价指标的要求确定汽车的动力性, 然后深入研究影响汽车动力性的主要 因素, 为提高汽车的动力性提供理论基础。",
+              "snippet": "汽车的动力性是指汽车在良好路面上直线行驶时由汽车受到的纵向外力决定的、 所 能达到的平均行驶速度。 汽车作为一种高效率的运输工具, 其运输效率之高低在很大程 度上取决于汽车的动力性。 汽车的动力性是汽车各种性能中最基本、 最重要的性能。 本章将进一步研究汽车行驶时的受力情况, 建立汽车行驶方程式, 并以图表的形式 按汽车动力性评价指标的要求确定汽车的动力性, 然后深入研究影响汽车动力性的主要 因素, 为提高汽车的动力性提供理论基础。"
+            },
+            {
+              "score": 0.949296,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 7,
+              "block_type": "text",
+              "section_path": [
+                "汽车理论"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 12 页",
+              "location_label": "第 12 页",
+              "content": "汽车理论这门课程的主要目的是: 研究汽车及其机构以及汽车列车的运动学与动力 学, 研究汽车的使用性能, 为汽车设计、 评价、 试验、 研究和运用提供理论基础。 汽车的使用性能是评价汽车的基础。 下面分类介绍汽车的主要使用性能, 其中有些 使用性能在各章中还要评述, 此处只作扼要介绍。 和其他产品类似, 汽车的使用性能大致可分为三类: 对自然环境条件的适应性、 技 术经济性以及劳动保护性。 一 、 对自然环境条件的适应性 这类性能与是否能保证运输要求有关, 主要有动力性、 通过性、 操纵性、 机动性、 对道路结构的破坏程度等。 1. 动力性 动力性是指汽车在水平良好路面上直线行驶时由汽车受到的纵向外力决定的、 所能 达到的平均行驶速度。 汽车的动力性能用最高车速、 加速时间和最大爬坡度来衡量( 详 见第二章)。 2. 通过性 通过性是指汽车能以足够高的平均速度通过各种坏路和无路地带( 如松软地面、凹 凸不平地面等) 及各种障碍( 如陡坡、侧坡、壕沟、台阶、灌木丛、水障等) 的能力。 通过性 大致可从两方面来考虑: (1) 汽车支承通过性 在潮湿和松软地面上, 汽车易发生下陷、 车轮严重打滑等 现象, 影响汽车的正常作业。 在潮湿松软地面上附着性差、 滚动阻力大。 当汽车的附着 力小于其牵引载荷与滚动阻力之和时, 汽车列车就无法作业; 当附着力小于滚动阻力 时, 空车也无法通过。 汽车在潮湿松软地面上的通过性又称为支承通过性。 目前, 常采 用牵引系数、 牵引效率及燃油利用指数来评价。 (2) 汽车几何通过性 由于汽车与地面间隙不足被地面托住而无法通过的情况, 称为间隙失效; 当车辆中 间底部的零件碰到地面而 被顶住时, 称为顶起失 效; 当车辆前端或尾部触 及地面而不能通过时, 则 分别称为触头失效和托尾 失效。 与几何通过性有关 的汽车整车几何尺寸, 称 为汽车通过性几何参数。",
+              "snippet": "汽车理论这门课程的主要目的是: 研究汽车及其机构以及汽车列车的运动学与动力 学, 研究汽车的使用性能, 为汽车设计、 评价、 试验、 研究和运用提供理论基础。 汽车的使用性能是评价汽车的基础。 下面分类介绍汽车的主要使用性能, 其中有些 使用性能在各章中还要评述, 此处只作扼要介绍。 和其他产品类似, 汽车的使用性能大致可分为三类: 对自然环境条件的适应性、 技 术经济性以及劳动保护性。 一 、 对自然环境条件的适应性 这类性能与是否能保证运输要求有关, 主要有动力性、 通过..."
+            },
+            {
+              "score": 0.945988,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 146,
+              "block_type": "text",
+              "section_path": [
+                "第四章 汽车发动机功率和传动系统传动比的选择",
+                "第一节 发动机的主要性能指标和功率的确定"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 89 页",
+              "location_label": "第 89 页",
+              "content": "一 、 发动机的主要性能指标 发动机的性能指标包括内容很广泛, 主要有动力性能指标( 功率、转矩、转速)、 经 济性能指标( 燃料及润滑油消耗率) 及运转性能指标( 冷起动性能、噪声和排气质量)。 衡量一台发动机的质量主要是对以上性能指标进行评定, 同时还要从可靠性、 耐久 性、 结构工艺性、 使用维修性、 排放噪声、 生产实际条件以及使用特点等多方面予以综 合评定, 并把各种性能有机地结合起来。 现对发动机的有效指标、 强化指标及运转性能指标进行简要说明。 1. 发动机的有效指标 发动机的经济性和动力性是以曲轴对外输出的功率为基础, 代表发动机的整机性",
+              "snippet": "一 、 发动机的主要性能指标 发动机的性能指标包括内容很广泛, 主要有动力性能指标( 功率、转矩、转速)、 经 济性能指标( 燃料及润滑油消耗率) 及运转性能指标( 冷起动性能、噪声和排气质量)。 衡量一台发动机的质量主要是对以上性能指标进行评定, 同时还要从可靠性、 耐久 性、 结构工艺性、 使用维修性、 排放噪声、 生产实际条件以及使用特点等多方面予以综 合评定, 并把各种性能有机地结合起来。 现对发动机的有效指标、 强化指标及运转性能指标进行简要说明。 1. 发动机的有..."
+            },
+            {
+              "score": 0.918556,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 177,
+              "block_type": "text",
+              "section_path": [
+                "第四章 汽车发动机功率和传动系统传动比的选择",
+                "第六节 汽车动力性能参数选择案例"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 106 页",
+              "location_label": "第 106 页",
+              "content": "通过一个汽车动力性能参数选择的过程, 加强对汽车发动机功率选择和传动系统传 动比选择的理解。 发动机作为整车的心脏部分, 它性能的优劣将会直接影响整车的性能、 可靠性、 寿 命和价格。 发动机的选型一般应重点考虑以下指标:1动力性指标;2耐久性指标;3 经济性指标;4重量指标;5先进性指标。 汽车的动力性主要取决于发动机功率的大小。 发动机功率越大, 整车的动力性也越 好。 但发动机功率选择的太大, 会造成不必要的功率浪费和燃油消耗, 导致经济性能 下降。 发动机功率可以通过下列两种方法初步估算。 一是根据公式 P e = 〓 〓 估算, 设计任务书一般给出 m、 u amax 值, C D 、A 可用类比的方法 C D Au [3] 1 η T 〓 〓 〓mgfu3600 amax [+] C76140 D Au [3] amax 〓 〓 〓mgfu3600 amax [+] C76140 D Au [3] amax 〓 〓 〓 mgfu amax 3600 [+] 确定, 或者根据三维建模、 虚拟试验的方法初步确定, f、 η T 可通过查阅相关参数标准 确定。 现设计一辆矿用自卸汽车, 各参数取值如下: 该矿用自卸汽车为 4×2 单级主减速 器驱动桥, η T 可取为 0. 9; C D 取值为 1; 滚动阻力系数 f 取值为 0. 03; 汽车迎风面积 A = 9. 90m [2] ; 由设计任务书要求知, 该车的总质量 m = 43000kg; 满载时最高车速 u amax = 50km/ h。 根据以上参数, 可求得 P e =214kW。 另一种方法是通过参考同级汽车的比功率统计值, 粗估新车的比功率值, 得出最大",
+              "snippet": "通过一个汽车动力性能参数选择的过程, 加强对汽车发动机功率选择和传动系统传 动比选择的理解。 发动机作为整车的心脏部分, 它性能的优劣将会直接影响整车的性能、 可靠性、 寿 命和价格。 发动机的选型一般应重点考虑以下指标:1动力性指标;2耐久性指标;3 经济性指标;4重量指标;5先进性指标。 汽车的动力性主要取决于发动机功率的大小。 发动机功率越大, 整车的动力性也越 好。 但发动机功率选择的太大, 会造成不必要的功率浪费和燃油消耗, 导致经济性能 下降。 发动机功率可以通过..."
+            }
+          ]
+        },
+        {
+          "id": "tire_coordinate_axes",
+          "question": "轮胎坐标系的 x/y/z 轴如何定义？",
+          "expected_documents": [
+            "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)"
+          ],
+          "expected_terms": [
+            "坐标系",
+            "x",
+            "y",
+            "z"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "reciprocal_rank": 1.0,
+          "term_coverage_at_5": {
+            "matched": [
+              "坐标系",
+              "x",
+              "y",
+              "z"
+            ],
+            "missing": [],
+            "ratio": 1.0
+          },
+          "top_results": [
+            {
+              "score": 0.990062,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 13,
+              "block_type": "text",
+              "section_path": [
+                "汽车理论",
+                "第一章 地面 轮胎力学",
+                "第一节 作用在轮胎上的力和力矩"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 16 页",
+              "location_label": "第 16 页",
+              "content": "一 、 轮胎坐标系 作用在轮胎上的力和力矩非常的复杂, 为了分析作用在轮胎上的各种力和力矩, 建 立图 1-1 所示的在平直路面上行驶的汽车轮胎坐标系。 轮胎胎面与路面的接触区域称为 接地印迹。 轮胎的中心面为垂直于轮胎的旋转轴线的平面。 轮胎的中心面与路面的交线 为 x 轴, 规定向前为正。 轮胎的旋转轴在路面上的投影线为 y 轴, 规定当面向轮胎的前 进方向时指向左方为正。 其中 x 轴和 y 轴的交点为轮胎节点印迹中心, 并以此作为原 点, 因此通过原点与路面垂直的轴为 z 轴, 规定向上为正。 图 1- 1 轮胎坐标系 二、 轮胎六分力 车辆通过轮胎与路面发生力的作用。 地面通过接地印迹作用在轮胎上的应力既有垂",
+              "snippet": "一 、 轮胎坐标系 作用在轮胎上的力和力矩非常的复杂, 为了分析作用在轮胎上的各种力和力矩, 建 立图 1-1 所示的在平直路面上行驶的汽车轮胎坐标系。 轮胎胎面与路面的接触区域称为 接地印迹。 轮胎的中心面为垂直于轮胎的旋转轴线的平面。 轮胎的中心面与路面的交线 为 x 轴, 规定向前为正。 轮胎的旋转轴在路面上的投影线为 y 轴, 规定当面向轮胎的前 进方向时指向左方为正。 其中 x 轴和 y 轴的交点为轮胎节点印迹中心, 并以此作为原 点, 因此通过原点与路面垂直的轴为..."
+            },
+            {
+              "score": 0.861038,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 333,
+              "block_type": "text",
+              "section_path": [
+                "第六章 汽车的操纵稳定性",
+                "第四节 前轮角阶跃输入下汽车的瞬态响应"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 179 页",
+              "location_label": "第 179 页",
+              "content": "图 6- 21 在车辆坐标系中汽车运动的描述 F Y = kα (6-31) 式中, F Y 为车轮上的侧偏力; k 为轮胎侧偏刚度; α 为轮胎侧偏角, 它为车轮的旋转平 面与车轮行驶方向之间的夹角。 根据轮胎坐标系中符号的关系, 负的侧偏力产生正的侧 偏角, 故侧偏刚度为负值( 在本书内有些地方给出的轮胎侧偏刚度为正值,则为其绝对 值)。 一般小型轿车的侧偏刚度在-28000~80000N/ rad 范围之内。 另外, 前轮转角 δ 较小, 因此可将上式改写为 ∑F Y = k 1 α 1 +k 2 α 2 (6- 32)",
+              "snippet": "图 6- 21 在车辆坐标系中汽车运动的描述 F Y = kα (6-31) 式中, F Y 为车轮上的侧偏力; k 为轮胎侧偏刚度; α 为轮胎侧偏角, 它为车轮的旋转平 面与车轮行驶方向之间的夹角。 根据轮胎坐标系中符号的关系, 负的侧偏力产生正的侧 偏角, 故侧偏刚度为负值( 在本书内有些地方给出的轮胎侧偏刚度为正值,则为其绝对 值)。 一般小型轿车的侧偏刚度在-28000~80000N/ rad 范围之内。 另外, 前轮转角 δ 较小, 因此可将上式改写为 ∑F Y ..."
+            },
+            {
+              "score": 0.848947,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 14,
+              "block_type": "text",
+              "section_path": [
+                "汽车理论",
+                "第一章 地面 轮胎力学",
+                "第一节 作用在轮胎上的力和力矩"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 17 页",
+              "location_label": "第 17 页",
+              "content": "直于路面的正应力, 也有沿着地面的切向应力( 切应力), 而切向应力又可分为沿 x 方 向的纵向应力和沿 y 方向的侧向应力。 如果将印迹上各点的应力向印迹中心( 轮胎坐标 系原点) 简化, 可得到沿轮胎坐标系的作用在轮胎上的力和力矩。 在轮胎坐标系中, 地面作用在轮胎上的主要力和力矩包括: 地面切向反作用力 沿 x 轴的分量———纵向力 F X ; 地面切向反作用力沿 y 轴的分量———侧向力 F Y ; 地 面法向反作用力 F Z ; 地面反作用力绕 x 轴的力矩———翻转力矩 T X ; 地面反作用力 绕 y 轴的力矩———滚动阻力矩 T Y 以及地面反作用力绕 z 轴的力矩———回正力矩 T Z 。 正负符号均按照坐标系的规定。 纵向力 F X 按照作用方向的不同或作用形式的不同可称为驱动力或制动力。 驱动 力来源于汽车发动机。 发动机产生的有效转矩经过传动系统传到驱动轮上, 因此地 ——— 面作用有反作用力 驱动力在车轮上。 驱动力是维持汽车行驶的外力, 它与汽车的 行驶方向相一致。 而制动力为阻碍汽车行驶的作用在车轮上的纵向力, 制动力的方 向与汽车的行驶方向相反。 侧向力 F Y 是地面作用在车轮上的切向力沿 y 轴的分量。 汽车做曲线行驶时会受 到离心力的作用, 为了维持汽车的曲线运动, 路面作用在车轮上有与离心力相平衡 的力, 即侧向力, 也称为侧偏力。 地面的法向反作用力 F Z 具体地反映了各个车轮所承受的轴荷大小。 一般来说, 作 用在各个车轮上的地面法向反作用力的大小与汽车的纵向加速度、 侧向加速度以及汽车 的总体布置有关, 同时地面的法向反作用力的大小也将影响汽车的纵向力和侧向力的 大小。 翻转力矩 T X 也称为侧倾力矩, 它的大小说明了汽车将发生翻转趋势的大小。 特别 是汽车在做曲线行驶时, 由于离心力的存在而形成翻转力矩使得汽车发生侧倾现象。 滚动阻力矩 T Y 描述了阻碍轮胎滚动的力矩的大小。 滚动阻力矩与路面的状态、 轮 胎的结构以及行驶的车速等有关。 回正力矩 T Z 是在汽车做曲线行驶时使车轮恢复到直线行驶位置的力矩。 汽车在曲 线行驶状态下, 轮胎将发生侧偏现象, 因此将产生作用于轮胎上绕 z 轴的力矩。 随着现代车辆速度的不断提高 , 车辆的主动安全性 、 行驶动力性和乘坐舒适 性在车辆性能中占有越来越重要的位置 , 而轮胎力学特性是影响车辆动力学特性 的重要特性之一 , 因此 , 改善汽车性能的重点取决于更好的调节和控制各个分力 的大小 。",
+              "snippet": "直于路面的正应力, 也有沿着地面的切向应力( 切应力), 而切向应力又可分为沿 x 方 向的纵向应力和沿 y 方向的侧向应力。 如果将印迹上各点的应力向印迹中心( 轮胎坐标 系原点) 简化, 可得到沿轮胎坐标系的作用在轮胎上的力和力矩。 在轮胎坐标系中, 地面作用在轮胎上的主要力和力矩包括: 地面切向反作用力 沿 x 轴的分量———纵向力 F X ; 地面切向反作用力沿 y 轴的分量———侧向力 F Y ; 地 面法向反作用力 F Z ; 地面反作用力绕 x 轴的力矩———翻..."
+            },
+            {
+              "score": 0.812065,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 34,
+              "block_type": "text",
+              "section_path": [
+                "第一章 地面—轮胎力学"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 29 页",
+              "location_label": "第 29 页",
+              "content": "偏特性没有影响。 6. 轮胎外倾角 轮胎的外倾角将使轮胎在旋转时产生外 倾侧向力。 随着外倾角的增大, 胎面与路面 的接触情况越来越差, 会影响最大地面侧向 反作用力( 侧向附着力)。 所以, 高速轿车特 别是采用超宽断面轮胎的赛车, 转弯行驶时 承受大部分前侧向力的前外轮应尽量垂直于 地面, 即外倾角等于零。 摩托车转弯时, 车 轮外倾角很大, 为了保证最大地面侧向反作 用力, 摩托车轮胎具有圆形断面。 最后应该指出, 按照轮胎坐标系的规定 可见, 正侧偏角对应于负的侧偏力与正的回 a—干沥青路面(16. 1km/ h) b—湿混凝土路面(32. 2km/ h) c—湿沥青路面(14. 5km/ h) 正力矩; 正外倾角对应于负的外倾侧向力与外倾回正力矩。 三、 纵向力和侧向力的关系 车辆在实际行驶过程中, 路面对轮胎既有侧向力的作用, 同时又有纵向力的作用, 轮胎的力学特性常常表现为纵滑 侧偏复合特性, 因此作用在轮胎上的侧向力以及纵向 力之间存在一定的关系, 即附着椭圆。 q 为轮胎接地印迹内的任一点, 该点上的 垂直应力为 q z 。 因此在纵向和侧向上该点 处的最大附着应力分别为 φ x q z 和 φ y q z , 其 中 φ x 和 φ y 分别为纵向附着系数和侧向附 着系数。 同时与纵向轴线呈角度 θ 的方向 上最大的附着应力为 φq z , φ 为该方向上的 附着系数。 根据力的分解原理, 将 φq z 沿 纵向和侧向分解为 q Cx 和 q Cy , 则有如下的 椭圆方程: 〓 〓 〓 q Cy 〓 〓 〓φ q z 〓",
+              "snippet": "偏特性没有影响。 6. 轮胎外倾角 轮胎的外倾角将使轮胎在旋转时产生外 倾侧向力。 随着外倾角的增大, 胎面与路面 的接触情况越来越差, 会影响最大地面侧向 反作用力( 侧向附着力)。 所以, 高速轿车特 别是采用超宽断面轮胎的赛车, 转弯行驶时 承受大部分前侧向力的前外轮应尽量垂直于 地面, 即外倾角等于零。 摩托车转弯时, 车 轮外倾角很大, 为了保证最大地面侧向反作 用力, 摩托车轮胎具有圆形断面。 最后应该指出, 按照轮胎坐标系的规定 可见, 正侧偏角对应于负的侧偏力..."
+            },
+            {
+              "score": 0.789964,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 22,
+              "block_type": "text",
+              "section_path": [
+                "第一章 地面—轮胎力学"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 20 页",
+              "location_label": "第 20 页",
+              "content": "系数的关系曲线 为了更直观地反映充气压力对轮胎滚动阻力的影响, 图 1-8 给出了充气压力以及行 驶速度与滚动阻力系数的关系曲线。 随着充气压力的增大, 轮胎的径向刚度增大, 弹性 损失将减小, 从而滚动阻力系数降低。 而随着行驶速度的增加, 滚动阻力系数增大。 因 此在汽车的使用中为了提高经济性需要考虑轮胎的正常气压范围。 若是在松软路面上, 轮胎充气压力与滚动阻力的关系如图 1-9 所示。 与在硬路面上轮胎的滚动阻力系数相 比, 松软路面上轮胎的滚动阻力表现出了不一致性。",
+              "snippet": "系数的关系曲线 为了更直观地反映充气压力对轮胎滚动阻力的影响, 图 1-8 给出了充气压力以及行 驶速度与滚动阻力系数的关系曲线。 随着充气压力的增大, 轮胎的径向刚度增大, 弹性 损失将减小, 从而滚动阻力系数降低。 而随着行驶速度的增加, 滚动阻力系数增大。 因 此在汽车的使用中为了提高经济性需要考虑轮胎的正常气压范围。 若是在松软路面上, 轮胎充气压力与滚动阻力的关系如图 1-9 所示。 与在硬路面上轮胎的滚动阻力系数相 比, 松软路面上轮胎的滚动阻力表现出了不一致性。"
+            }
+          ]
+        },
+        {
+          "id": "rolling_resistance_factors",
+          "question": "滚动阻力系数与哪些因素有关？",
+          "expected_documents": [
+            "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)"
+          ],
+          "expected_terms": [
+            "滚动阻力系数",
+            "路面",
+            "轮胎",
+            "车速"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "reciprocal_rank": 1.0,
+          "term_coverage_at_5": {
+            "matched": [
+              "滚动阻力系数",
+              "路面",
+              "轮胎",
+              "车速"
+            ],
+            "missing": [],
+            "ratio": 1.0
+          },
+          "top_results": [
+            {
+              "score": 0.944834,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 18,
+              "block_type": "text",
+              "section_path": [
+                "第一章 地面—轮胎力学"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 18 页",
+              "location_label": "第 18 页 - 第 19 页",
+              "content": "滚动时的受力分析 即单位汽车重力所需要的推力。 因此, 可以认为滚动阻力 F f 等于该推力, 即滚动阻力等于滚动阻力系数与车轮垂直载荷的乘积, 即在分析汽车车轮滚 动时的阻力时, 不再考虑车轮滚动时的滚动阻力偶矩, 而只需根据滚动阻力系数以及车轮 的垂直载荷进行计算。 滚动阻力 F f 可表示为 F f = Wf (1-4) 真正的滚动阻力是不存在的, 它只是一种将作用在车轮上的滚动阻力偶矩等价简化 而来的力, 因此仅仅是一种表现形式。 驱动轮在硬路面上滚动时的受力分析如图 1- 4 所示。 T t 为作用在驱动轮上的驱动力 矩; F X2 为路面作用于车轮上的地面切向力; F p2 为驱动轴作用于车轮上的水平力; W 为 车轮上的负荷大小; F Z 为地面作用在车轮上的法向反作用力的合力。 由于迟滞现象, 它与法线有一个距离 a, 即有滚动阻力偶矩 T f 存在。 根据力矩平衡有 F X2 r = T t -T f (1-5) T f (1-6) r [=] [F] [t] [-][F] [f] F X2 = T t r [-] 式中, F t 为作用在驱动轮上的驱动力。 与滚动阻力 F f 一样, 驱动力也只是一种表现形 式, 不是具体存在的。 为了计算汽车行驶过程中车轮上滚动阻力的大小, 必须知道滚动阻力系数。 滚动阻 力系数一般用试验来确定。 滚动阻力系数与路面的种类、 行驶车速、 轮胎的构造以及轮 胎的充气压力等因素有关。",
+              "snippet": "滚动时的受力分析 即单位汽车重力所需要的推力。 因此, 可以认为滚动阻力 F f 等于该推力, 即滚动阻力等于滚动阻力系数与车轮垂直载荷的乘积, 即在分析汽车车轮滚 动时的阻力时, 不再考虑车轮滚动时的滚动阻力偶矩, 而只需根据滚动阻力系数以及车轮 的垂直载荷进行计算。 滚动阻力 F f 可表示为 F f = Wf (1-4) 真正的滚动阻力是不存在的, 它只是一种将作用在车轮上的滚动阻力偶矩等价简化 而来的力, 因此仅仅是一种表现形式。 驱动轮在硬路面上滚动时的受力分析如图..."
+            },
+            {
+              "score": 0.927382,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 21,
+              "block_type": "text",
+              "section_path": [
+                "第一章 地面—轮胎力学"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 19 页",
+              "location_label": "第 19 页 - 第 20 页",
+              "content": "阻力的变化曲线。 在相同的外部条件下, 斜交轮胎的滚动阻力比子午线轮胎大。 这是由 于子午线轮胎的胎面变形比斜交轮胎小, 迟滞损失减小的缘故。 在不同的充气压力下的 滚动阻力系数如图 1-5b 所示。 随着充气压力的增加, 轮胎的刚度变大, 因此径向变形 减小, 弹性轮胎的迟滞损失较小, 因而滚动阻力系数降低。 货车轮胎的滚动阻力系数与 车速的关系接近于直线, 如图 1-6 所示。 在进行动力性分析时, 若无试验得到的准确滚 动阻力系数, 可利用图 1-6 中的公式大致估算。 与从动轮相比, 安装在驱动轮上的轮胎, 由于作用有驱动转矩, 胎面相对于地面有 一定程度的滑动, 因而增加了轮胎滚动时的能量损失。 图 1-7 所示为滚动阻力系数与驱 动力系数的关系曲线。 随着驱动力系数的增加, 其滚动阻力系数也在增大。",
+              "snippet": "阻力的变化曲线。 在相同的外部条件下, 斜交轮胎的滚动阻力比子午线轮胎大。 这是由 于子午线轮胎的胎面变形比斜交轮胎小, 迟滞损失减小的缘故。 在不同的充气压力下的 滚动阻力系数如图 1-5b 所示。 随着充气压力的增加, 轮胎的刚度变大, 因此径向变形 减小, 弹性轮胎的迟滞损失较小, 因而滚动阻力系数降低。 货车轮胎的滚动阻力系数与 车速的关系接近于直线, 如图 1-6 所示。 在进行动力性分析时, 若无试验得到的准确滚 动阻力系数, 可利用图 1-6 中的公式大致估算。..."
+            },
+            {
+              "score": 0.912094,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 22,
+              "block_type": "text",
+              "section_path": [
+                "第一章 地面—轮胎力学"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 20 页",
+              "location_label": "第 20 页",
+              "content": "系数的关系曲线 为了更直观地反映充气压力对轮胎滚动阻力的影响, 图 1-8 给出了充气压力以及行 驶速度与滚动阻力系数的关系曲线。 随着充气压力的增大, 轮胎的径向刚度增大, 弹性 损失将减小, 从而滚动阻力系数降低。 而随着行驶速度的增加, 滚动阻力系数增大。 因 此在汽车的使用中为了提高经济性需要考虑轮胎的正常气压范围。 若是在松软路面上, 轮胎充气压力与滚动阻力的关系如图 1-9 所示。 与在硬路面上轮胎的滚动阻力系数相 比, 松软路面上轮胎的滚动阻力表现出了不一致性。",
+              "snippet": "系数的关系曲线 为了更直观地反映充气压力对轮胎滚动阻力的影响, 图 1-8 给出了充气压力以及行 驶速度与滚动阻力系数的关系曲线。 随着充气压力的增大, 轮胎的径向刚度增大, 弹性 损失将减小, 从而滚动阻力系数降低。 而随着行驶速度的增加, 滚动阻力系数增大。 因 此在汽车的使用中为了提高经济性需要考虑轮胎的正常气压范围。 若是在松软路面上, 轮胎充气压力与滚动阻力的关系如图 1-9 所示。 与在硬路面上轮胎的滚动阻力系数相 比, 松软路面上轮胎的滚动阻力表现出了不一致性。"
+            },
+            {
+              "score": 0.862685,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 213,
+              "block_type": "text",
+              "section_path": [
+                "第五章 汽车的制动性"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 120 页",
+              "location_label": "第 120 页",
+              "content": "素。 在制动过程中, 附着系数还与轮胎在路面上的运动状态有关, 即与滑动率有关。 若令地面制动力与垂直载荷之比为制动力系数( 纵向附着系数), 记作 φ b , 侧向力 与垂直载荷之比为侧向力系数( 侧向附着系数), 记作 φ L , 则在不同滑动率时 φ b 和 φ L 的数值不同。",
+              "snippet": "素。 在制动过程中, 附着系数还与轮胎在路面上的运动状态有关, 即与滑动率有关。 若令地面制动力与垂直载荷之比为制动力系数( 纵向附着系数), 记作 φ b , 侧向力 与垂直载荷之比为侧向力系数( 侧向附着系数), 记作 φ L , 则在不同滑动率时 φ b 和 φ L 的数值不同。"
+            },
+            {
+              "score": 0.859438,
+              "document_title": "汽车理论 (张文春,徐立友) (z-library.sk, 1lib.sk, z-lib.sk)",
+              "chunk_index": 20,
+              "block_type": "text",
+              "section_path": [
+                "第一章 地面—轮胎力学"
+              ],
+              "table_parse_confidence": null,
+              "page_label": "第 19 页",
+              "location_label": "第 19 页",
+              "content": "行驶速度与滚动阻力系数的关系如图 1-5 所示。 图 1-5a 中为滚动阻力与行驶速度的 关系。 随着行驶速度的增加, 滚动阻力也逐渐增大。 但在行驶速度达到某一临界速度 后, 滚动阻力急剧增加, 此时轮胎发生驻波现象, 即轮胎的周缘不再是圆形而是波浪 形。 驻波的形成使能量损失显著增加, 从而引起大量发热, 并可导致轮胎破损、 爆胎等 事故, 这就限定了轮胎安全行驶速度。",
+              "snippet": "行驶速度与滚动阻力系数的关系如图 1-5 所示。 图 1-5a 中为滚动阻力与行驶速度的 关系。 随着行驶速度的增加, 滚动阻力也逐渐增大。 但在行驶速度达到某一临界速度 后, 滚动阻力急剧增加, 此时轮胎发生驻波现象, 即轮胎的周缘不再是圆形而是波浪 形。 驻波的形成使能量损失显著增加, 从而引起大量发热, 并可导致轮胎破损、 爆胎等 事故, 这就限定了轮胎安全行驶速度。"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -31,6 +31,12 @@ TECH_TERM_GROUPS = [
     {"controller", "host", "控制器", "主机"},
     {"audio", "a2dp", "音频"},
     {"spp", "serial port profile"},
+    {"wi-fi", "wifi", "wireless", "无线", "无线能力", "蓝牙", "bluetooth"},
+    {"toolchain", "tools", "python", "git", "software", "软件", "软件组件", "开发环境"},
+    {"component", "components", "项目组件"},
+    {"resources", "documents", "sdk", "hardware design guidelines", "资源", "资源入口", "文档"},
+    {"performance", "index", "indexes", "评价指标", "衡量指标", "最高车速", "加速", "爬坡"},
+    {"rolling resistance", "rolling resistance coefficient", "滚动阻力", "滚动阻力系数", "路面", "轮胎", "车速"},
 ]
 
 
@@ -103,9 +109,10 @@ def build_weighted_chunk_text(chunk: ChunkRecord) -> str:
         part for part in [chunk.page_label, chunk.location_label, chunk.source_uri] if part
     )
     metadata_text = document_metadata_tokens(chunk)
+    context_text = "\n".join(part for part in [chunk.context_before, chunk.context_after] if part)
     return (
         f"{chunk.document_title}\n{chunk.document_title}\n"
-        f"{metadata_text}\n{section_text}\n{location_text}\n{chunk.content}"
+        f"{metadata_text}\n{section_text}\n{location_text}\n{context_text}\n{chunk.content}"
     )
 
 
