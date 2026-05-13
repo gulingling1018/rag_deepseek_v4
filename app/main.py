@@ -21,6 +21,7 @@ from app.schemas import (
 )
 from app.session_store import SessionStore
 from app.storage import JSONStorage
+from app.task_router import TaskPlan, TaskRouter
 
 app = FastAPI(title="DeepSeek RAG", version="0.3.0")
 settings = get_settings()
@@ -29,6 +30,7 @@ chat_client = DeepSeekChatClient(settings)
 session_store = SessionStore(settings.rag_sessions_path)
 embedding_service = EmbeddingService(settings)
 reranker_service = RerankerService(settings)
+task_router = TaskRouter()
 
 
 def sanitize_filename(filename: str) -> str:
@@ -152,7 +154,29 @@ def expand_chunk_content(chunk, chunk_lookup: dict[tuple[str, int], object]) -> 
     return merged or base
 
 
-def build_citations(question: str, history, top_k: int) -> list[Citation]:
+def score_task_preference(chunk, task_plan: TaskPlan) -> float:
+    score = 0.0
+    if task_plan.prefer_tables:
+        if chunk.block_type == "table":
+            score += 0.35
+        elif chunk.table_parse_confidence == "low":
+            score -= 0.05
+    if task_plan.prefer_toc:
+        if chunk.block_type == "toc":
+            score += 0.40
+        elif chunk.section_path and len(chunk.section_path) <= 2:
+            score += 0.08
+    if task_plan.prefer_code:
+        if is_code_chunk(chunk):
+            score += 0.25
+    if task_plan.require_page_numbers and chunk.page_number is not None:
+        score += 0.08
+    if task_plan.require_locations and (chunk.location_label or chunk.section_path or chunk.source_uri):
+        score += 0.06
+    return score
+
+
+def build_citations(question: str, history, top_k: int, *, task_plan: TaskPlan) -> list[Citation]:
     chunks = storage.list_chunks()
     vectors = storage.list_vectors()
     identifier_hints = extract_identifier_hints(question)
@@ -165,13 +189,19 @@ def build_citations(question: str, history, top_k: int) -> list[Citation]:
         chunks = [chunk for chunk in chunks if chunk.doc_type not in low_signal_types]
         allowed_document_ids = {chunk.document_id for chunk in chunks}
         vectors = [vector for vector in vectors if vector.document_id in allowed_document_ids]
-        if should_scope_to_bluetooth(question) and not identifier_hints:
+        if should_scope_to_bluetooth(question) and not identifier_hints and task_plan.task_type != "book_index":
             bluetooth_chunks = [chunk for chunk in chunks if is_bluetooth_chunk(chunk)]
             if bluetooth_chunks:
                 chunks = bluetooth_chunks
                 allowed_document_ids = {chunk.document_id for chunk in chunks}
                 vectors = [vector for vector in vectors if vector.document_id in allowed_document_ids]
-        if should_scope_to_code(question):
+        if task_plan.preferred_block_types:
+            prioritized = [chunk for chunk in chunks if chunk.block_type in task_plan.preferred_block_types]
+            if prioritized:
+                chunks = prioritized
+                allowed_document_ids = {chunk.document_id for chunk in chunks}
+                vectors = [vector for vector in vectors if vector.document_id in allowed_document_ids]
+        if task_plan.prefer_code or should_scope_to_code(question):
             code_chunks = [chunk for chunk in chunks if is_code_chunk(chunk)]
             if code_chunks:
                 chunks = code_chunks
@@ -208,6 +238,7 @@ def build_citations(question: str, history, top_k: int) -> list[Citation]:
                                 document_title=chunk.document_title,
                                 chunk_id=chunk.id,
                                 chunk_index=chunk.chunk_index,
+                                block_id=chunk.block_id,
                                 block_type=chunk.block_type,
                                 symbol_name=chunk.symbol_name,
                                 doc_type=chunk.doc_type,
@@ -223,6 +254,11 @@ def build_citations(question: str, history, top_k: int) -> list[Citation]:
                                 location_label=chunk.location_label,
                                 context_before=chunk.context_before,
                                 context_after=chunk.context_after,
+                                parent_block_id=chunk.parent_block_id,
+                                order_on_page=chunk.order_on_page,
+                                page_region=chunk.page_region,
+                                role_confidence=chunk.role_confidence,
+                                extraction_confidence=chunk.extraction_confidence,
                                 table_parse_confidence=chunk.table_parse_confidence,
                                 snippet=snippet,
                                 content=expand_chunk_content(chunk, chunk_lookup),
@@ -234,12 +270,21 @@ def build_citations(question: str, history, top_k: int) -> list[Citation]:
         chunks,
         vectors=vectors,
         embedding_service=embedding_service,
+        vector_store=storage.vector_store,
+        collection_id=settings.rag_vector_collection,
         bm25_weight=settings.rag_hybrid_bm25_weight,
         vector_weight=settings.rag_hybrid_vector_weight,
     )
-    candidate_limit = max(top_k, settings.rag_retrieval_candidate_limit)
+    candidate_limit = max(top_k, settings.rag_retrieval_candidate_limit, task_plan.candidate_limit)
     candidates = index.search(question, history=history, top_k=candidate_limit)
     results = reranker_service.rerank(question, candidates, top_k=top_k)
+    if task_plan.task_type != "qa_fact":
+        rescored = [
+            (chunk, score + score_task_preference(chunk, task_plan))
+            for chunk, score in results
+        ]
+        rescored.sort(key=lambda item: item[1], reverse=True)
+        results = rescored[:top_k]
     chunk_lookup = {(chunk.document_id, chunk.chunk_index): chunk for chunk in chunks}
     citations: list[Citation] = []
     for chunk, score in results:
@@ -252,6 +297,7 @@ def build_citations(question: str, history, top_k: int) -> list[Citation]:
                 document_title=chunk.document_title,
                 chunk_id=chunk.id,
                 chunk_index=chunk.chunk_index,
+                block_id=chunk.block_id,
                 block_type=chunk.block_type,
                 symbol_name=chunk.symbol_name,
                 doc_type=chunk.doc_type,
@@ -267,6 +313,11 @@ def build_citations(question: str, history, top_k: int) -> list[Citation]:
                 location_label=chunk.location_label,
                 context_before=chunk.context_before,
                 context_after=chunk.context_after,
+                parent_block_id=chunk.parent_block_id,
+                order_on_page=chunk.order_on_page,
+                page_region=chunk.page_region,
+                role_confidence=chunk.role_confidence,
+                extraction_confidence=chunk.extraction_confidence,
                 table_parse_confidence=chunk.table_parse_confidence,
                 snippet=snippet,
                 content=expand_chunk_content(chunk, chunk_lookup),
@@ -319,7 +370,7 @@ async def upload_document(file: UploadFile = File(...)):
             text=extracted.text,
             source_format=extracted.source_format,
             encoding=extracted.encoding,
-            blocks=[block.__dict__ for block in extracted.blocks],
+            document_ir=extracted.document_ir,
             page_count=extracted.page_count,
         )
     except Exception as exc:
@@ -352,7 +403,7 @@ def import_url_document(request: UrlImportRequest):
             source_url=request.url,
             source_format=extracted.source_format,
             encoding=extracted.encoding,
-            blocks=[block.__dict__ for block in extracted.blocks],
+            document_ir=extracted.document_ir,
         )
     except Exception as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
@@ -412,15 +463,21 @@ def chat(request: ChatRequest):
         if seeded:
             session = seeded
 
+    task_plan = task_router.route(
+        request.question,
+        top_k=request.top_k or settings.rag_top_k,
+    )
     citations = build_citations(
         question=request.question,
         history=session.messages,
         top_k=request.top_k or settings.rag_top_k,
+        task_plan=task_plan,
     )
     answer, reasoning = chat_client.answer(
         question=request.question,
         citations=citations,
         history=session.messages,
+        task_type=task_plan.task_type,
     )
 
     updated_session = session_store.append_exchange(

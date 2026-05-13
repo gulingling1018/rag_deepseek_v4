@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from datetime import UTC, datetime
+import hashlib
 
 import httpx
 from openai import OpenAI
@@ -104,10 +106,34 @@ def build_vector_records(chunks: list[ChunkRecord], settings: Settings) -> list[
             chunk_id=chunk.id,
             document_id=chunk.document_id,
             chunk_index=chunk.chunk_index,
+            collection_id=settings.rag_vector_collection,
             provider=spec.provider,
             model=spec.model,
             dimension=spec.dimension,
+            chunk_hash=build_chunk_hash(chunk),
+            embedding_text_hash=hash_text(text),
+            chunk_schema_version="v2",
+            parser_version="document-ir-v1",
+            chunker_version="chunk-strategy-v1",
+            created_at=datetime.now(UTC),
+            is_active=True,
             values=values,
         )
-        for chunk, values in zip(chunks, vectors, strict=False)
+        for chunk, text, values in zip(chunks, texts, vectors, strict=False)
     ]
+
+
+def hash_text(text: str) -> str:
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def build_chunk_hash(chunk: ChunkRecord) -> str:
+    payload = "\n".join(
+        [
+            chunk.content,
+            "|".join(chunk.section_path),
+            chunk.page_label or "",
+            chunk.location_label or "",
+        ]
+    )
+    return hash_text(payload)

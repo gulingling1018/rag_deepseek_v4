@@ -1,0 +1,10 @@
+profile_id: vehicle_textbook
+source_formats:
+  - pdf
+  - pdf+ocr
+  - pdf+pymupdf4llm
+title_keywords:
+  - 汽车理论
+  - textbook
+  - chapter
+chunk_strategy: pdf_document

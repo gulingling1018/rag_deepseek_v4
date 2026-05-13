@@ -105,7 +105,7 @@ def main() -> None:
                 source_type="file",
                 source_format=extracted.source_format,
                 encoding=extracted.encoding,
-                blocks=[block.__dict__ for block in extracted.blocks],
+                document_ir=extracted.document_ir,
                 page_count=extracted.page_count,
             )
             imported += 1

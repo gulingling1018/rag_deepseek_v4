@@ -343,7 +343,7 @@ def import_manifest(storage: JSONStorage, upload_dir: Path) -> None:
         source_type="file",
         source_format=extracted.source_format,
         encoding=extracted.encoding,
-        blocks=[block.__dict__ for block in extracted.blocks],
+        document_ir=extracted.document_ir,
     )
 
 
@@ -365,7 +365,7 @@ def import_web_source(storage: JSONStorage, upload_dir: Path, source: SourceReco
         source_url=source.url,
         source_format=extracted.source_format,
         encoding=extracted.encoding,
-        blocks=[block.__dict__ for block in extracted.blocks],
+        document_ir=extracted.document_ir,
     )
     return "imported"
 
@@ -395,7 +395,7 @@ def import_pdf_source(storage: JSONStorage, upload_dir: Path, source: SourceReco
             source_url=source.url,
             source_format=extracted.source_format,
             encoding=extracted.encoding,
-            blocks=[block.__dict__ for block in extracted.blocks],
+            document_ir=extracted.document_ir,
             page_count=extracted.page_count,
         )
     except Exception:

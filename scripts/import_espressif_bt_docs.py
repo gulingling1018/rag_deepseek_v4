@@ -7,7 +7,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from app.config import get_settings
-from app.importers import fetch_web_document
+from app.importers import extract_web_document
 from app.storage import JSONStorage
 
 
@@ -37,18 +37,21 @@ def main():
             skipped += 1
             continue
 
-        title, text = fetch_web_document(url)
+        title, extracted = extract_web_document(url)
         safe_name = sanitize_filename(f"{title}.md")
         stamped_name = f"{datetime.now(UTC).strftime('%Y%m%d%H%M%S')}_{safe_name}"
         destination = Path(settings.rag_upload_dir) / stamped_name
-        destination.write_text(text, encoding="utf-8")
+        destination.write_text(extracted.text, encoding="utf-8")
         document = storage.add_document(
             filename=safe_name,
             source_path=str(destination),
-            text=text,
+            text=extracted.text,
             title=title,
             source_type="url",
             source_url=url,
+            source_format=extracted.source_format,
+            encoding=extracted.encoding,
+            document_ir=extracted.document_ir,
         )
         imported += 1
         print(f"imported: {document.title}")

@@ -3,6 +3,7 @@ from openai import OpenAI
 
 from app.config import Settings
 from app.schemas import ChatTurn, Citation
+from app.task_types import BOOK_INDEX, CODE_SYMBOL_LOOKUP, QA_EXPLANATION, TABLE_LOOKUP
 
 
 class DeepSeekChatClient:
@@ -19,6 +20,8 @@ class DeepSeekChatClient:
         question: str,
         citations: list[Citation],
         history: list[ChatTurn],
+        *,
+        task_type: str | None = None,
     ) -> tuple[str, str | None]:
         context_blocks = []
         for citation in citations:
@@ -47,6 +50,7 @@ class DeepSeekChatClient:
                     "你是一个严谨的RAG问答助手。回答时必须优先依据给定资料，"
                     "不要编造来源中不存在的信息。若资料不足，请明确说不知道或资料不足。"
                     "回答尽量简洁；如果资料给出了章节、页码、行号、符号名或 URL 位置，请在答案里自然带出这些定位信息。"
+                    f"{self._task_instruction(task_type)}"
                 ),
             }
         ]
@@ -80,3 +84,15 @@ class DeepSeekChatClient:
         answer = message.content or "暂时没有生成可用回答。"
         reasoning = getattr(message, "reasoning_content", None)
         return answer, reasoning
+
+    @staticmethod
+    def _task_instruction(task_type: str | None) -> str:
+        if task_type == BOOK_INDEX:
+            return " 如果用户在整理全书或章节索引，请优先按章节/主题结构化输出，并尽量附上页码或定位信息。"
+        if task_type == TABLE_LOOKUP:
+            return " 如果问题是表格或数值查找，请优先引用表格证据；当表格置信度低时，要明确说明该数值证据风险较高。"
+        if task_type == CODE_SYMBOL_LOOKUP:
+            return " 如果问题是代码定位，请优先回答符号名、文件、行号和相邻实现上下文。"
+        if task_type == QA_EXPLANATION:
+            return " 如果问题偏解释型，请先给结论，再用资料中的关键依据展开。"
+        return ""

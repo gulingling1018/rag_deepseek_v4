@@ -29,6 +29,7 @@ class ChunkRecord(BaseModel):
     document_id: str
     document_title: str
     chunk_index: int
+    block_id: str | None = None
     content: str
     block_type: str = "text"
     symbol_name: str | None = None
@@ -50,6 +51,11 @@ class ChunkRecord(BaseModel):
     location_label: str | None = None
     context_before: str | None = None
     context_after: str | None = None
+    parent_block_id: str | None = None
+    order_on_page: int | None = None
+    page_region: str | None = None
+    role_confidence: float | None = None
+    extraction_confidence: float | None = None
     table_parse_confidence: str | None = None
 
 
@@ -57,9 +63,17 @@ class VectorRecord(BaseModel):
     chunk_id: str
     document_id: str
     chunk_index: int
+    collection_id: str = "default"
     provider: str = "hash"
     model: str = "hash-v1"
     dimension: int
+    chunk_hash: str | None = None
+    embedding_text_hash: str | None = None
+    chunk_schema_version: str = "v1"
+    parser_version: str = "v1"
+    chunker_version: str = "v1"
+    created_at: datetime | None = None
+    is_active: bool = True
     values: list[float] = Field(default_factory=list)
 
 
@@ -85,6 +99,7 @@ class Citation(BaseModel):
     document_title: str
     chunk_id: str
     chunk_index: int
+    block_id: str | None = None
     block_type: str = "text"
     symbol_name: str | None = None
     doc_type: str = "other"
@@ -100,6 +115,11 @@ class Citation(BaseModel):
     location_label: str | None = None
     context_before: str | None = None
     context_after: str | None = None
+    parent_block_id: str | None = None
+    order_on_page: int | None = None
+    page_region: str | None = None
+    role_confidence: float | None = None
+    extraction_confidence: float | None = None
     table_parse_confidence: str | None = None
     snippet: str
     content: str = Field(default="", exclude=True)

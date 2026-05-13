@@ -21,6 +21,7 @@ class Settings(BaseSettings):
     rag_upload_dir: str = Field("./data/uploads", alias="RAG_UPLOAD_DIR")
     rag_index_dir: str = Field("./data/index", alias="RAG_INDEX_DIR")
     rag_sessions_path: str = Field("./data/index/sessions.json", alias="RAG_SESSIONS_PATH")
+    rag_vector_collection: str = Field("default", alias="RAG_VECTOR_COLLECTION")
     rag_vector_dim: int = Field(384, alias="RAG_VECTOR_DIM")
     rag_hybrid_bm25_weight: float = Field(0.55, alias="RAG_HYBRID_BM25_WEIGHT")
     rag_hybrid_vector_weight: float = Field(0.45, alias="RAG_HYBRID_VECTOR_WEIGHT")

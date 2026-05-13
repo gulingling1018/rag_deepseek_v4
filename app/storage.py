@@ -7,11 +7,15 @@ from uuid import uuid4
 from typing import Any
 
 from app.chunking import chunk_text
+from app.chunk_profiles import resolve_chunk_profile
+from app.chunk_strategies import build_default_chunk_strategy_registry
 from app.config import get_settings
 from app.content_quality import clean_section_path, is_bad_table, table_parse_confidence
+from app.document_ir import DocumentIR
 from app.document_metadata import derive_document_metadata
 from app.embeddings import build_vector_records
 from app.schemas import ChunkRecord, DocumentRecord, VectorRecord
+from app.vector_stores.json_store import JsonVectorStore
 
 
 class JSONStorage:
@@ -23,6 +27,8 @@ class JSONStorage:
         self.vectors_path = self.index_dir / "vectors.json"
         self.lock = Lock()
         self.settings = get_settings()
+        self.chunk_strategy_registry = build_default_chunk_strategy_registry()
+        self.vector_store = JsonVectorStore(self.vectors_path)
 
         self.upload_dir.mkdir(parents=True, exist_ok=True)
         self.index_dir.mkdir(parents=True, exist_ok=True)
@@ -40,10 +46,7 @@ class JSONStorage:
         ]
 
     def list_vectors(self) -> list[VectorRecord]:
-        return [
-            VectorRecord.model_validate(record)
-            for record in self._read_json(self.vectors_path, default=[])
-        ]
+        return self.vector_store.list_records()
 
     def add_document(
         self,
@@ -56,6 +59,7 @@ class JSONStorage:
         source_url: str | None = None,
         source_format: str | None = None,
         encoding: str | None = None,
+        document_ir: DocumentIR | None = None,
         blocks: list[dict[str, Any]] | None = None,
         page_texts: list[dict[str, Any]] | None = None,
         page_count: int | None = None,
@@ -69,6 +73,7 @@ class JSONStorage:
             source_url=source_url,
             source_format=source_format,
             encoding=encoding,
+            document_ir=document_ir,
             blocks=blocks,
             page_texts=page_texts,
             page_count=page_count,
@@ -77,15 +82,14 @@ class JSONStorage:
         with self.lock:
             documents = self._read_json(self.documents_path, default=[])
             stored_chunks = self._read_json(self.chunks_path, default=[])
-            stored_vectors = self._read_json(self.vectors_path, default=[])
             documents.append(document.model_dump(mode="json"))
             stored_chunks.extend(item.model_dump(mode="json") for item in chunk_records)
-            stored_vectors.extend(
-                item.model_dump(mode="json") for item in self.build_vectors(chunk_records)
-            )
             self._write_json(self.documents_path, documents)
             self._write_json(self.chunks_path, stored_chunks)
-            self._write_json(self.vectors_path, stored_vectors)
+            self.vector_store.upsert(
+                self.build_vectors(chunk_records),
+                collection_id=self.settings.rag_vector_collection,
+            )
 
         return document
 
@@ -106,9 +110,9 @@ class JSONStorage:
                 [item.model_dump(mode="json") for item in chunks],
             )
             vectors = self.build_vectors(chunks) if rebuild_vectors else []
-            self._write_json(
-                self.vectors_path,
-                [item.model_dump(mode="json") for item in vectors],
+            self.vector_store.write_records(
+                vectors,
+                collection_id=self.settings.rag_vector_collection if rebuild_vectors else None,
             )
 
     def find_document_by_source_url(self, source_url: str) -> DocumentRecord | None:
@@ -129,17 +133,18 @@ class JSONStorage:
         with self.lock:
             documents = self._read_json(self.documents_path, default=[])
             chunks = self._read_json(self.chunks_path, default=[])
-            vectors = self._read_json(self.vectors_path, default=[])
             kept_documents = [item for item in documents if item["id"] != document_id]
             if len(kept_documents) == len(documents):
                 return False
 
             removed_document = next(item for item in documents if item["id"] == document_id)
             kept_chunks = [item for item in chunks if item["document_id"] != document_id]
-            kept_vectors = [item for item in vectors if item["document_id"] != document_id]
             self._write_json(self.documents_path, kept_documents)
             self._write_json(self.chunks_path, kept_chunks)
-            self._write_json(self.vectors_path, kept_vectors)
+            self.vector_store.delete_by_document(
+                document_id,
+                collection_id=self.settings.rag_vector_collection,
+            )
 
         source_path = Path(removed_document["source_path"])
         upload_root = self.upload_dir.resolve()
@@ -163,6 +168,7 @@ class JSONStorage:
         source_url: str | None = None,
         source_format: str | None = None,
         encoding: str | None = None,
+        document_ir: DocumentIR | None = None,
         blocks: list[dict[str, Any]] | None = None,
         page_texts: list[dict[str, Any]] | None = None,
         page_count: int | None = None,
@@ -178,6 +184,7 @@ class JSONStorage:
             source_url=source_url,
             source_format=source_format,
             encoding=encoding,
+            document_ir=document_ir,
             blocks=blocks,
             page_texts=page_texts,
             page_count=page_count,
@@ -196,6 +203,7 @@ class JSONStorage:
         source_url: str | None,
         source_format: str | None,
         encoding: str | None,
+        document_ir: DocumentIR | None,
         blocks: list[dict[str, Any]] | None,
         page_texts: list[dict[str, Any]] | None,
         page_count: int | None,
@@ -203,7 +211,18 @@ class JSONStorage:
         created_at: datetime | None = None,
     ) -> tuple[DocumentRecord, list[ChunkRecord]]:
         chunk_payloads: list[dict[str, Any]] = []
-        if blocks:
+        if document_ir is not None:
+            profile = resolve_chunk_profile(
+                document_ir,
+                filename=filename,
+                title=title,
+                source_path=source_path,
+                source_url=source_url,
+            )
+            strategy_name = str(profile.get("chunk_strategy") or "generic_text")
+            strategy = self.chunk_strategy_registry.resolve(strategy_name)
+            chunk_payloads.extend(strategy.build_chunk_payloads(document_ir))
+        elif blocks:
             for block in blocks:
                 block_type = self._normalize_optional_text(block.get("block_type")) or "text"
                 content = self._normalize_chunk_content(
@@ -230,6 +249,12 @@ class JSONStorage:
                         "location_label": self._normalize_optional_text(block.get("location_label")),
                         "context_before": self._normalize_optional_text(block.get("context_before")),
                         "context_after": self._normalize_optional_text(block.get("context_after")),
+                        "block_id": self._normalize_optional_text(block.get("block_id")),
+                        "parent_block_id": self._normalize_optional_text(block.get("parent_block_id")),
+                        "order_on_page": block.get("order_on_page"),
+                        "page_region": self._normalize_optional_text(block.get("page_region")),
+                        "role_confidence": block.get("role_confidence"),
+                        "extraction_confidence": block.get("extraction_confidence"),
                     }
                 )
         elif page_texts:
@@ -279,11 +304,15 @@ class JSONStorage:
             raise ValueError("文档内容为空，无法建立索引。")
 
         chunk_payloads = [self._finalize_chunk_payload(item) for item in chunk_payloads]
-        chunk_payloads = self._attach_code_context_and_filter_connectors(chunk_payloads)
-        chunk_payloads = self._merge_short_text_payloads(chunk_payloads)
+        if document_ir is None:
+            chunk_payloads = self._attach_code_context_and_filter_connectors(chunk_payloads)
+            chunk_payloads = self._merge_short_text_payloads(chunk_payloads)
 
         doc_id = document_id or uuid4().hex
-        doc_title = title or Path(filename).stem
+        resolved_page_count = page_count
+        if resolved_page_count is None and document_ir is not None and document_ir.pages:
+            resolved_page_count = len(document_ir.pages)
+        doc_title = title or (document_ir.title if document_ir is not None else None) or Path(filename).stem
         metadata = derive_document_metadata(
             filename=filename,
             title=doc_title,
@@ -301,7 +330,7 @@ class JSONStorage:
             source_url=source_url,
             source_format=source_format,
             encoding=encoding,
-            page_count=page_count,
+            page_count=resolved_page_count,
             doc_type=str(metadata["doc_type"]),
             content_domain=str(metadata["content_domain"]) if metadata["content_domain"] is not None else None,
             chip_family=str(metadata["chip_family"]) if metadata["chip_family"] is not None else None,
@@ -318,6 +347,7 @@ class JSONStorage:
                 document_id=doc_id,
                 document_title=doc_title,
                 chunk_index=index,
+                block_id=item.get("block_id"),
                 content=item["content"],
                 block_type=item.get("block_type", "text"),
                 symbol_name=item.get("symbol_name"),
@@ -339,6 +369,11 @@ class JSONStorage:
                 location_label=item.get("location_label"),
                 context_before=item.get("context_before"),
                 context_after=item.get("context_after"),
+                parent_block_id=item.get("parent_block_id"),
+                order_on_page=item.get("order_on_page"),
+                page_region=item.get("page_region"),
+                role_confidence=item.get("role_confidence"),
+                extraction_confidence=item.get("extraction_confidence"),
                 table_parse_confidence=item.get("table_parse_confidence"),
             )
             for index, item in enumerate(chunk_payloads)
@@ -347,6 +382,12 @@ class JSONStorage:
 
     def build_vectors(self, chunks: list[ChunkRecord]) -> list[VectorRecord]:
         return build_vector_records(chunks, self.settings)
+
+    def validate_vector_consistency(self, chunks: list[ChunkRecord] | None = None) -> dict[str, int]:
+        return self.vector_store.validate_consistency(
+            chunks or self.list_chunks(),
+            collection_id=self.settings.rag_vector_collection,
+        )
 
     @staticmethod
     def _normalize_chunk_content(content: Any, preserve_blank_lines: bool = False) -> str:

@@ -97,7 +97,13 @@ def main() -> None:
     vectors = storage.list_vectors()
     modes = ["bm25", "vector", "hybrid"] if args.mode == "all" else [args.mode]
     embedding_service = EmbeddingService(settings) if any(mode in {"vector", "hybrid"} for mode in modes) else None
-    index = HybridIndex(chunks, vectors=vectors, embedding_service=embedding_service)
+    index = HybridIndex(
+        chunks,
+        vectors=vectors,
+        embedding_service=embedding_service,
+        vector_store=storage.vector_store,
+        collection_id=settings.rag_vector_collection,
+    )
 
     payload_by_mode = {}
     for mode in modes:

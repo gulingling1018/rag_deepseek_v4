@@ -6,6 +6,7 @@ from dataclasses import dataclass, field
 from app.embeddings import EmbeddingService
 from app.retrieval_core import build_weighted_chunk_text, normalize_text, tokenize
 from app.schemas import ChatTurn, ChunkRecord, VectorRecord
+from app.vector_store import VectorStore
 
 
 def build_query_text(question: str, history: list[ChatTurn], window: int = 4) -> str:
@@ -308,10 +309,14 @@ class VectorIndex:
         chunks: list[ChunkRecord],
         vectors: list[VectorRecord] | None = None,
         embedding_service: EmbeddingService | None = None,
+        vector_store: VectorStore | None = None,
+        collection_id: str | None = None,
     ):
         self.chunks = chunks
         self.embedding_service = embedding_service
         self.spec = embedding_service.spec if embedding_service else None
+        self.vector_store = vector_store
+        self.collection_id = collection_id
         self.vector_map: dict[str, VectorRecord] = {}
         for item in vectors or []:
             if self.spec is None:
@@ -342,6 +347,23 @@ class VectorIndex:
         if not any(query_vector):
             return []
 
+        if self.vector_store is not None and self.spec is not None:
+            chunk_map = {chunk.id: chunk for chunk in self.chunks}
+            hits = self.vector_store.search(
+                query_vector,
+                top_k=top_k,
+                collection_id=self.collection_id,
+                expected_provider=self.spec.provider,
+                expected_model=self.spec.model,
+                expected_dimension=self.spec.dimension,
+                filters={"chunk_ids": list(chunk_map)},
+            )
+            return [
+                (chunk_map[hit.chunk_id], hit.score)
+                for hit in hits
+                if hit.chunk_id in chunk_map
+            ]
+
         scored: list[tuple[ChunkRecord, float]] = []
         for chunk in self.chunks:
             record = self.vector_map.get(chunk.id)
@@ -363,6 +385,8 @@ class HybridIndex:
         vectors: list[VectorRecord] | None = None,
         *,
         embedding_service: EmbeddingService | None = None,
+        vector_store: VectorStore | None = None,
+        collection_id: str | None = None,
         bm25_weight: float = 0.55,
         vector_weight: float = 0.45,
     ):
@@ -370,7 +394,13 @@ class HybridIndex:
         self.bm25_weight = bm25_weight
         self.vector_weight = vector_weight
         self.bm25 = BM25Index(chunks)
-        self.vector = VectorIndex(chunks, vectors=vectors, embedding_service=embedding_service)
+        self.vector = VectorIndex(
+            chunks,
+            vectors=vectors,
+            embedding_service=embedding_service,
+            vector_store=vector_store,
+            collection_id=collection_id,
+        )
 
     @staticmethod
     def _normalize_scores(scores: dict[str, float]) -> dict[str, float]:

@@ -1,0 +1,9 @@
+profile_id: espidf
+source_formats:
+  - markdown
+  - web
+title_keywords:
+  - esp-idf
+  - espressif
+  - esp32
+chunk_strategy: markdown_guide

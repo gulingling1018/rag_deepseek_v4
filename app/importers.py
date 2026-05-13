@@ -16,6 +16,7 @@ from pypdf import PdfReader
 
 from app.config import get_settings
 from app.content_quality import is_bad_table, valid_section_title
+from app.document_ir import DocumentIR, IRBlock, IRPage
 
 TEXT_SUFFIXES = {".txt", ".text"}
 MARKDOWN_SUFFIXES = {".md", ".markdown", ".mdx"}
@@ -57,6 +58,7 @@ class ExtractedDocument:
     source_format: str
     encoding: str | None = None
     page_count: int | None = None
+    document_ir: DocumentIR | None = None
 
 
 @dataclass
@@ -76,6 +78,91 @@ class PdfTocEntry:
     level: int
     path: list[str]
     entry_type: str = "section"
+
+
+def estimate_page_region(order_on_page: int | None, total_blocks_on_page: int) -> str | None:
+    if order_on_page is None or total_blocks_on_page <= 0:
+        return None
+    if total_blocks_on_page == 1:
+        return "middle"
+    ratio = (order_on_page - 1) / total_blocks_on_page
+    if ratio < 0.33:
+        return "top"
+    if ratio < 0.66:
+        return "middle"
+    return "bottom"
+
+
+def build_document_ir(
+    *,
+    title: str,
+    source_type: str,
+    source_format: str,
+    blocks: list[ExtractedBlock],
+    page_count: int | None = None,
+    page_ocr_usage: dict[int, bool] | None = None,
+) -> DocumentIR:
+    blocks_by_page: dict[int | None, list[ExtractedBlock]] = defaultdict(list)
+    for block in blocks:
+        blocks_by_page[block.page_number].append(block)
+
+    if page_count is not None:
+        page_numbers = list(range(1, page_count + 1))
+    else:
+        page_numbers = sorted(page_number for page_number in blocks_by_page if page_number is not None)
+
+    ir_pages = [
+        IRPage(
+            page_number=page_number,
+            page_label=f"第 {page_number} 页",
+            used_ocr=(page_ocr_usage or {}).get(page_number, False),
+        )
+        for page_number in page_numbers
+    ]
+
+    ir_blocks: list[IRBlock] = []
+    for page_number, page_blocks in blocks_by_page.items():
+        total_on_page = len(page_blocks)
+        for offset, block in enumerate(page_blocks, start=1):
+            ir_blocks.append(
+                IRBlock(
+                    block_id=f"block:{page_number if page_number is not None else 'na'}:{offset}",
+                    page_number=block.page_number,
+                    role=block.block_type,
+                    text=block.text,
+                    section_path=list(block.section_path),
+                    order_on_page=offset if page_number is not None else None,
+                    page_region=estimate_page_region(offset if page_number is not None else None, total_on_page),
+                    extraction_confidence=1.0,
+                    source_uri=block.source_uri,
+                    line_start=block.line_start,
+                    line_end=block.line_end,
+                    paragraph_start=block.paragraph_start,
+                    paragraph_end=block.paragraph_end,
+                    location_label=block.location_label,
+                    symbol_name=block.symbol_name,
+                    attributes={
+                        "page_label": block.page_label,
+                    },
+                )
+            )
+
+    return DocumentIR(
+        document_id=None,
+        source_type=source_type,
+        source_format=source_format,
+        title=title,
+        pages=ir_pages,
+        blocks=ir_blocks,
+        quality_signals={
+            "block_count": len(ir_blocks),
+            "page_count": len(ir_pages),
+        },
+        metadata_hints={
+            "has_page_numbers": any(block.page_number is not None for block in blocks),
+            "has_line_numbers": any(block.line_start is not None for block in blocks),
+        },
+    )
 
 
 def normalize_text(text: str) -> str:
@@ -1777,6 +1864,13 @@ def extract_pdf_document_with_pymupdf4llm(path: Path) -> ExtractedDocument | Non
         blocks=blocks,
         source_format="pdf+pymupdf4llm",
         page_count=len(page_chunks),
+        document_ir=build_document_ir(
+            title=path.stem,
+            source_type="file",
+            source_format="pdf+pymupdf4llm",
+            blocks=blocks,
+            page_count=len(page_chunks),
+        ),
     )
 
 
@@ -1843,6 +1937,14 @@ def extract_pdf_document(path: Path) -> ExtractedDocument:
         blocks=blocks,
         source_format="pdf+ocr" if used_ocr else "pdf",
         page_count=len(reader.pages),
+        document_ir=build_document_ir(
+            title=path.stem,
+            source_type="file",
+            source_format="pdf+ocr" if used_ocr else "pdf",
+            blocks=blocks,
+            page_count=len(reader.pages),
+            page_ocr_usage={page.page_number: page.used_ocr for page in pages},
+        ),
     )
 
 
@@ -1884,6 +1986,12 @@ def extract_docx_document(path: Path) -> ExtractedDocument:
         text="\n".join(all_texts),
         blocks=blocks,
         source_format="docx",
+        document_ir=build_document_ir(
+            title=path.stem,
+            source_type="file",
+            source_format="docx",
+            blocks=blocks,
+        ),
     )
 
 
@@ -1896,6 +2004,12 @@ def extract_markdown_document(path: Path, text: str, encoding: str | None) -> Ex
         blocks=blocks,
         source_format="markdown",
         encoding=encoding,
+        document_ir=build_document_ir(
+            title=path.stem,
+            source_type="file",
+            source_format="markdown",
+            blocks=blocks,
+        ),
     )
 
 
@@ -1907,6 +2021,12 @@ def extract_code_document(path: Path, text: str, encoding: str | None) -> Extrac
         blocks=blocks,
         source_format="code",
         encoding=encoding,
+        document_ir=build_document_ir(
+            title=path.stem,
+            source_type="file",
+            source_format="code",
+            blocks=blocks,
+        ),
     )
 
 
@@ -1919,6 +2039,12 @@ def extract_plain_text_document(path: Path, text: str, encoding: str | None) -> 
         blocks=blocks,
         source_format="text",
         encoding=encoding,
+        document_ir=build_document_ir(
+            title=path.stem,
+            source_type="file",
+            source_format="text",
+            blocks=blocks,
+        ),
     )
 
 
@@ -2083,6 +2209,12 @@ def extract_web_document(url: str) -> tuple[str, ExtractedDocument]:
         blocks=blocks,
         source_format="web",
         encoding=encoding,
+        document_ir=build_document_ir(
+            title=title,
+            source_type="url",
+            source_format="web",
+            blocks=blocks,
+        ),
     )
 
 
